@@ -1206,7 +1206,7 @@ function renderSettings(){
     <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">เชื่อมต่อ Google Sheet + Google Drive</h3>
     <form class="frm" onsubmit="return saveGas(event)">
       <div><label>URL ของ Web App (Apps Script) ที่ลงท้ายด้วย /exec</label>
-        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/....../exec" value="${esc(state.gasUrl)}"></div>
+        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/AKfycbwL-7XNw4xSlhVCeKAIs4EW5msi1MtkSguo3fRWp8h6hA2lo-hZo3VFichckxP8KuYf/exec" value="${esc(state.gasUrl)}"></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button type="button" class="btn" onclick="testGas()">${I('refresh',15)} ทดสอบการเชื่อมต่อ</button>
         <button type="submit" class="btn btn-p">${I('check',15)} บันทึกและเชื่อมต่อ</button>
