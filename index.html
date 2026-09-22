@@ -3,210 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ระบบบันทึกการประชุมออนไลน์ | ETC Meeting </title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23123328'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23c9a24b' stroke-width='1.6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e9d8ac' font-family='serif'%3Eก%3C/text%3E%3C/svg%3E">
+<title>ระบบบันทึกการประชุมออนไลน์ | ETCM Meeting Hub</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%233b2414'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23d96f1e' stroke-width='1.6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23fbe0c3' font-family='serif'%3Eก%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f2eee1; --card:#fffdf6; --ink:#253029; --mut:#6d7266;
-  --green:#1b4d3e; --green-d:#123328; --green-l:#2a6b57;
-  --gold:#b98a2e; --gold-d:#8a641c; --gold-l:#e9d8ac;
-  --line:#ddd3ba; --line2:#c9bfa2; --red:#a5402d;
-  --shadow:0 2px 14px rgba(35,48,38,.10);
+  --paper:#f7f1e6; --card:#fffaf2; --ink:#33261a; --mut:#7d6b55;
+  --brown:#5c3a1e; --brown-d:#3b2414; --brown-l:#7a4e2c;
+  --orange:#d96f1e; --orange-d:#a8500f; --orange-l:#fbe0c3;
+  --line:#e0d2b8; --line2:#c9b591; --red:#a5402d;
+  --shadow:0 2px 14px rgba(59,36,20,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Anuphan','Sarabun',sans-serif;color:var(--ink);background:var(--paper);
-  background-image:repeating-linear-gradient(0deg,rgba(120,105,70,.028) 0 1px,transparent 1px 28px);font-size:15px;line-height:1.55}
+  background-image:repeating-linear-gradient(0deg,rgba(120,90,55,.03) 0 1px,transparent 1px 28px);font-size:15px;line-height:1.55}
 button{font-family:inherit}
-a{color:var(--green-l)}
+a{color:var(--brown-l)}
 .ic{vertical-align:-3px;flex:none}
 .dt{color:var(--mut);font-size:12.5px}
 /* ---------- ปุ่ม / ฟอร์ม / ชิป ---------- */
 .btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;color:var(--ink);
   padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;box-shadow:0 1px 0 rgba(0,0,0,.05);text-decoration:none}
-.btn:hover{border-color:var(--gold);color:var(--gold-d);transform:translateY(-1px)}
-.btn-p{background:var(--green);border-color:var(--green);color:#f5efdb}
-.btn-p:hover{background:var(--green-d);border-color:var(--green-d);color:#fff}
-.btn-g{background:var(--gold);border-color:var(--gold-d);color:#fff}
-.btn-g:hover{background:var(--gold-d);color:#fff;border-color:var(--gold-d)}
+.btn:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.btn-p{background:var(--brown);border-color:var(--brown);color:#f6ead8}
+.btn-p:hover{background:var(--brown-d);border-color:var(--brown-d);color:#fff}
+.btn-g{background:var(--orange);border-color:var(--orange-d);color:#fff}
+.btn-g:hover{background:var(--orange-d);color:#fff;border-color:var(--orange-d)}
 .btn-d{color:var(--red);border-color:#d8b3a6;background:#fdf6f2}
 .btn-d:hover{background:var(--red);color:#fff;border-color:var(--red)}
 .btn-s{padding:4.5px 10px;font-size:12.5px;border-radius:7px}
-.btn-ghost{background:transparent;border:1px solid rgba(233,216,172,.4);color:#e8e2c8}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold-l);background:rgba(233,216,172,.08)}
+.btn-ghost{background:transparent;border:1px solid rgba(251,224,195,.4);color:#eadbc4}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange-l);background:rgba(251,224,195,.08)}
 .in{width:100%;padding:8.5px 11px;border:1px solid var(--line2);border-radius:8px;background:#fff;font:inherit;font-size:14.5px;color:var(--ink)}
-.in:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(185,138,46,.16)}
+.in:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(217,111,30,.16)}
 .in-s{width:auto;padding:4px 8px;font-size:12.5px}
 textarea.in{resize:vertical;min-height:74px}
 .frm{display:grid;gap:13px}
-.frm label{display:block;font-size:13px;font-weight:600;color:#55503c;margin-bottom:4px}
+.frm label{display:block;font-size:13px;font-weight:600;color:#5a4630;margin-bottom:4px}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 .hint{font-size:12px;color:var(--mut);margin-top:3px}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:2.5px 10px;border-radius:99px;border:1px solid;font-weight:600;white-space:nowrap}
-.ch-gold{color:#8a641c;background:#f7ecd2;border-color:#dcc98f}
-.ch-green{color:#1e5c48;background:#e3eee6;border-color:#b9d2c0}
+.ch-gold{color:#9a4a0c;background:#fdeed8;border-color:#ecc794}
+.ch-green{color:#4a6b2a;background:#eef2dd;border-color:#c8d3a4}
 .ch-red{color:#8f3a28;background:#f7e4dd;border-color:#dfb7a8}
-.ch-gray{color:#5b5f58;background:#ecece4;border-color:#cfcfc2}
+.ch-gray{color:#6b5f4e;background:#efe9dc;border-color:#d4c9b4}
 table.tb{width:100%;border-collapse:collapse;font-size:14px}
-.tb th{background:#f3eedb;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);font-weight:600;color:#55503c;font-size:13px}
+.tb th{background:#f4ecda;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);font-weight:600;color:#5a4630;font-size:13px}
 .tb td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
-.tb tr.selfrow td{background:#faf5e2}
+.tb tr.selfrow td{background:#faf3e4}
 /* ---------- หน้าเข้าสู่ระบบ ---------- */
 .auth{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr}
-.auth-l{background:var(--green-d);color:#efe9d5;display:flex;flex-direction:column;justify-content:center;padding:64px;position:relative;overflow:hidden}
-.auth-l::after{content:'';position:absolute;inset:16px;border:1px solid rgba(201,162,75,.45);pointer-events:none}
-.auth-seal{width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;overflow:hidden;
-  box-shadow:inset 0 0 0 5px var(--green-d),inset 0 0 0 6.5px rgba(233,216,172,.5);color:var(--gold-l);margin-bottom:26px}
+.auth-l{background:var(--brown-d);color:#efe6d6;display:flex;flex-direction:column;justify-content:center;padding:64px;position:relative;overflow:hidden}
+.auth-l::after{content:'';position:absolute;inset:16px;border:1px solid rgba(217,111,30,.45);pointer-events:none}
+.auth-seal{width:88px;height:88px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;overflow:hidden;
+  box-shadow:inset 0 0 0 5px var(--brown-d),inset 0 0 0 6.5px rgba(251,224,195,.5);color:var(--orange-l);margin-bottom:26px}
 .auth-l h1{font-size:30px;font-weight:700;line-height:1.3;letter-spacing:.01em}
-.auth-l h1 span{color:var(--gold-l)}
-.auth-l .sub{color:#b9c4b3;margin:8px 0 26px;font-size:14.5px}
-.auth-feat{list-style:none;display:grid;gap:11px;font-size:14.5px;color:#d8dccb}
+.auth-l h1 span{color:var(--orange-l)}
+.auth-l .sub{color:#c9b9a2;margin:8px 0 26px;font-size:14.5px}
+.auth-feat{list-style:none;display:grid;gap:11px;font-size:14.5px;color:#ddd0bd}
 .auth-feat li{display:flex;gap:10px;align-items:flex-start}
-.auth-feat .ic{color:var(--gold);margin-top:2px}
-.auth-org{margin-top:36px;padding-top:18px;border-top:1px solid rgba(233,216,172,.25);font-size:13px;color:#a8b3a3}
+.auth-feat .ic{color:var(--orange);margin-top:2px}
+.auth-org{margin-top:36px;padding-top:18px;border-top:1px solid rgba(251,224,195,.25);font-size:13px;color:#b3a28a}
 .auth-r{display:grid;place-items:center;padding:40px 28px;background:var(--paper)}
 .auth-card{width:100%;max-width:400px}
 .auth-card h2{font-size:22px;margin-bottom:4px}
 .auth-card .lead{color:var(--mut);font-size:14px;margin-bottom:22px}
-.demo-box{margin-top:22px;border:1px dashed var(--gold);border-radius:10px;padding:14px 16px;background:#faf4e2}
-.demo-box b{font-size:13.5px;color:var(--gold-d)}
+.demo-box{margin-top:22px;border:1px dashed var(--orange);border-radius:10px;padding:14px 16px;background:#fbeedd}
+.demo-box b{font-size:13.5px;color:var(--orange-d)}
 /* ---------- โครงแอป ---------- */
-.masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--green-d);color:#f3eddc;border-bottom:3px double var(--gold);flex-wrap:wrap}
+.masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--brown-d);color:#f4e9d7;border-bottom:3px double var(--orange);flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
-.seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;overflow:hidden;
-  box-shadow:inset 0 0 0 3.5px var(--green-d),inset 0 0 0 5px rgba(233,216,172,.55);color:var(--gold-l)}
+.seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;flex:none;overflow:hidden;
+  box-shadow:inset 0 0 0 3.5px var(--brown-d),inset 0 0 0 5px rgba(251,224,195,.55);color:var(--orange-l)}
 .brand h1{font-size:18px;font-weight:700;letter-spacing:.02em;line-height:1.25}
-.brand p{font-size:12px;color:var(--gold-l);margin-top:2px}
+.brand p{font-size:12px;color:var(--orange-l);margin-top:2px}
 .userbox{display:flex;align-items:center;gap:12px;flex:none;flex-wrap:wrap}
 .uwho{text-align:right}
 .uname{font-weight:600;font-size:14px}
 .uchip{font-size:11px}
-.tabs{display:flex;gap:6px;padding:14px 24px 0;background:var(--green-d);flex-wrap:wrap}
-.tab{position:relative;display:flex;align-items:center;gap:7px;padding:9px 16px;font-size:14.5px;font-weight:500;color:#c6d0c4;
-  background:#1c4034;border:1px solid #2c5a49;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;transition:.15s;top:0}
-.tab:hover{color:#fff;background:#245043}
+.tabs{display:flex;gap:6px;padding:14px 24px 0;background:var(--brown-d);flex-wrap:wrap}
+.tab{position:relative;display:flex;align-items:center;gap:7px;padding:9px 16px;font-size:14.5px;font-weight:500;color:#d8c6ab;
+  background:#4a2e16;border:1px solid #6b4322;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;transition:.15s;top:0}
+.tab:hover{color:#fff;background:#5c3a1e}
 .tab.on{color:var(--ink);background:var(--paper);border-color:var(--line2);font-weight:600;top:1px}
 main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 12px;flex-wrap:wrap}
-.sec-head h3{font-size:17px;color:var(--green-d);display:flex;align-items:center;gap:9px}
-.sec-head h3 .ic{color:var(--gold-d)}
-.empty{border:1px dashed var(--line2);border-radius:12px;padding:34px;text-align:center;color:var(--mut);background:#faf7ec}
+.sec-head h3{font-size:17px;color:var(--brown-d);display:flex;align-items:center;gap:9px}
+.sec-head h3 .ic{color:var(--orange-d)}
+.empty{border:1px dashed var(--line2);border-radius:12px;padding:34px;text-align:center;color:var(--mut);background:#faf4e6}
 /* ---------- ภาพรวม ---------- */
 .home-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start}
 .notice{position:relative;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:30px 34px 26px}
-.notice::before{content:'';position:absolute;inset:7px;border:1px solid var(--gold);pointer-events:none;opacity:.75}
-.notice::after{content:'';position:absolute;top:-1px;left:-1px;width:30px;height:30px;border-top:3px solid var(--gold);border-left:3px solid var(--gold)}
+.notice::before{content:'';position:absolute;inset:7px;border:1px solid var(--orange);pointer-events:none;opacity:.75}
+.notice::after{content:'';position:absolute;top:-1px;left:-1px;width:30px;height:30px;border-top:3px solid var(--orange);border-left:3px solid var(--orange)}
 .n-kicker{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:14px}
 .n-kicker::before,.n-kicker::after{content:'';height:1px;background:var(--line2);flex:1}
-.n-kicker span{font-size:13px;font-weight:700;letter-spacing:.34em;color:var(--gold-d);text-indent:.34em}
-.n-seal{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;overflow:hidden;
-  box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5.5px var(--gold);color:var(--gold-d)}
-.n-title{text-align:center;font-size:23px;font-weight:700;color:var(--green-d);line-height:1.35}
+.n-kicker span{font-size:13px;font-weight:700;letter-spacing:.34em;color:var(--orange-d);text-indent:.34em}
+.n-seal{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;overflow:hidden;
+  box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5.5px var(--orange);color:var(--orange-d)}
+.n-title{text-align:center;font-size:23px;font-weight:700;color:var(--brown-d);line-height:1.35}
 .n-sub{text-align:center;font-size:14px;color:var(--mut);margin:6px 0 16px}
 .n-info{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 4px;display:grid;gap:7px;margin-bottom:14px}
 .n-info .row{display:flex;gap:10px;align-items:baseline;font-size:14.5px;flex-wrap:wrap}
-.n-info .row .ic{color:var(--gold-d);margin-top:2px;align-self:center}
-.n-obj{font-size:13.5px;color:#4c544a;margin-bottom:16px}
-.n-obj b{color:var(--green-d)}
+.n-info .row .ic{color:var(--orange-d);margin-top:2px;align-self:center}
+.n-obj{font-size:13.5px;color:#544530;margin-bottom:16px}
+.n-obj b{color:var(--brown-d)}
 .n-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;border-top:1px dashed var(--line);padding-top:16px;align-items:center}
 .livedot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1s infinite;margin-right:5px}
 @keyframes blink{50%{opacity:.25}}
 .ledger{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px 22px}
-.ledger h3{font-size:15px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.ledger h3{font-size:15px;color:var(--brown-d);border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:6px;display:flex;gap:8px;align-items:center}
 .stat{display:flex;align-items:baseline;gap:12px;padding:10px 2px;border-bottom:1px dashed var(--line)}
 .stat:last-of-type{border-bottom:none}
-.stat b{font-size:27px;color:var(--gold-d);min-width:46px;text-align:right;font-family:'Anuphan'}
-.stat span{font-size:13.5px;color:#4c544a}
+.stat b{font-size:27px;color:var(--orange-d);min-width:46px;text-align:right;font-family:'Anuphan'}
+.stat span{font-size:13.5px;color:#544530}
 .flw{padding:9px 2px;border-bottom:1px dashed var(--line);font-size:13.5px}
 .flw:last-child{border-bottom:none}
-.flw .fw-t{color:var(--green-d);font-weight:600}
+.flw .fw-t{color:var(--brown-d);font-weight:600}
 .recent{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
 .rrow{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px dashed var(--line);cursor:pointer;transition:.15s}
 .rrow:last-child{border-bottom:none}
-.rrow:hover{background:#faf5e2}
-.rno{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--gold-d);flex:none;font-size:14px}
+.rrow:hover{background:#f8f0dd}
+.rno{width:40px;height:40px;border:1.5px solid var(--orange);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--orange-d);flex:none;font-size:14px}
 .rrow .rt{min-width:0;flex:1}
 .rrow .rt b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* ---------- ปฏิทิน ---------- */
 .cal-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
 .cal{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
 .cal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);gap:8px;flex-wrap:wrap}
-.cal-h b{font-size:17px;color:var(--green-d)}
+.cal-h b{font-size:17px;color:var(--brown-d)}
 .cal-g{display:grid;grid-template-columns:repeat(7,1fr)}
-.cw{padding:8px 0;text-align:center;font-size:12.5px;font-weight:600;color:#7a7460;border-bottom:1px solid var(--line);background:#f7f2df}
+.cw{padding:8px 0;text-align:center;font-size:12.5px;font-weight:600;color:#8a7355;border-bottom:1px solid var(--line);background:#f6eeda}
 .cd{min-height:76px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 7px;cursor:pointer;position:relative;transition:.12s}
 .cd:nth-child(7n){border-right:none}
-.cd:hover{background:#f6f0dc}
+.cd:hover{background:#f8f0dd}
 .cd.off{opacity:.32}
 .dn{display:inline-grid;place-items:center;width:24px;height:24px;font-size:13px;border-radius:50%}
-.cd.tdy .dn{background:var(--green);color:#fff;font-weight:700}
-.cd.pk{background:#f2e9cf;box-shadow:inset 0 0 0 2px var(--gold)}
+.cd.tdy .dn{background:var(--brown);color:#fff;font-weight:700}
+.cd.pk{background:#f3e6cd;box-shadow:inset 0 0 0 2px var(--orange)}
 .dots{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
 .daypane{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px}
-.daypane h3{font-size:15.5px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:12px}
-.evrow{border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:9px;cursor:pointer;transition:.15s;background:#fffdf7}
-.evrow:hover{border-color:var(--gold);background:#faf5e2}
+.daypane h3{font-size:15.5px;color:var(--brown-d);border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:12px}
+.evrow{border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:9px;cursor:pointer;transition:.15s;background:#fffaf2}
+.evrow:hover{border-color:var(--orange);background:#f8f0dd}
 .evrow b{display:block;font-size:14px}
 /* ---------- แฟ้มการประชุม ---------- */
 .msplit{display:grid;grid-template-columns:330px minmax(0,1fr);gap:22px;align-items:start}
 .mlist{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);max-height:76vh;overflow:auto}
 .mlist-top{padding:12px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);z-index:2}
 .mrow{display:flex;gap:11px;padding:12px 14px;border-bottom:1px dashed var(--line);cursor:pointer;transition:.12s;align-items:center}
-.mrow:hover{background:#faf5e2}
-.mrow.on{background:#f3edd8;box-shadow:inset 3px 0 0 var(--gold)}
-.mno{width:38px;height:38px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--gold-d);flex:none;font-size:13.5px}
+.mrow:hover{background:#f8f0dd}
+.mrow.on{background:#f3e6cd;box-shadow:inset 3px 0 0 var(--orange)}
+.mno{width:38px;height:38px;border:1.5px solid var(--orange);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--orange-d);flex:none;font-size:13.5px}
 .mrow .mt{min-width:0;flex:1}
 .mrow .mt b{display:block;font-size:13.8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sheet{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
-.sheet-h{padding:22px 26px;border-bottom:2px solid var(--gold);background:#f8f4e6}
+.sheet-h{padding:22px 26px;border-bottom:2px solid var(--orange);background:#f8efe0}
 .sh-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
-.sheet-h h2{font-size:21px;color:var(--green-d);line-height:1.35}
-.sh-sub{font-size:14px;color:#4c544a;margin-top:5px}
-.live-link{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--green);color:#f5efdb;padding:7px 14px;border-radius:99px;text-decoration:none;font-size:13.5px;font-weight:600}
-.live-link:hover{background:var(--green-d)}
+.sheet-h h2{font-size:21px;color:var(--brown-d);line-height:1.35}
+.sh-sub{font-size:14px;color:#544530;margin-top:5px}
+.live-link{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--brown);color:#f6ead8;padding:7px 14px;border-radius:99px;text-decoration:none;font-size:13.5px;font-weight:600}
+.live-link:hover{background:var(--brown-d)}
 .sh-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2)}
 .sheet-b{padding:6px 0 26px}
 .agg{margin:20px 26px 0}
-.agg-h{display:flex;gap:11px;align-items:center;font-weight:700;color:var(--green-d);border-bottom:2px solid var(--line2);padding-bottom:6px;flex-wrap:wrap}
-.agg-h .gno{font-size:20px;color:var(--gold-d);min-width:20px}
+.agg-h{display:flex;gap:11px;align-items:center;font-weight:700;color:var(--brown-d);border-bottom:2px solid var(--line2);padding-bottom:6px;flex-wrap:wrap}
+.agg-h .gno{font-size:20px;color:var(--orange-d);min-width:20px}
 .agg-h .gadd{margin-left:auto}
-.agi{border:1px solid var(--line);border-radius:9px;margin:10px 0;background:#fffdf7;overflow:hidden}
+.agi{border:1px solid var(--line);border-radius:9px;margin:10px 0;background:#fffaf2;overflow:hidden}
 .agi-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;cursor:pointer;flex-wrap:wrap}
-.agi-h:hover{background:#faf6e8}
+.agi-h:hover{background:#f8f1e0}
 .agi-t{font-weight:600;font-size:14.5px}
 .agi-meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--mut);flex-wrap:wrap}
 .agi-b{padding:12px 14px 15px;border-top:1px dashed var(--line)}
-.agi-d{font-size:14px;margin-bottom:9px;color:#3e463d}
+.agi-d{font-size:14px;margin-bottom:9px;color:#4c3d28}
 .lnks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.lnk{display:inline-flex;align-items:center;gap:6px;font-size:12.8px;color:var(--green-l);border:1px solid #c5d6c9;background:#eef4ee;padding:3px 10px;border-radius:99px;text-decoration:none}
-.lnk:hover{background:#e0ece2}
-.dec{background:#eef2e6;border:1px solid #cfd8bd;border-left:4px solid var(--green-l);padding:10px 13px;border-radius:0 9px 9px 0}
-.dec-w{background:#faf4e0;border-color:#e4d3a6;border-left-color:var(--gold)}
-.dec-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--green-d);margin-bottom:5px;flex-wrap:wrap}
+.lnk{display:inline-flex;align-items:center;gap:6px;font-size:12.8px;color:var(--brown-l);border:1px solid #dccdae;background:#f6efe1;padding:3px 10px;border-radius:99px;text-decoration:none}
+.lnk:hover{background:#f0e4cd}
+.dec{background:#eef2e0;border:1px solid #cfd8b8;border-left:4px solid var(--brown-l);padding:10px 13px;border-radius:0 9px 9px 0}
+.dec-w{background:#fdf3e0;border-color:#ecd7a8;border-left-color:var(--orange)}
+.dec-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--brown-d);margin-bottom:5px;flex-wrap:wrap}
 .dec-b{font-size:14px}
 .disc{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
-.disc-h{display:flex;align-items:center;gap:7px;font-size:12.8px;font-weight:700;color:#7a7460;margin-bottom:7px}
+.disc-h{display:flex;align-items:center;gap:7px;font-size:12.8px;font-weight:700;color:#8a7355;margin-bottom:7px}
 .dmsg{display:flex;gap:9px;margin:8px 0;font-size:13.8px}
-.dava{width:27px;height:27px;border-radius:50%;background:var(--green);color:#fff;font-size:11.5px;display:grid;place-items:center;flex:none;margin-top:2px}
+.dava{width:27px;height:27px;border-radius:50%;background:var(--brown);color:#fff;font-size:11.5px;display:grid;place-items:center;flex:none;margin-top:2px}
 .drow{display:flex;gap:8px;margin-top:8px}
 .drow .in{flex:1}
 .frow{display:flex;align-items:center;gap:11px;padding:10px 6px;border-bottom:1px dashed var(--line);flex-wrap:wrap}
-.frow .ic{color:var(--gold-d)}
+.frow .ic{color:var(--orange-d)}
 .fmeta{flex:1;min-width:0}
 .fmeta b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fls{margin:0 26px}
 /* ---------- รายงาน / เอกสาร ---------- */
 .rp-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 20px}
-.rp-l{font-size:12.5px;font-weight:700;color:#55503c;display:block;margin-bottom:5px}
+.rp-l{font-size:12.5px;font-weight:700;color:#5a4630;display:block;margin-bottom:5px}
 .rp-btns{display:flex;gap:9px;flex-wrap:wrap}
 .doc-wrap{overflow:auto;padding-bottom:10px}
 .a4{width:794px;max-width:100%;background:#fff;padding:54px 62px;margin:0 auto;box-shadow:0 3px 20px rgba(0,0,0,.16);
   font-family:'Sarabun',sans-serif;color:#1d1d1b;font-size:11.5pt;line-height:1.75}
 .dorg{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.dseal{width:64px;height:64px;border-radius:50%;border:2px solid #8a641c;display:grid;place-items:center;color:#8a641c;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4.5px #8a641c;overflow:hidden}
+.dseal{width:64px;height:64px;border-radius:50%;border:2px solid #a8641e;display:grid;place-items:center;color:#a8641e;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4.5px #a8641e;overflow:hidden}
 .dorg-t{font-weight:700;font-size:12.5pt;line-height:1.4}
 .dline{border-bottom:1.5px solid #1d1d1b;margin:10px 0 16px}
 .dtitle{text-align:center;font-size:13.5pt;margin-bottom:2px}
@@ -218,22 +218,22 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .dindent{margin:2px 0 2px 20px}
 .sig{margin-top:30px;text-align:right}
 .sig .sign{margin-top:2px}
-.dokay{color:#1b4d3e;font-weight:700;font-size:10.5pt}
+.dokay{color:var(--brown-d);font-weight:700;font-size:10.5pt}
 .a4 .tb{margin-top:10px}
-.a4 .tb th,.a4 .tb td{border:1px solid #b8b09a;font-size:11pt}
-/* ---------- สมาชิก ---------- */
+.a4 .tb th,.a4 .tb td{border:1px solid #b8ab8e;font-size:11pt}
+/* ---------- สมาชิก / ตั้งค่า ---------- */
 .card{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:22px 24px}
 .role-def{display:grid;gap:10px;margin-top:16px}
 .role-def .rd{display:flex;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:9px}
 .role-def b{min-width:120px}
-code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-radius:6px;font-size:12.5px;word-break:break-all}
+code.k{background:#f2e8d5;border:1px solid var(--line2);padding:1px 7px;border-radius:6px;font-size:12.5px;word-break:break-all}
 /* ---------- สถิติ ---------- */
 .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
-.scard{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 18px;border-top:3px solid var(--gold)}
-.scard b{display:block;font-size:30px;color:var(--green-d);font-family:'Anuphan'}
+.scard{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 18px;border-top:3px solid var(--orange)}
+.scard b{display:block;font-size:30px;color:var(--brown-d);font-family:'Anuphan'}
 .scard span{font-size:13px;color:var(--mut)}
 .chart-card{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px}
-.chart-card h3{font-size:15px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:12px;display:flex;gap:8px;align-items:center}
+.chart-card h3{font-size:15px;color:var(--brown-d);border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:12px;display:flex;gap:8px;align-items:center}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-bottom:10px}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 .scrollx{overflow-x:auto}
@@ -241,24 +241,24 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
 .prow:last-child{border-bottom:none}
 .prow .pn{width:240px;min-width:0;flex:none}
 .prow .pn b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pbar{height:11px;background:#e9e3ce;border-radius:99px;overflow:hidden;flex:1}
-.pbar i{display:block;height:100%;background:var(--green-l);border-radius:99px}
-.pct{font-weight:700;color:var(--green-d);width:48px;text-align:right;flex:none}
-.email-prev{border:1px solid var(--line2);background:#faf7ec;border-radius:9px;padding:12px 15px;font-size:13.5px}
+.pbar{height:11px;background:#e9dcc2;border-radius:99px;overflow:hidden;flex:1}
+.pbar i{display:block;height:100%;background:var(--brown-l);border-radius:99px}
+.pct{font-weight:700;color:var(--brown-d);width:48px;text-align:right;flex:none}
+.email-prev{border:1px solid var(--line2);background:#faf4e6;border-radius:9px;padding:12px 15px;font-size:13.5px}
 .rcpt{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:13.8px;cursor:pointer}
 .rcpt:last-child{border-bottom:none}
 /* ---------- โมดัล / ทอสต์ ---------- */
-.mo-bg{position:fixed;inset:0;background:rgba(28,36,30,.5);display:grid;place-items:center;z-index:60;padding:18px;overflow:auto}
+.mo-bg{position:fixed;inset:0;background:rgba(40,26,14,.5);display:grid;place-items:center;z-index:60;padding:18px;overflow:auto}
 .mo{background:var(--card);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.3);width:100%;max-width:620px;max-height:calc(100vh - 36px);overflow:auto;animation:pop .18s}
 @keyframes pop{from{transform:translateY(16px) scale(.98);opacity:0}}
-.mo-h{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:2px solid var(--gold);background:#f8f4e6;position:sticky;top:0;z-index:2}
-.mo-h b{color:var(--green-d);font-size:16px;display:flex;gap:8px;align-items:center}
-.xbtn{background:none;border:none;cursor:pointer;color:#7a7460;padding:4px;display:grid;place-items:center;border-radius:6px}
+.mo-h{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:2px solid var(--orange);background:#f8efe0;position:sticky;top:0;z-index:2}
+.mo-h b{color:var(--brown-d);font-size:16px;display:flex;gap:8px;align-items:center}
+.xbtn{background:none;border:none;cursor:pointer;color:#8a7355;padding:4px;display:grid;place-items:center;border-radius:6px}
 .xbtn:hover{color:var(--red);background:#f3e3dc}
 .mo-b{padding:20px 22px}
 .mo-f{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;flex-wrap:wrap}
 #toastRoot{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:92vw}
-.toast{background:var(--green-d);color:#f2edda;padding:10px 22px;border-radius:99px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.28);display:flex;gap:9px;align-items:center;animation:tin .25s}
+.toast{background:var(--brown-d);color:#f4e9d7;padding:10px 22px;border-radius:99px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.28);display:flex;gap:9px;align-items:center;animation:tin .25s}
 .toast.err{background:var(--red)}
 @keyframes tin{from{transform:translateY(14px);opacity:0}}
 /* ---------- พิมพ์ ---------- */
@@ -298,7 +298,7 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
       <li><span class="ficon"></span>วาระการประชุมมาตรฐาน 5 วาระ พร้อมบันทึกมติและติดตามผลรายวาระ</li>
       <li><span class="ficon"></span>แนบเอกสารผ่าน Google Drive และเข้าห้องประชุมออนไลน์จากลิงก์ในระบบ</li>
       <li><span class="ficon"></span>ส่งอีเมลเชิญประชุม สถิติการเข้าร่วมแบบกราฟ และส่งออกเอกสารเป็น Word</li>
-      <li><span class="ficon"></span>ข้อมูลสมาชิกและรหัสผ่านจัดเก็บใน Google Sheet แก้ไขได้ตรงชีตโดยผู้ดูแล</li>
+      <li><span class="ficon"></span>ผู้ดูแลปรับชื่อหน่วยงาน โลโก้ และชื่อวาระได้จากหน้าเว็บ (เก็บใน Google Sheet)</li>
     </ul>
     <div class="auth-org" id="authOrg">คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</div>
   </div>
@@ -347,14 +347,15 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
 /* ═══════════════════════════════════════════════════════════
  *  การตั้งค่าหลัก — วางค่าของคุณตรงนี้ (แก้ไฟล์นี้จุดเดียว)
  *  ═══════════════════════════════════════════════════════════ */
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx5n8EottWEY9zRH9PzxLI3sSpjtVc0hlyt2kwkmcmBVJsHQIR2f2M6IC6lUiew4aeD/exec'; // ← จากการ Deploy Code.gs เช่น 'https://script.google.com/macros/s/AKfycb.../exec'
-const ORG = {
+const GAS_URL = 'วาง-Web-App-URL-ที่ลงท้าย-exec-ตรงนี้'; // ← จากการ Deploy Code.gs เช่น 'https://script.google.com/macros/s/AKfycb.../exec'
+const ORG_DEF = {  // ค่าเริ่มต้น (ใช้ก่อนที่ผู้ดูแลจะบันทึกค่าจากแท็บ "ตั้งค่าระบบ")
   org1: 'สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา',
   org2: 'คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม',
-  orgShort: 'ETC.',
-  logoUrl: ''  // (ไม่บังคับ) ลิงก์รูปโลโก้ เช่น 'https://.../logo.png' — เว้นว่าง = ใช้ตรามาตรฐานของระบบ
+  orgShort: 'สกส.',
+  logoUrl: ''    // (ไม่บังคับ) ลิงก์รูปโลโก้ เช่น 'https://.../logo.png' — เว้นว่าง = ใช้ตรามาตรฐาน
 };
-/* ═════════ จบการตั้งค่า — แก้ไขด้านล่างเมื่อเข้าใจระบบแล้วเท่านั้น ═════════ */
+/* ═════════ จบการตั้งค่า — ส่วนล่างไม่ต้องแก้ ═════════ */
+let ORG=Object.assign({},ORG_DEF);
 
 /* ═════════ เครื่องมือพื้นฐาน ═════════ */
 const $=s=>document.querySelector(s);
@@ -382,6 +383,7 @@ const ICONS={
  trash:'<path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13.5h9l1-13.5M10 11v6M14 11v6"/>',
  check:'<path d="M4.5 12.5l5 5 10-11"/>',
  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
  gavel:'<path d="M14 4l6 6-2.5 2.5-6-6L14 4zM12 8l-7.5 7.5a1.5 1.5 0 000 2.1l1.4 1.4a1.5 1.5 0 002.1 0L15.5 11.5M3 22h11"/>',
  mic:'<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3.5M8.5 21.5h7"/>',
  upload:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',
@@ -403,14 +405,18 @@ const ICONS={
 const I=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`;
 
 /* ═════════ ค่าคงที่ของระบบ ═════════ */
-const GROUPS={1:'เรื่องราวของที่ประชุม',2:'เรื่องประธานแจ้ง',3:'เรื่องเสนอเพื่อพิจารณา',4:'เรื่องเสนอเพื่อทราบ',5:'เรื่องอื่น ๆ (ถ้ามี)'};
+const GROUPS_DEF={1:'เรื่องราวของที่ประชุม',2:'เรื่องประธานแจ้ง',3:'เรื่องเสนอเพื่อพิจารณา',4:'เรื่องเสนอเพื่อทราบ',5:'เรื่องอื่น ๆ (ถ้ามี)'};
+let GROUPS=Object.assign({},GROUPS_DEF);
 const ATT_ST=['รอยืนยัน','เข้าร่วม','ลา','ขาด'];
 const M_ST=['กำหนดการ','กำลังประชุม','รอบันทึกรายงาน','เสร็จสมบูรณ์'];
 const ROLE_L={admin:'ผู้ดูแลระบบ',chair:'ประธาน',secretary:'เลขานุการ',member:'สมาชิก'};
 const ROLE_IN={u1:'ประธาน',u3:'เลขานุการ',u2:'เชิญเพื่อปรึกษา'};
 
-/* ═════════ ข้อมูลหน่วยงาน (จาก ORG ด้านบน) ═════════ */
-function applyCfg(){
+/* ═════════ ใช้ค่าการตั้งค่า (จากแท็บตั้งค่าระบบ/ชีต settings) ═════════ */
+function applyCfg(c){
+  if(c)ORG=Object.assign({},ORG_DEF,c);
+  GROUPS=Object.assign({},GROUPS_DEF);
+  if(ORG.groupNames)Object.keys(ORG.groupNames).forEach(g=>{if(GROUPS[g])GROUPS[g]=ORG.groupNames[g]||GROUPS[g]});
   const logoHtml=ORG.logoUrl?'<img src="'+esc(ORG.logoUrl)+'" alt="logo" style="width:100%;height:100%;object-fit:cover">':'';
   const s1=$('#seal');if(s1)s1.innerHTML=ORG.logoUrl?logoHtml:I('cap',26);
   const s2=$('#authSeal');if(s2)s2.innerHTML=ORG.logoUrl?logoHtml:I('cap',40);
@@ -482,6 +488,7 @@ async function doLogin(ev){
     const u=await api('login',{email,pass});
     state.user=u;state.db=await api('loadAll');
     state.ssUrl=(state.db.meta&&state.db.meta.ssUrl)||'';
+    applyCfg(state.db.settings);
     showApp();toast('ยินดีต้อนรับ คุณ'+u.name);
   }catch(e){toast(e.message,'err')}
   btn.disabled=false;btn.textContent='เข้าสู่ระบบ';
@@ -505,7 +512,8 @@ const TABS=[
  {k:'home',l:'ภาพรวม',ic:'home'},{k:'calendar',l:'ปฏิทินนัดหมาย',ic:'cal'},
  {k:'meetings',l:'แฟ้มการประชุม',ic:'folder'},{k:'report',l:'รายงานการประชุม',ic:'doc'},
  {k:'stats',l:'สถิติการเข้าร่วม',ic:'chart'},
- {k:'users',l:'สมาชิกและสิทธิ์',ic:'users',admin:true}];
+ {k:'users',l:'สมาชิกและสิทธิ์',ic:'users',admin:true},
+ {k:'settings',l:'ตั้งค่าระบบ',ic:'gear',admin:true}];
 function renderTabs(){
   $('#tabs').innerHTML=TABS.filter(t=>!t.admin||isAdmin()).map(t=>
    `<button class="tab ${state.view===t.k?'on':''}" onclick="go('${t.k}')">${I(t.ic,17)} ${t.l}</button>`).join('');
@@ -515,11 +523,12 @@ function refresh(){renderView()}
 async function reloadDB(){
   state.db=await api('loadAll');
   state.ssUrl=(state.db.meta&&state.db.meta.ssUrl)||'';
+  applyCfg(state.db.settings);
 }
 function renderView(){
   if(!state.db)return;
   ({home:renderHome,calendar:renderCalendar,meetings:renderMeetings,report:renderReport,
-    stats:renderStats,users:renderUsers}[state.view]||renderHome)();
+    stats:renderStats,users:renderUsers,settings:renderSettings}[state.view]||renderHome)();
 }
 const mSort=ms=>ms.slice().sort((a,b)=>b.date.localeCompare(a.date));
 const mStCls=s=>({กำหนดการ:'ch-gold',กำลังประชุม:'ch-green',รอบันทึกรายงาน:'ch-red',เสร็จสมบูรณ์:'ch-gray'}[s]||'ch-gray');
@@ -608,7 +617,7 @@ function renderCalendar(){
     const evs=db.meetings.filter(m=>m.date===di);
     cells+=`<div class="cd ${d.getMonth()!==mo?'off':''} ${di===todayIso()?'tdy':''} ${di===state.calPick?'pk':''}" onclick="calPick('${di}')">
       <span class="dn">${d.getDate()}</span>
-      <div class="dots">${evs.map(e=>`<span class="dot" style="background:${e.status==='เสร็จสมบูรณ์'?'#9aa392':e.status==='รอบันทึกรายงาน'?'#c06a4e':'#c99a35'}" title="${esc(e.title)}"></span>`).join('')}</div>
+      <div class="dots">${evs.map(e=>`<span class="dot" style="background:${e.status==='เสร็จสมบูรณ์'?'#a89a82':e.status==='รอบันทึกรายงาน'?'#bd5a33':'#d9822b'}" title="${esc(e.title)}"></span>`).join('')}</div>
     </div>`;
   }
   const picks=db.meetings.filter(m=>m.date===state.calPick).sort((a,b)=>String(a.tStart).localeCompare(String(b.tStart)));
@@ -627,9 +636,9 @@ function renderCalendar(){
       </div>
       <div class="cal-g">${['อา','จ','อ','พ','พฤ','ศ','ส'].map(d=>`<div class="cw">${d}</div>`).join('')}${cells}</div>
       <div style="padding:10px 16px;display:flex;gap:16px;font-size:12.5px;color:var(--mut);flex-wrap:wrap">
-        <span><span class="dot" style="background:#c99a35"></span> กำหนดการ</span>
-        <span><span class="dot" style="background:#c06a4e"></span> รอบันทึกรายงาน</span>
-        <span><span class="dot" style="background:#9aa392"></span> เสร็จสมบูรณ์</span>
+        <span><span class="dot" style="background:#d9822b"></span> กำหนดการ</span>
+        <span><span class="dot" style="background:#bd5a33"></span> รอบันทึกรายงาน</span>
+        <span><span class="dot" style="background:#a89a82"></span> เสร็จสมบูรณ์</span>
         <span>· คลิกที่วันใดก็ได้เพื่อดูหรือนัดหมายการประชุม</span>
       </div>
     </div>
@@ -711,7 +720,7 @@ function meetingDetailHTML(m){
         ${[1,2,3,4,5].map(g=>{
           const items=db.agendas.filter(a=>a.mid===m.id&&+a.grp===g);
           return `<div style="margin-top:14px">
-            <div style="font-weight:700;font-size:14.5px;color:var(--gold-d)">วาระที่ ${g} ${GROUPS[g]}</div>
+            <div style="font-weight:700;font-size:14.5px;color:var(--orange-d)">วาระที่ ${g} ${GROUPS[g]}</div>
             ${items.length?items.map(a=>agendaItemHTML(a,m)).join(''):`<div class="dt" style="margin:5px 0 0 2px">ยังไม่มีหัวข้อในวาระนี้${canW?` — <a href="javascript:void(0)" onclick="openAgendaForm('${m.id}',null,${g})">เพิ่มหัวข้อ</a>`:''}</div>`}
           </div>`}).join('')}
       </div>
@@ -1074,7 +1083,7 @@ function printInvite(mid){
 }
 
 /* ═════════ สถิติการเข้าร่วมแบบกราฟ ═════════ */
-const ATT_COLORS={'เข้าร่วม':'#2a6b57','ลา':'#c99a35','ขาด':'#a5402d','รอยืนยัน':'#b9bfae'};
+const ATT_COLORS={'เข้าร่วม':'#6b8f3f','ลา':'#d9962e','ขาด':'#b3402a','รอยืนยัน':'#c7b899'};
 function renderStats(){
   const db=state.db;
   const atAll=db.attendees;
@@ -1095,7 +1104,7 @@ function renderStats(){
     <div class="scrollx">${chartAttendanceSVG()}</div></div>
   <div class="chart-card"><h3>${I('users',16)} อัตราการเข้าร่วมรายบุคคล</h3>${renderPeopleChart()}</div>
   <div class="card" style="padding:0;overflow:auto">
-    <div style="padding:16px 20px 0"><h3 style="color:var(--green-d);font-size:15.5px">${I('list',16)} ตารางสรุปการเข้าร่วมรายครั้ง</h3></div>
+    <div style="padding:16px 20px 0"><h3 style="color:var(--brown-d);font-size:15.5px">${I('list',16)} ตารางสรุปการเข้าร่วมรายครั้ง</h3></div>
     <table class="tb" style="margin-top:10px"><thead><tr><th>ครั้งที่</th><th>วันที่</th><th>เรื่อง</th><th>เข้าร่วม</th><th>ลา</th><th>ขาด</th><th>รอยืนยัน</th><th>อัตรา</th></tr></thead><tbody>
     ${db.meetings.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(m=>{
       const at=db.attendees.filter(a=>a.mid===m.id);
@@ -1103,7 +1112,7 @@ function renderStats(){
       const rate=at.length?Math.round(c('เข้าร่วม')/at.length*100):0;
       return `<tr><td><b>${esc(noMain(m.no))}</b></td><td>${fmtDs(m.date)}</td><td>${esc(m.title)}</td>
         <td>${c('เข้าร่วม')}</td><td>${c('ลา')}</td><td>${c('ขาด')}</td><td>${c('รอยืนยัน')}</td>
-        <td><b style="color:var(--green-d)">${rate}%</b></td></tr>`}).join('')}
+        <td><b style="color:var(--brown-d)">${rate}%</b></td></tr>`}).join('')}
     </tbody></table>
   </div>`;
 }
@@ -1123,9 +1132,9 @@ function chartAttendanceSVG(){
     [['เข้าร่วม',d.y],['ลา',d.l],['ขาด',d.ab],['รอยืนยัน',d.p]].forEach(([k,v])=>{
       if(!v)return;const h=v*sc;
       s+=`<rect x="${x}" y="${(H-bot-cum-h).toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" fill="${ATT_COLORS[k]}" rx="2"><title>${esc(d.m.no)}: ${k} ${v} คน</title></rect>`;cum+=h;});
-    s+=`<text x="${x+bw/2}" y="${(H-bot-cum-6).toFixed(1)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#55503c">${d.y}/${d.t}</text>`;
-    s+=`<text x="${x+bw/2}" y="${H-bot+17}" text-anchor="middle" font-size="11" fill="#6d7266">ครั้งที่ ${esc(noMain(d.m.no))}</text>`;
-    s+=`<text x="${x+bw/2}" y="${H-bot+32}" text-anchor="middle" font-size="10" fill="#9a998a">${fmtDs(d.m.date)}</text>`;
+    s+=`<text x="${x+bw/2}" y="${(H-bot-cum-6).toFixed(1)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5a4630">${d.y}/${d.t}</text>`;
+    s+=`<text x="${x+bw/2}" y="${H-bot+17}" text-anchor="middle" font-size="11" fill="#7d6b55">ครั้งที่ ${esc(noMain(d.m.no))}</text>`;
+    s+=`<text x="${x+bw/2}" y="${H-bot+32}" text-anchor="middle" font-size="10" fill="#a89880">${fmtDs(d.m.date)}</text>`;
   });
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:${W}px;display:block" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
 }
@@ -1224,7 +1233,7 @@ function exportWord(mid,kind){
     .replace(/<svg[\s\S]*?<\/svg>/g,'')
     .replace(/<img[^>]*>/g,'<p style="text-align:center;margin:0">[ตราหน่วยงาน]</p>')
     .replace('<div class="dseal"></div>','');
-  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(m.title)}</title><style>@page{size:21cm 29.7cm;margin:2.2cm 2.4cm}body{font-family:'TH Sarabun New','TH SarabunPSK',Sarabun,Tahoma;font-size:15pt;line-height:1.6;color:#000}.dorg{text-align:center}.dorg-t{font-weight:bold;font-size:16pt}.dline{border-bottom:2px solid #000;margin:8px 0 14px}.dtitle{text-align:center;font-weight:bold;font-size:17pt;margin:4px 0}.dsub{text-align:center}.dsec{font-weight:bold;margin:14px 0 4px}.dl{margin-left:34px}.dwg{font-weight:bold;text-decoration:underline;margin-top:12px}.ditem{margin:8px 0 8px 18px}.dindent{margin-left:20px}.sig{margin-top:30px;text-align:right}.sign{margin-top:2px}.dokay{color:#1b4d3e;font-weight:bold}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:4px 8px;font-size:13.5pt}th{background:#f0ead6}</style></head><body>${inner}</body></html>`;
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(m.title)}</title><style>@page{size:21cm 29.7cm;margin:2.2cm 2.4cm}body{font-family:'TH Sarabun New','TH SarabunPSK',Sarabun,Tahoma;font-size:15pt;line-height:1.6;color:#000}.dorg{text-align:center}.dorg-t{font-weight:bold;font-size:16pt}.dline{border-bottom:2px solid #000;margin:8px 0 14px}.dtitle{text-align:center;font-weight:bold;font-size:17pt;margin:4px 0}.dsub{text-align:center}.dsec{font-weight:bold;margin:14px 0 4px}.dl{margin-left:34px}.dwg{font-weight:bold;text-decoration:underline;margin-top:12px}.ditem{margin:8px 0 8px 18px}.dindent{margin-left:20px}.sig{margin-top:30px;text-align:right}.sign{margin-top:2px}.dokay{color:#3b2414;font-weight:bold}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:4px 8px;font-size:13.5pt}th{background:#f4ecda}</style></head><body>${inner}</body></html>`;
   const blob=new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
@@ -1260,9 +1269,9 @@ function renderUsers(){
     <p class="hint">${I('shield',14)} แก้รหัสผ่านได้ 2 ทาง: ผ่านปุ่มดินสอในตารางด้านบน หรือแก้โดยตรงใน <b>Google Sheet แผ่นงาน "users" คอลัมน์ pass</b> — ระบบจะอ่านค่าใหม่ทุกครั้งที่ผู้ใช้เข้าสู่ระบบ (การแก้ในชีตไม่ต้อง Deploy ใหม่) · หากเพิ่มแถวในชีตเอง ต้องระบุ <code class="k">id</code> ที่ไม่ซ้ำ, <code class="k">role</code> เป็น admin/chair/secretary/member และ <code class="k">active</code> เป็น 1</p>
   </div>
   <div class="card" style="margin-top:16px">
-    <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px">${I('shield',16)} นิยามบทบาทและสิทธิ์ในระบบ</h3>
+    <h3 style="color:var(--brown-d);font-size:15.5px;border-bottom:2px solid var(--orange);padding-bottom:8px">${I('shield',16)} นิยามบทบาทและสิทธิ์ในระบบ</h3>
     <div class="role-def">
-      <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง เพิ่ม/ลบสมาชิก กำหนดบทบาทและรหัสผ่าน (ในเว็บหรือในชีตก็ได้) ลบการประชุม</span></div>
+      <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง เพิ่ม/ลบสมาชิก กำหนดบทบาทและรหัสผ่าน (ในเว็บหรือในชีตก็ได้) ลบการประชุม และตั้งค่าระบบทั้งหมด</span></div>
       <div class="rd"><b><span class="chip ch-green">ประธาน</span></b><span>เข้าดูข้อมูลได้ทั้งหมด และทำหน้าที่กด "ประธานรับทราบรายงาน" เพื่ออนุมัติรายงานการประชุมฉบับสมบูรณ์</span></div>
       <div class="rd"><b><span class="chip ch-red">เลขานุการ</span></b><span>นัดหมายประชุม จัดวาระ บันทึกมติ อัปโหลดเอกสารขึ้น Google Drive จัดการรายชื่อผู้เข้าร่วม ส่งอีเมลเชิญ และพิมพ์หนังสือเชิญ/รายงาน</span></div>
       <div class="rd"><b><span class="chip ch-gray">สมาชิก</span></b><span>เข้าดูประกาศเชิญ วาระ เอกสาร รายงาน สถิติ ยืนยันเข้าร่วมหรือแจ้งลา และร่วมบันทึกความเห็นในแต่ละวาระ</span></div>
@@ -1298,6 +1307,56 @@ async function delUser(id){
   const u=state.db.users.find(x=>x.id===id);
   if(!await ask('ลบสมาชิก','ต้องการลบบัญชีของ "'+(u?u.name:'')+'" ออกจากระบบหรือไม่?'))return;
   try{await api('deleteUser',{id});await reloadDB();toast('ลบสมาชิกเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+
+/* ═════════ ตั้งค่าระบบ (เฉพาะผู้ดูแล — เก็บลงชีต settings) ═════════ */
+function renderSettings(){
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบ</h3>
+    ${state.ssUrl?`<a class="btn btn-s" href="${esc(state.ssUrl)}" target="_blank" rel="noopener">${I('ext',14)} เปิด Google Sheet</a>`:''}</div>
+  <div class="card">
+    <h3 style="color:var(--brown-d);font-size:15.5px;border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:6px">${I('edit',16)} ข้อมูลหน่วยงาน โลโก้ และชื่อวาระมาตรฐาน</h3>
+    <p class="hint">ค่าที่บันทึกที่นี่จะเก็บลง Google Sheet (แผ่นงาน settings) และมีผลกับผู้ใช้ทุกคนทันที ทั้งหน้าเว็บ รายงาน หนังสือเชิญ และอีเมล — ไม่ต้อง Deploy ใหม่</p>
+    <form class="frm" style="margin-top:12px" onsubmit="return saveSettingsForm(event)">
+      <div class="f2">
+        <div><label>ชื่อหน่วยงาน (บรรทัดที่ 1 เช่น สาขาวิชา...)</label><input class="in" name="org1" value="${esc(ORG.org1)}" required></div>
+        <div><label>คณะ / มหาวิทยาลัย (บรรทัดที่ 2)</label><input class="in" name="org2" value="${esc(ORG.org2)}" required></div>
+      </div>
+      <div class="f2">
+        <div><label>ชื่อย่อสำหรับเลขหนังสือ</label><input class="in" name="orgShort" value="${esc(ORG.orgShort)}"></div>
+        <div><label>ลิงก์รูปโลโก้ (URL รูป .png/.jpg — เว้นว่างใช้ตรามาตรฐาน)</label>
+          <input class="in" name="logoUrl" type="url" value="${esc(ORG.logoUrl||'')}" placeholder="https://..." oninput="logoPrevUpdate(this.value)">
+          <div id="logoPrev" style="margin-top:6px">${ORG.logoUrl?`<img src="${esc(ORG.logoUrl)}" alt="logo" style="width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)">`:'<span class="hint">ยังไม่มีโลโก้</span>'}</div>
+        </div>
+      </div>
+      <div><label>ชื่อหมวดวาระมาตรฐานทั้ง 5 (ปรับให้ตรงแบบของหน่วยงานได้)</label>
+        <div class="f2">${[1,2,3,4,5].map(g=>`<input class="in" name="gn${g}" value="${esc(GROUPS[g])}">`).join('')}</div></div>
+      <div class="mo-f"><button type="submit" class="btn btn-p">${I('check',15)} บันทึกการตั้งค่า</button></div>
+    </form>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--brown-d);font-size:15.5px;border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:10px">${I('link',16)} สถานะการเชื่อมต่อ</h3>
+    <p style="font-size:14px;margin-bottom:4px">Web App URL (จากบรรทัด <code class="k">const GAS_URL</code> หัวไฟล์ index.html):</p>
+    <code class="k" style="display:block;margin:6px 0">${esc(GAS_URL||'ยังไม่ได้วาง URL')}</code>
+    ${state.ssUrl?`<a class="btn btn-s" href="${esc(state.ssUrl)}" target="_blank" rel="noopener">${I('ext',13)} เปิด Google Sheet ฐานข้อมูล</a>`:''}
+    <p class="hint" style="margin-top:8px">หากต้องการเปลี่ยน URL ให้แก้บรรทัด GAS_URL ในไฟล์ index.html แล้วอัปโหลดขึ้นเว็บใหม่ · ส่วนการตั้งค่าด้านบนเก็บในชีต แก้จากหน้านี้ได้ตลอดโดยไม่ต้องแตะโค้ด</p>
+  </div>`;
+}
+function logoPrevUpdate(v){
+  const el=$('#logoPrev');if(!el)return;
+  el.innerHTML=v?`<img src="${esc(v)}" alt="logo" style="width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)">`:'<span class="hint">ยังไม่มีโลโก้</span>';
+}
+async function saveSettingsForm(ev){
+  ev.preventDefault();const f=ev.target;
+  const groupNames={};[1,2,3,4,5].forEach(g=>groupNames[g]=f['gn'+g].value.trim()||GROUPS_DEF[g]);
+  const cfg={org1:f.org1.value.trim(),org2:f.org2.value.trim(),orgShort:f.orgShort.value.trim()||'สกส.',logoUrl:f.logoUrl.value.trim(),groupNames};
+  try{
+    const saved=await api('saveSettings',{cfg});
+    applyCfg(saved);
+    toast('บันทึกการตั้งค่าแล้ว — มีผลกับทุกหน้าและทุกคนทันที');
+    renderSettings();
+  }catch(e){toast(e.message,'err')}
+  return false;
 }
 
 /* ═════════ เริ่มต้นระบบ ═════════ */
