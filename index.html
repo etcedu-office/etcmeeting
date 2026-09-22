@@ -1,1 +1,1261 @@
 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ระบบบันทึกการประชุมออนไลน์ | สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ม.มหาสารคาม</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23123328'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23c9a24b' stroke-width='1.6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e9d8ac' font-family='serif'%3Eก%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2eee1; --card:#fffdf6; --ink:#253029; --mut:#6d7266;
+  --green:#1b4d3e; --green-d:#123328; --green-l:#2a6b57;
+  --gold:#b98a2e; --gold-d:#8a641c; --gold-l:#e9d8ac;
+  --line:#ddd3ba; --line2:#c9bfa2; --red:#a5402d;
+  --shadow:0 2px 14px rgba(35,48,38,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Anuphan','Sarabun',sans-serif;color:var(--ink);background:var(--paper);
+  background-image:repeating-linear-gradient(0deg,rgba(120,105,70,.028) 0 1px,transparent 1px 28px);font-size:15px;line-height:1.55}
+button{font-family:inherit}
+a{color:var(--green-l)}
+.ic{vertical-align:-3px;flex:none}
+.dt{color:var(--mut);font-size:12.5px}
+.nl2br br{content:""}
+/* ---------- ปุ่ม / ฟอร์ม / ชิป ---------- */
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;color:var(--ink);
+  padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;box-shadow:0 1px 0 rgba(0,0,0,.05);text-decoration:none}
+.btn:hover{border-color:var(--gold);color:var(--gold-d);transform:translateY(-1px)}
+.btn-p{background:var(--green);border-color:var(--green);color:#f5efdb}
+.btn-p:hover{background:var(--green-d);border-color:var(--green-d);color:#fff}
+.btn-g{background:var(--gold);border-color:var(--gold-d);color:#fff}
+.btn-g:hover{background:var(--gold-d);color:#fff;border-color:var(--gold-d)}
+.btn-d{color:var(--red);border-color:#d8b3a6;background:#fdf6f2}
+.btn-d:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-s{padding:4.5px 10px;font-size:12.5px;border-radius:7px}
+.in,select.in,textarea.in{width:100%;padding:8.5px 11px;border:1px solid var(--line2);border-radius:8px;background:#fff;font:inherit;font-size:14.5px;color:var(--ink)}
+.in:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(185,138,46,.16)}
+.in-s{width:auto;padding:4px 8px;font-size:12.5px}
+textarea.in{resize:vertical;min-height:74px}
+.frm{display:grid;gap:13px}
+.frm label{display:block;font-size:13px;font-weight:600;color:#55503c;margin-bottom:4px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.hint{font-size:12px;color:var(--mut);margin-top:3px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:2.5px 10px;border-radius:99px;border:1px solid;font-weight:600;white-space:nowrap}
+.ch-gold{color:#8a641c;background:#f7ecd2;border-color:#dcc98f}
+.ch-green{color:#1e5c48;background:#e3eee6;border-color:#b9d2c0}
+.ch-red{color:#8f3a28;background:#f7e4dd;border-color:#dfb7a8}
+.ch-gray{color:#5b5f58;background:#ecece4;border-color:#cfcfc2}
+table.tb{width:100%;border-collapse:collapse;font-size:14px}
+.tb th{background:#f3eedb;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);font-weight:600;color:#55503c;font-size:13px}
+.tb td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tb tr.selfrow td{background:#faf5e2}
+/* ---------- หน้าเข้าสู่ระบบ ---------- */
+.auth{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr}
+.auth-l{background:var(--green-d);color:#efe9d5;display:flex;flex-direction:column;justify-content:center;padding:64px;position:relative;overflow:hidden}
+.auth-l::after{content:'';position:absolute;inset:16px;border:1px solid rgba(201,162,75,.45);pointer-events:none}
+.auth-seal{width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;
+  box-shadow:inset 0 0 0 5px var(--green-d),inset 0 0 0 6.5px rgba(233,216,172,.5);color:var(--gold-l);margin-bottom:26px}
+.auth-l h1{font-size:30px;font-weight:700;line-height:1.3;letter-spacing:.01em}
+.auth-l h1 span{color:var(--gold-l)}
+.auth-l .sub{color:#b9c4b3;margin:8px 0 26px;font-size:14.5px}
+.auth-feat{list-style:none;display:grid;gap:11px;font-size:14.5px;color:#d8dccb}
+.auth-feat li{display:flex;gap:10px;align-items:flex-start}
+.auth-feat .ic{color:var(--gold);margin-top:2px}
+.auth-org{margin-top:36px;padding-top:18px;border-top:1px solid rgba(233,216,172,.25);font-size:13px;color:#a8b3a3}
+.auth-r{display:grid;place-items:center;padding:40px 28px;background:var(--paper)}
+.auth-card{width:100%;max-width:400px}
+.auth-card h2{font-size:22px;margin-bottom:4px}
+.auth-card .lead{color:var(--mut);font-size:14px;margin-bottom:22px}
+.demo-box{margin-top:22px;border:1px dashed var(--gold);border-radius:10px;padding:14px 16px;background:#faf4e2}
+.demo-box b{font-size:13.5px;color:var(--gold-d)}
+.qbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+/* ---------- โครงแอป ---------- */
+.masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--green-d);color:#f3eddc;border-bottom:3px double var(--gold)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;
+  box-shadow:inset 0 0 0 3.5px var(--green-d),inset 0 0 0 5px rgba(233,216,172,.55);color:var(--gold-l)}
+.brand h1{font-size:18px;font-weight:700;letter-spacing:.02em;line-height:1.25}
+.brand p{font-size:12px;color:var(--gold-l);margin-top:2px}
+.userbox{display:flex;align-items:center;gap:12px;flex:none}
+.uwho{text-align:right}
+.uname{font-weight:600;font-size:14px}
+.uchip{font-size:11px}
+.btn-ghost{background:transparent;border:1px solid rgba(233,216,172,.4);color:#e8e2c8}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-l);background:rgba(233,216,172,.08)}
+.tabs{display:flex;gap:6px;padding:14px 24px 0;background:var(--green-d);flex-wrap:wrap}
+.tab{position:relative;display:flex;align-items:center;gap:7px;padding:9px 16px;font-size:14.5px;font-weight:500;color:#c6d0c4;
+  background:#1c4034;border:1px solid #2c5a49;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;transition:.15s;top:0}
+.tab:hover{color:#fff;background:#245043}
+.tab.on{color:var(--ink);background:var(--paper);border-color:var(--line2);font-weight:600;top:1px}
+main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 12px}
+.sec-head h3{font-size:17px;color:var(--green-d);display:flex;align-items:center;gap:9px}
+.sec-head h3 .ic{color:var(--gold-d)}
+.empty{border:1px dashed var(--line2);border-radius:12px;padding:34px;text-align:center;color:var(--mut);background:#faf7ec}
+/* ---------- ภาพรวม ---------- */
+.home-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start}
+.notice{position:relative;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:30px 34px 26px}
+.notice::before{content:'';position:absolute;inset:7px;border:1px solid var(--gold);pointer-events:none;opacity:.75}
+.notice::after{content:'';position:absolute;top:-1px;left:-1px;width:30px;height:30px;border-top:3px solid var(--gold);border-left:3px solid var(--gold)}
+.n-kicker{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:14px}
+.n-kicker::before,.n-kicker::after{content:'';height:1px;background:var(--line2);flex:1}
+.n-kicker span{font-size:13px;font-weight:700;letter-spacing:.34em;color:var(--gold-d);text-indent:.34em}
+.n-seal{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;
+  box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5.5px var(--gold);color:var(--gold-d)}
+.n-title{text-align:center;font-size:23px;font-weight:700;color:var(--green-d);line-height:1.35}
+.n-sub{text-align:center;font-size:14px;color:var(--mut);margin:6px 0 16px}
+.n-info{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 4px;display:grid;gap:7px;margin-bottom:14px}
+.n-info .row{display:flex;gap:10px;align-items:baseline;font-size:14.5px}
+.n-info .row .ic{color:var(--gold-d);margin-top:2px;align-self:center}
+.n-obj{font-size:13.5px;color:#4c544a;margin-bottom:16px}
+.n-obj b{color:var(--green-d)}
+.n-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;border-top:1px dashed var(--line);padding-top:16px}
+.livedot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1s infinite;margin-right:5px}
+@keyframes blink{50%{opacity:.25}}
+.ledger{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px 22px}
+.ledger h3{font-size:15px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.stat{display:flex;align-items:baseline;gap:12px;padding:10px 2px;border-bottom:1px dashed var(--line)}
+.stat:last-of-type{border-bottom:none}
+.stat b{font-size:27px;color:var(--gold-d);min-width:46px;text-align:right;font-family:'Anuphan'}
+.stat span{font-size:13.5px;color:#4c544a}
+.flw{padding:9px 2px;border-bottom:1px dashed var(--line);font-size:13.5px}
+.flw:last-child{border-bottom:none}
+.flw .fw-t{color:var(--green-d);font-weight:600}
+.recent{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
+.rrow{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px dashed var(--line);cursor:pointer;transition:.15s}
+.rrow:last-child{border-bottom:none}
+.rrow:hover{background:#faf5e2}
+.rno{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--gold-d);flex:none;font-size:14px}
+.rrow .rt{min-width:0;flex:1}
+.rrow .rt b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---------- ปฏิทิน ---------- */
+.cal-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
+.cal{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
+.cal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.cal-h b{font-size:17px;color:var(--green-d)}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr)}
+.cw{padding:8px 0;text-align:center;font-size:12.5px;font-weight:600;color:#7a7460;border-bottom:1px solid var(--line);background:#f7f2df}
+.cd{min-height:76px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 7px;cursor:pointer;position:relative;transition:.12s}
+.cd:nth-child(7n){border-right:none}
+.cd:hover{background:#f6f0dc}
+.cd.off{opacity:.32}
+.cd .dn{display:inline-grid;place-items:center;width:24px;height:24px;font-size:13px;border-radius:50%}
+.cd.tdy .dn{background:var(--green);color:#fff;font-weight:700}
+.cd.pk{background:#f2e9cf;box-shadow:inset 0 0 0 2px var(--gold)}
+.dots{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
+.dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.daypane{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px}
+.daypane h3{font-size:15.5px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:12px}
+.evrow{border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:9px;cursor:pointer;transition:.15s;background:#fffdf7}
+.evrow:hover{border-color:var(--gold);background:#faf5e2}
+.evrow b{display:block;font-size:14px}
+/* ---------- แฟ้มการประชุม ---------- */
+.msplit{display:grid;grid-template-columns:330px minmax(0,1fr);gap:22px;align-items:start}
+.mlist{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);max-height:76vh;overflow:auto}
+.mlist-top{padding:12px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);z-index:2}
+.mrow{display:flex;gap:11px;padding:12px 14px;border-bottom:1px dashed var(--line);cursor:pointer;transition:.12s;align-items:center}
+.mrow:hover{background:#faf5e2}
+.mrow.on{background:#f3edd8;box-shadow:inset 3px 0 0 var(--gold)}
+.mno{width:38px;height:38px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--gold-d);flex:none;font-size:13.5px}
+.mrow .mt{min-width:0;flex:1}
+.mrow .mt b{display:block;font-size:13.8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
+.sheet-h{padding:22px 26px;border-bottom:2px solid var(--gold);background:#f8f4e6}
+.sh-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.sheet-h h2{font-size:21px;color:var(--green-d);line-height:1.35}
+.sh-sub{font-size:14px;color:#4c544a;margin-top:5px}
+.live-link{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--green);color:#f5efdb;padding:7px 14px;border-radius:99px;text-decoration:none;font-size:13.5px;font-weight:600}
+.live-link:hover{background:var(--green-d)}
+.sh-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2)}
+.sheet-b{padding:6px 0 26px}
+.agg{margin:20px 26px 0}
+.agg-h{display:flex;gap:11px;align-items:baseline;font-weight:700;color:var(--green-d);border-bottom:2px solid var(--line2);padding-bottom:6px}
+.agg-h .gno{font-size:20px;color:var(--gold-d);min-width:20px}
+.agg-h .gadd{margin-left:auto}
+.agi{border:1px solid var(--line);border-radius:9px;margin:10px 0;background:#fffdf7;overflow:hidden}
+.agi-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;cursor:pointer}
+.agi-h:hover{background:#faf6e8}
+.agi-t{font-weight:600;font-size:14.5px}
+.agi-meta{display:flex;align-items:center;gap:8px;flex:none;font-size:12.5px;color:var(--mut)}
+.agi-b{padding:12px 14px 15px;border-top:1px dashed var(--line)}
+.agi-d{font-size:14px;margin-bottom:9px;color:#3e463d}
+.lnks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.lnk{display:inline-flex;align-items:center;gap:6px;font-size:12.8px;color:var(--green-l);border:1px solid #c5d6c9;background:#eef4ee;padding:3px 10px;border-radius:99px;text-decoration:none}
+.lnk:hover{background:#e0ece2}
+.dec{background:#eef2e6;border:1px solid #cfd8bd;border-left:4px solid var(--green-l);padding:10px 13px;border-radius:0 9px 9px 0}
+.dec-w{background:#faf4e0;border-color:#e4d3a6;border-left-color:var(--gold)}
+.dec-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--green-d);margin-bottom:5px}
+.dec-b{font-size:14px}
+.disc{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.disc-h{display:flex;align-items:center;gap:7px;font-size:12.8px;font-weight:700;color:#7a7460;margin-bottom:7px}
+.dmsg{display:flex;gap:9px;margin:8px 0;font-size:13.8px}
+.dava{width:27px;height:27px;border-radius:50%;background:var(--green);color:#fff;font-size:11.5px;display:grid;place-items:center;flex:none;margin-top:2px}
+.drow{display:flex;gap:8px;margin-top:8px}
+.drow .in{flex:1}
+.frow{display:flex;align-items:center;gap:11px;padding:10px 6px;border-bottom:1px dashed var(--line)}
+.frow .ic{color:var(--gold-d)}
+.fmeta{flex:1;min-width:0}
+.fmeta b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fls{margin:0 26px}
+.bpad{padding:0 26px}
+/* ---------- รายงาน / เอกสาร ---------- */
+.rp-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 20px}
+.rp-l{font-size:12.5px;font-weight:700;color:#55503c;display:block;margin-bottom:5px}
+.rp-btns{display:flex;gap:9px;flex-wrap:wrap}
+.doc-wrap{overflow:auto;padding-bottom:10px}
+.a4{width:794px;max-width:100%;background:#fff;padding:54px 62px;margin:0 auto;box-shadow:0 3px 20px rgba(0,0,0,.16);
+  font-family:'Sarabun',sans-serif;color:#1d1d1b;font-size:11.5pt;line-height:1.75}
+.dorg{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.dseal{width:64px;height:64px;border-radius:50%;border:2px solid #8a641c;display:grid;place-items:center;color:#8a641c;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4.5px #8a641c}
+.dorg-t{font-weight:700;font-size:12.5pt;line-height:1.4}
+.dline{border-bottom:1.5px solid #1d1d1b;margin:10px 0 16px}
+.dtitle{text-align:center;font-size:13.5pt;margin-bottom:2px}
+.dsub{text-align:center;font-size:11pt;color:#333}
+.dsec{font-weight:700;margin:15px 0 3px;font-size:11.5pt}
+.dl{margin:2px 0 2px 34px}
+.dwg{font-weight:700;margin-top:11px;text-decoration:underline}
+.ditem{margin:7px 0 7px 18px}
+.dindent{margin:2px 0 2px 20px}
+.sig{margin-top:30px;text-align:right}
+.sig .sign{margin-top:2px}
+.dokay{color:#1b4d3e;font-weight:700;font-size:10.5pt}
+/* ---------- สมาชิก / ตั้งค่า ---------- */
+.card{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:22px 24px}
+.role-def{display:grid;gap:10px;margin-top:16px}
+.role-def .rd{display:flex;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:9px}
+.role-def b{min-width:120px}
+.set-row{display:grid;gap:6px;margin-bottom:16px}
+.mode-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:99px;font-weight:700;font-size:13.5px}
+.steps{counter-reset:st;list-style:none;margin-top:8px}
+.steps li{position:relative;padding:0 0 10px 38px;font-size:14px}
+.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-radius:6px;font-size:12.5px;word-break:break-all}
+/* ---------- โมดัล / ทอสต์ ---------- */
+.mo-bg{position:fixed;inset:0;background:rgba(28,36,30,.5);display:grid;place-items:center;z-index:60;padding:18px;overflow:auto}
+.mo{background:var(--card);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.3);width:100%;max-width:620px;max-height:calc(100vh - 36px);overflow:auto;animation:pop .18s}
+@keyframes pop{from{transform:translateY(16px) scale(.98);opacity:0}}
+.mo-h{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:2px solid var(--gold);background:#f8f4e6;position:sticky;top:0;z-index:2}
+.mo-h b{color:var(--green-d);font-size:16px}
+.xbtn{background:none;border:none;cursor:pointer;color:#7a7460;padding:4px;display:grid;place-items:center;border-radius:6px}
+.xbtn:hover{color:var(--red);background:#f3e3dc}
+.mo-b{padding:20px 22px}
+.mo-f{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+#toastRoot{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:92vw}
+.toast{background:var(--green-d);color:#f2edda;padding:10px 22px;border-radius:99px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.28);display:flex;gap:9px;align-items:center;animation:tin .25s}
+.toast.err{background:var(--red)}
+@keyframes tin{from{transform:translateY(14px);opacity:0}}
+/* ---------- พิมพ์ ---------- */
+#printArea{display:none}
+@media print{
+  body{background:#fff}
+  body>*:not(#printArea){display:none!important}
+  #printArea{display:block!important}
+  #printArea .a4{width:auto;max-width:none;margin:0;box-shadow:none;padding:0}
+}
+@media(max-width:980px){
+  .home-grid,.cal-split,.msplit{grid-template-columns:1fr}
+  .auth{grid-template-columns:1fr}
+  .auth-l{display:none}
+  .f3,.f2{grid-template-columns:1fr}
+  .brand p{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ หน้าเข้าสู่ระบบ ══════════ -->
+<div class="auth" id="auth">
+  <div class="auth-l">
+    <div class="auth-seal" id="authSeal"></div>
+    <h1>ระบบบันทึกการประชุมออนไลน์<br><span>ETCM Meeting Hub</span></h1>
+    <p class="sub">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</p>
+    <ul class="auth-feat">
+      <li><span class="ficon"></span>จัดนัดหมายและประกาศเชิญประชุม ตามรูปแบบหนังสือราชการไทย</li>
+      <li><span class="ficon"></span>วาระการประชุมมาตรฐาน 5 วาระ พร้อมบันทึกมติและติดตามผลรายวาระ</li>
+      <li><span class="ficon"></span>แนบเอกสารผ่าน Google Drive และเข้าห้องประชุมออนไลน์จากลิงก์ในระบบ</li>
+      <li><span class="ficon"></span>ออกรายงานการประชุมฉบับสมบูรณ์ พร้อมลงชื่อประธานและเลขานุการ (พิมพ์เป็น PDF ได้)</li>
+    </ul>
+    <div class="auth-org">คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</div>
+  </div>
+  <div class="auth-r">
+    <div class="auth-card">
+      <h2>เข้าสู่ระบบ</h2>
+      <p class="lead">ใช้บัญชีที่ผู้ดูแลระบบสาขาฯ จัดสรรให้</p>
+      <form class="frm" onsubmit="return doLogin(event)">
+        <div><label>อีเมล</label><input class="in" id="auEmail" autocomplete="username" placeholder="ชื่อผู้ใช้หรืออีเมล"></div>
+        <div><label>รหัสผ่าน</label><input class="in" id="auPass" type="password" autocomplete="current-password" placeholder="รหัสผ่าน"></div>
+        <button class="btn btn-p" type="submit" id="auBtn">เข้าสู่ระบบ</button>
+      </form>
+      <div class="demo-box" id="demoBox" hidden>
+        <b>โหมดสาธิต (Mockup)</b> — ทดลองทุกบทบาทได้ทันที รหัสผ่านทุกบัญชีคือ <code class="k">1234</code>
+        <div class="qbtns">
+          <button class="btn btn-s btn-g" onclick="quickLogin('admin')">เข้าเป็นผู้ดูแลระบบ</button>
+          <button class="btn btn-s" onclick="quickLogin('secretary')">เลขานุการสาขาฯ</button>
+          <button class="btn btn-s" onclick="quickLogin('member')">สมาชิก</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ตัวแอป ══════════ -->
+<div id="app" hidden>
+  <header class="masthead">
+    <div class="brand">
+      <div class="seal" id="seal"></div>
+      <div>
+        <h1>ระบบบันทึกการประชุมออนไลน์ ETCM</h1>
+        <p>สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา · คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</p>
+      </div>
+    </div>
+    <div class="userbox">
+      <span class="chip ch-gold uchip" id="demoChip" hidden>โหมดสาธิต</span>
+      <div class="uwho"><div class="uname" id="uName"></div><span class="chip ch-gray uchip" id="uRole"></span></div>
+      <button class="btn btn-s btn-ghost" onclick="logout()">ออกจากระบบ</button>
+    </div>
+  </header>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="view"></main>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+<div id="printArea"></div>
+
+<script>
+'use strict';
+/* ═════════ เครื่องมือพื้นฐาน ═════════ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nl2br=s=>esc(s).replace(/\n/g,'<br>');
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const todayIso=()=>iso(new Date());
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d)};
+const fmtD=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long',year:'numeric'})};
+const fmtDs=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'})};
+const fmtAt=s=>{if(!s)return '';const d=new Date(s);if(isNaN(d))return '';return d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'2-digit'})+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})+' น.'};
+const fmtSize=b=>b>=1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';
+
+/* ═════════ ชุดไอคอน SVG ═════════ */
+const ICONS={
+ cal:'<rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 4.8a3.5 3.5 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/>',
+ file:'<path d="M6 2.5h8l4.5 4.5v14.5a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6"/>',
+ link:'<path d="M10 14a4.5 4.5 0 006.4 0l3-3a4.5 4.5 0 00-6.4-6.4l-1.6 1.6M14 10a4.5 4.5 0 00-6.4 0l-3 3a4.5 4.5 0 006.4 6.4l1.6-1.6"/>',
+ print:'<path d="M7 8V3h10v5M4.5 8h15a1 1 0 011 1v7h-4"/><path d="M7 13h10v8H7z"/><path d="M4.5 16H7m10 0h2.5"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ edit:'<path d="M4 20l4-1L20.5 6.5a2 2 0 00-3-3L5 16l-1 4z"/><path d="M14.5 6.5l3 3"/>',
+ trash:'<path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13.5h9l1-13.5M10 11v6M14 11v6"/>',
+ check:'<path d="M4.5 12.5l5 5 10-11"/>',
+ x:'<path d="M6 6l12 12M18 6L6 18"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
+ gavel:'<path d="M14 4l6 6-2.5 2.5-6-6L14 4zM12 8l-7.5 7.5a1.5 1.5 0 000 2.1l1.4 1.4a1.5 1.5 0 002.1 0L15.5 11.5M3 22h11"/>',
+ mic:'<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3.5M8.5 21.5h7"/>',
+ upload:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',
+ download:'<path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>',
+ pin:'<path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+ clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/>',
+ video:'<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/>',
+ shield:'<path d="M12 2.5l7.5 3v6c0 5-3.2 8.4-7.5 10-4.3-1.6-7.5-5-7.5-10v-6l7.5-3z"/>',
+ list:'<path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>',
+ send:'<path d="M21 3L10 14M21 3l-7 19-4-8-8-4 19-7z"/>',
+ ext:'<path d="M14 4h6v6M20 4L11 13M19 14v5a1 1 0 01-1 1H6a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
+ home:'<path d="M4 11l8-7 8 7M6 9.5V20h12V9.5"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-3.7 4-5.5 7.5-5.5s6.3 1.8 7.5 5.5"/>',
+ folder:'<path d="M3 6.5A1.5 1.5 0 014.5 5h5l2 2.5h8A1.5 1.5 0 0121 9v9.5a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5v-12z"/>',
+ cap:'<path d="M2.5 9.5L12 4.5l9.5 5L12 14.5l-9.5-5z"/><path d="M6.5 11.5V17c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.5M21.5 9.5V15"/>',
+ refresh:'<path d="M20 12a8 8 0 10-2.3 5.6M20 12V6.5M20 12h-5.5"/>',
+ doc:'<path d="M6 2.5h8l4.5 4.5v14.5a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6M9 8h2"/>',
+ chevD:'<path d="M6 9l6 6 6-6"/>'
+};
+const I=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`;
+
+/* ═════════ ค่าคงที่ของระบบ ═════════ */
+const GROUPS={1:'เรื่องราวของที่ประชุม',2:'เรื่องประธานแจ้ง',3:'เรื่องเสนอเพื่อพิจารณา',4:'เรื่องเสนอเพื่อทราบ',5:'เรื่องอื่น ๆ (ถ้ามี)'};
+const STD_AGENDAS=[[1,'เรื่องราวของที่ประชุม','เลขานุการในการประชุม','ตรวจรายชื่อผู้เข้าร่วมประชุมและประกาศเรื่องราวของที่ประชุม'],
+ [2,'เรื่องประธานแจ้ง','ประธานในการประชุม',''],[3,'เรื่องเสนอเพื่อพิจารณา','',''],
+ [4,'เรื่องเสนอเพื่อทราบ','',''],[5,'เรื่องอื่น ๆ (ถ้ามี)','','']];
+const ATT_ST=['รอยืนยัน','เข้าร่วม','ลา','ขาด'];
+const M_ST=['กำหนดการ','กำลังประชุม','รอบันทึกรายงาน','เสร็จสมบูรณ์'];
+const ROLE_L={admin:'ผู้ดูแลระบบ',chair:'ประธาน',secretary:'เลขานุการ',member:'สมาชิก'};
+const ROLE_IN={u1:'ประธาน',u3:'เลขานุการ',u2:'เชิญเพื่อปรึกษา'};
+const ORG='สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม';
+
+/* ═════════ สถานะของแอป ═════════ */
+const state={user:null,db:null,view:'home',sel:null,q:'',reportSel:null,cal:new Date(),calPick:todayIso(),openAg:new Set(),demo:true,gasUrl:''};
+
+/* ═════════ ข้อมูลตัวอย่าง (Mockup) ═════════ */
+function seedDB(){
+  const users=[
+   {id:'u1',name:'ผศ.ดร. ธนากร วงศ์สถาพร',email:'thanakorn@demo.th',pass:'1234',role:'admin',position:'หัวหน้าสาขาวิชาฯ',active:'1'},
+   {id:'u2',name:'รศ.ดร. สุนทรี พรหมมาลี',email:'sunee@demo.th',pass:'1234',role:'chair',position:'รองคณบดีฝ่ายวิชาการ',active:'1'},
+   {id:'u3',name:'ผศ. อนุชา จันทะแพง',email:'anucha@demo.th',pass:'1234',role:'secretary',position:'เลขานุการสาขาวิชาฯ',active:'1'},
+   {id:'u4',name:'ผศ.ดร. ปิยะรัตน์ ศรีสุวรรณ',email:'p.yarat@demo.th',pass:'1234',role:'member',position:'อาจารย์ประจำ',active:'1'},
+   {id:'u5',name:'ผศ. กัญญาณัฐ โพธิ์แก้ว',email:'kanyanat@demo.th',pass:'1234',role:'member',position:'อาจารย์ประจำ',active:'1'},
+   {id:'u6',name:'ดร. ณัฐพงษ์ วีระกุล',email:'nattapong@demo.th',pass:'1234',role:'member',position:'อาจารย์ประจำ',active:'1'},
+   {id:'u7',name:'นายภูมิรพี สายทอง',email:'poomrapee@demo.th',pass:'1234',role:'member',position:'นักวิชาการศึกษา',active:'1'}];
+  const autoAtt=(mid,ov={})=>users.map((u,i)=>({id:'t'+mid+'_'+i,mid,uid:u.id,name:u.name,position:u.position,
+    roleIn:ROLE_IN[u.id]||'กรรมการและสมาชิก',status:ov[u.id]||'เข้าร่วม'}));
+  const meetings=[
+   {id:'m1',no:'1/2568',title:'ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือนกรกฎาคม',type:'ประชุมสามัญ',date:addDays(-75),tStart:'09:30',tEnd:'12:00',place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2)',link:'https://meet.google.com/etcm-demo-july',docNo:'สกส. 017/2568',chairId:'u1',secId:'u3',objectives:'เพื่อติดตามผลการดำเนินงานของสาขาวิชาฯ ในครึ่งปีการศึกษาที่ผ่านมา\nเพื่อพิจารณาแผนงานและมอบหมายงานในภารกิจถัดไป',status:'เสร็จสมบูรณ์',approved:1,createdAt:Date.now()},
+   {id:'m2',no:'2/2568',title:'ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือนสิงหาคม',type:'ประชุมสามัญ',date:addDays(-45),tStart:'09:30',tEnd:'12:00',place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2) และผ่าน Google Meet',link:'https://meet.google.com/etcm-demo-aug',docNo:'สกส. 031/2568',chairId:'u1',secId:'u3',objectives:'เพื่อพิจารณาแนวทางการรับนักศึกษารุ่นใหม่และการประชาสัมพันธ์หลักสูตร',status:'รอบันทึกรายงาน',approved:0,createdAt:Date.now()},
+   {id:'m3',no:'3/2568',title:'ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือนกันยายน',type:'ประชุมสามัญ',date:addDays(-12),tStart:'13:00',tEnd:'15:30',place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2)',link:'',docNo:'สกส. 044/2568',chairId:'u1',secId:'u3',objectives:'เพื่อพิจารณาแผนการใช้จ่ายงบประมาณครุภัณฑ์ประจำปี\nเพื่อรับทราบผลการดำเนินงานบริการวิชาการ',status:'เสร็จสมบูรณ์',approved:1,createdAt:Date.now()},
+   {id:'m4',no:'4/2568',title:'ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือนตุลาคม',type:'ประชุมสามัญ',date:addDays(6),tStart:'09:30',tEnd:'12:00',place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2) และผ่าน Google Meet',link:'https://meet.google.com/etcm-demo-oct',docNo:'สกส. 052/2568',chairId:'u1',secId:'u3',objectives:'เพื่อพิจารณาแผนการสอนภาคเรียนที่ 2 ปีการศึกษา 2568\nเพื่อติดตามความก้าวหน้าของโครงการสัมมนาวิชาการประจำปี',status:'กำหนดการ',approved:0,createdAt:Date.now()},
+   {id:'m5',no:'1/2568',title:'ประชุมเตรียมความพร้อมจัดสัมมนาวิชาการประจำปี (วิสามัญ)',type:'ประชุมวิสามัญ',date:addDays(13),tStart:'14:00',tEnd:'16:00',place:'ห้องปฏิบัติการโสตทัศนูปกรณ์ อาคาร 2',link:'https://meet.google.com/etcm-demo-sem',docNo:'สกส. 053/2568',chairId:'u1',secId:'u3',objectives:'เพื่อมอบหมายหน้าที่คณะทำงานจัดสัมมนาวิชาการประจำปี 2569',status:'กำหนดการ',approved:0,createdAt:Date.now()}];
+  const AG=(i,mid,grp,title,presenter,detail,decision,follow,links)=>({id:'a'+i,mid,grp,title,presenter,detail,decision,follow:follow?1:0,links:links||[]});
+  const agendas=[
+   AG(1,'m1',1,'เรื่องราวของที่ประชุม','เลขานุการในการประชุม','เลขานุการแจ้งรายชื่อผู้เข้าร่วมประชุมครบองค์ประชุม','ที่ประชุมรับทราบรายชื่อผู้เข้าร่วมประชุมตามรายงานข้างต้น',0),
+   AG(2,'m1',2,'เรื่องประธานแจ้ง','ประธานในการประชุม','ประธานแจ้งผลการประเมินคุณภาพหลักสูตรระดับประเทศ และแนวทางพัฒนาต่อเนื่อง','ที่ประชุมรับทราบและเห็นชอบแนวทางพัฒนาหลักสูตรตามที่ประธานแจ้ง',0),
+   AG(3,'m1',3,'เรื่องเสนอเพื่อพิจารณา : ร่างแผนพัฒนาหลักสูตรฯ พ.ศ. 2569-2573','ผศ.ดร. ปิยะรัตน์ ศรีสุวรรณ','เสนอร่างแผนพัฒนาหลักสูตร 5 ปี ซึ่งปรับสอดคล้องกับกรอบมาตรฐาน AUN-QA','ที่ประชุมเห็นชอบร่างแผนฯ โดยให้ปรับตัวชี้วัดข้อ 3 และเสนอต่อคณะกรรมการประจำคณะฯ ภายในเดือนกันยายน 2568',1),
+   AG(4,'m1',4,'เรื่องเสนอเพื่อทราบ : ผลการจัดอบรมเชิงปฏิบัติการ AI ทางการศึกษา','ดร. ณัฐพงษ์ วีระกุล','รายงานผลการอบรมครูในเครือข่ายโรงเรียน จำนวน 62 คน','ที่ประชุมรับทราบและให้เผยแพร่ผลการดำเนินงานผ่านเว็บไซต์สาขาวิชาฯ',0),
+   AG(5,'m2',1,'เรื่องราวของที่ประชุม','เลขานุการในการประชุม','ตรวจรายชื่อผู้เข้าร่วมประชุม','ที่ประชุมรับทราบเรื่องราวของที่ประชุม',0),
+   AG(6,'m2',2,'เรื่องประธานแจ้ง','ประธานในการประชุม','ประธานแจ้งผลการพิจารณาแผนพัฒนาหลักสูตรจากคณะกรรมการประจำคณะฯ','ที่ประชุมรับทราบ',0),
+   AG(7,'m2',3,'เรื่องเสนอเพื่อพิจารณา : แนวทางรับนักศึกษาใหม่ ปีการศึกษา 2569','ผศ. กัญญาณัฐ โพธิ์แก้ว','เสนอแนวทางการเพิ่มโควตารับเข้าเรียนและกิจกรรมประชาสัมพันธ์หลักสูตรในโรงเรียนเครือข่าย','(อยู่ระหว่างบันทึกมติ)',1),
+   AG(8,'m3',3,'เรื่องเสนอเพื่อพิจารณา : แผนจัดซื้อครุภัณฑ์ห้องปฏิบัติการโสตทัศนูปกรณ์','นายภูมิรพี สายทอง','เสนอรายการครุภัณฑ์และราคากลางตามที่จัดทำร่วมกับกองคลัง','ที่ประชุมอนุมัติการจัดซื้อผ่านระบบ e-bidding ตามราคากลางที่เสนอ',1),
+   AG(9,'m3',4,'เรื่องเสนอเพื่อทราบ : รายงานผลกิจกรรมบริการวิชาการโรงเรียนในเครือข่าย','ดร. ณัฐพงษ์ วีระกุล','รายงานผลการฝึกอบรมการใช้สื่อดิจิทัลเพื่อการเรียนการสอน จำนวน 3 โรงเรียน','ที่ประชุมรับทราบรายงาน',0),
+   AG(10,'m4',1,'เรื่องราวของที่ประชุม','เลขานุการในการประชุม','ตรวจรายชื่อผู้เข้าร่วมประชุมและประกาศเรื่องราวของที่ประชุม','',0),
+   AG(11,'m4',2,'เรื่องประธานแจ้ง','ประธานในการประชุม','ผลการดำเนินงานตามมติการประชุมครั้งที่ 3/2568 และประเด็นจากคณะกรรมการบริหารหลักสูตร','',0),
+   AG(12,'m4',3,'เรื่องเสนอเพื่อพิจารณา : แผนการสอนภาคเรียนที่ 2/2568 และแผนใช้จ่ายงบประมาณซื้อครุภัณฑ์','เลขานุการสาขาวิชาฯ','พิจารณาตารางสอน ภาระงาน และรายการครุภัณฑ์ห้องปฏิบัติการโสตทัศนูปกรณ์','',0,[{label:'ร่างแผนการสอน 2/2568',url:'https://docs.google.com/document/d/example-plan'},{label:'รายการครุภัณฑ์ (สรุป)',url:'https://docs.google.com/spreadsheets/d/example-equip'}]),
+   AG(13,'m4',4,'เรื่องเสนอเพื่อทราบ','ประธานในการประชุม','ผลการเผยแพร่งานวิจัยของอาจารย์ประจำสาขาฯ ไตรมาสล่าสุด','',0),
+   AG(14,'m4',5,'เรื่องอื่น ๆ (ถ้ามี)','ที่ประชุม','','',0),
+   AG(15,'m5',1,'เรื่องราวของที่ประชุม','เลขานุการในการประชุม','ตรวจรายชื่อคณะทำงานจัดสัมมนาวิชาการ','',0),
+   AG(16,'m5',2,'เรื่องประธานแจ้ง','ประธานในการประชุม','แนวคิดหลักและกำหนดการเบื้องต้นของสัมมนาวิชาการประจำปี 2569','',0),
+   AG(17,'m5',3,'เรื่องเสนอเพื่อพิจารณา : การมอบหมายหน้าที่คณะทำงานจัดสัมมนา','ประธานในการประชุม','พิจารณามอบหมายหน้าที่ใน 4 คณะอนุกรรมการ','',0)];
+  const attendees=[...autoAtt('m1',{u6:'ลา'}),...autoAtt('m2'),...autoAtt('m3'),...autoAtt('m4',{u1:'รอยืนยัน',u4:'เข้าร่วม',u7:'เข้าร่วม'}),...autoAtt('m5',{u5:'เข้าร่วม'})];
+  const files=[
+   {id:'f1',mid:'m1',name:'รายงานการประชุม_1-2568.pdf',mime:'application/pdf',size:482113,cat:'บันทึกรายงาน',url:'',by:'ผศ. อนุชา จันทะแพง',at:new Date(Date.now()-74*864e5).toISOString()},
+   {id:'f2',mid:'m4',name:'วาระการประชุม_4-2568.pdf',mime:'application/pdf',size:268900,cat:'เอกสารประกอบวาระ',url:'',by:'ผศ. อนุชา จันทะแพง',at:new Date(Date.now()-2*864e5).toISOString()},
+   {id:'f3',mid:'m4',name:'ร่างแผนการสอน_2-2568.xlsx',mime:'application/vnd.ms-excel',size:96450,cat:'เอกสารประกอบวาระ',url:'',by:'นายภูมิรพี สายทอง',at:new Date(Date.now()-864e5).toISOString()}];
+  const discussions=[
+   {id:'d1',mid:'m2',aid:'a7',uid:'u2',name:'รศ.ดร. สุนทรี พรหมมาลี',text:'เสนอให้ประสานงานกับโรงเรียนในเครือข่าย 5 แห่งก่อน เพื่อจัดกิจกรรมนำร่องประชาสัมพันธ์หลักสูตรในเดือนพฤศจิกายน',at:new Date(Date.now()-44*864e5).toISOString()},
+   {id:'d2',mid:'m2',aid:'a7',uid:'u4',name:'ผศ.ดร. ปิยะรัตน์ ศรีสุวรรณ',text:'เห็นด้วยกับแนวทาง แต่ควรเตรียมสื่อประชาสัมพันธ์ฉบับภาษาอังกฤษเพิ่มเติมสำหรับนักเรียนโควตาพิเศษ',at:new Date(Date.now()-44*864e5+36e5).toISOString()},
+   {id:'d3',mid:'m4',aid:'a12',uid:'u7',name:'นายภูมิรพี สายทอง',text:'รายการครุภัณฑ์ได้ปรับตามความคิดเห็นของกองคลังแล้ว อยู่ในไฟล์แนบ รบกวนที่ประชุมตรวจทานอีกครั้ง',at:new Date(Date.now()-6*36e5).toISOString()}];
+  return {users,meetings,agendas,attendees,files,discussions};
+}
+function ensureDemo(){
+  let db=null; try{db=JSON.parse(localStorage.getItem('etcm_db'))}catch(e){}
+  if(!db||!db.users){db=seedDB();localStorage.setItem('etcm_db',JSON.stringify(db))}
+  return db;
+}
+function saveDemo(db){localStorage.setItem('etcm_db',JSON.stringify(db))}
+function dUpsert(db,name,rec){
+  let old=rec.id?db[name].find(x=>x.id===rec.id):null;
+  if(old){Object.assign(old,rec);return old}
+  if(!rec.id)rec.id='x'+uid();
+  db[name].push(rec);return rec;
+}
+
+/* ═════════ API (สลับระหว่างโหมดสาธิตกับ Google Apps Script) ═════════ */
+async function api(action,payload={}){
+  const p={...payload,auth:state.user?{uid:state.user.id,role:state.user.role}:null};
+  if(state.demo)return demoApi(action,p);
+  const res=await fetch(state.gasUrl,{method:'POST',body:JSON.stringify(p)});
+  if(!res.ok)throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่สำเร็จ (HTTP '+res.status+')');
+  const j=await res.json();
+  if(!j.ok)throw new Error(j.error||'การทำงานผิดพลาดจากเซิร์ฟเวอร์');
+  return j.data;
+}
+async function demoApi(action,p){
+  await sleep(140);
+  const db=ensureDemo();
+  const S=x=>{saveDemo(db);return structuredClone(x)};
+  switch(action){
+    case 'ping':return S({name:'ETCM Demo Server'});
+    case 'login':{const u=db.users.find(u=>u.email===p.email&&u.pass===p.pass);
+      if(!u)throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+      if(String(u.active)==='0')throw new Error('บัญชีนี้ถูกระงับการใช้งาน');return structuredClone(u);}
+    case 'loadAll':return structuredClone(db);
+    case 'saveUser':{const r=p.rec;if(!r.pass){const o=r.id?db.users.find(u=>u.id===r.id):null;if(o)r.pass=o.pass}else{r.pass=r.pass}
+      const u=dUpsert(db,'users',r);delete u.passHint;return S(u)}
+    case 'deleteUser':{db.users=db.users.filter(u=>u.id!==p.id);return S(true)}
+    case 'saveMeeting':{
+      let m=p.rec,isNew=!m.id||!db.meetings.find(x=>x.id===m.id);
+      const saved=dUpsert(db,'meetings',m);
+      if(isNew){
+        db.attendees.push(...db.users.filter(u=>String(u.active)!=='0').map((u,i)=>({id:'t'+saved.id+'_'+i,mid:saved.id,uid:u.id,name:u.name,position:u.position,roleIn:ROLE_IN[u.id]||'กรรมการและสมาชิก',status:'รอยืนยัน'})));
+        if(m.std)STD_AGENDAS.forEach(a=>db.agendas.push({id:'a'+uid(),mid:saved.id,grp:a[0],title:a[1],presenter:a[2],detail:a[3],decision:'',follow:0,links:[]}));
+      }
+      return S({newId:saved.id});}
+    case 'deleteMeeting':{const id=p.id;
+      ['meetings','agendas','attendees','files','discussions'].forEach(k=>{db[k]=db[k].filter(x=>x.mid!==id&&x.id!==id)});
+      return S(true)}
+    case 'saveAgenda':{const a=dUpsert(db,'agendas',p.rec);return S(a)}
+    case 'deleteAgenda':{db.agendas=db.agendas.filter(a=>a.id!==p.id);db.discussions=db.discussions.filter(d=>d.aid!==p.id);return S(true)}
+    case 'saveAttendee':{const a=dUpsert(db,'attendees',p.rec);return S(a)}
+    case 'deleteAttendee':{db.attendees=db.attendees.filter(a=>a.id!==p.id);return S(true)}
+    case 'uploadFile':{
+      const rec={id:'f'+uid(),mid:p.mid,name:p.name,mime:p.mime,size:p.size,cat:p.cat||'เอกสารประกอบวาระ',
+        url:p.b64?('data:'+p.mime+';base64,'+p.b64):'',by:p.by||'',at:new Date().toISOString()};
+      db.files.push(rec);return S(rec)}
+    case 'deleteFile':{db.files=db.files.filter(f=>f.id!==p.id);return S(true)}
+    case 'addDiscussion':{
+      const rec={id:'d'+uid(),mid:p.mid,aid:p.aid,uid:state.user.id,name:state.user.name,text:p.text,at:new Date().toISOString()};
+      db.discussions.push(rec);return S(rec)}
+  }
+  throw new Error('ไม่พบคำสั่ง: '+action);
+}
+
+/* ═════════ ทอสต์ / โมดัล / กล่องยืนยัน ═════════ */
+function toast(msg,type){
+  const t=document.createElement('div');t.className='toast'+(type==='err'?' err':'');
+  t.innerHTML=(type==='err'?I('x',15):I('check',15))+esc(msg);
+  $('#toastRoot').appendChild(t);setTimeout(()=>t.remove(),3200);
+}
+function modal(html){$('#modalRoot').innerHTML=`<div class="mo-bg" onclick="if(event.target===this)closeModal()"><div class="mo">${html}</div></div>`}
+function closeModal(){$('#modalRoot').innerHTML=''}
+function ask(title,msg){
+  return new Promise(res=>{
+    modal(`<div class="mo-h"><b>${esc(title)}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+    <div class="mo-b"><p style="margin-bottom:18px">${esc(msg)}</p>
+    <div class="mo-f"><button class="btn" id="askN">ยกเลิก</button><button class="btn btn-d" id="askY">${I('check',15)} ยืนยัน</button></div></div>`);
+    $('#askY').onclick=()=>{closeModal();res(true)};
+    $('#askN').onclick=()=>{closeModal();res(false)};
+  });
+}
+
+/* ═════════ สิทธิ์ผู้ใช้ ═════════ */
+const canWrite=()=>state.user&&['admin','secretary'].includes(state.user.role);
+const isAdmin=()=>state.user&&state.user.role==='admin';
+const isChair=()=>state.user&&state.user.role==='chair';
+
+/* ═════════ หน้าเข้าสู่ระบบ ═════════ */
+ $('#authSeal').innerHTML=I('cap',40);
+document.querySelectorAll('.auth-feat .ficon').forEach(el=>el.innerHTML=I('check',16));
+function init(){
+  state.gasUrl=localStorage.getItem('etcm_url')||'';
+  state.demo=!state.gasUrl;
+  $('#demoBox').hidden=!state.demo;
+}
+async function doLogin(ev){
+  ev.preventDefault();
+  const email=$('#auEmail').value.trim(),pass=$('#auPass').value;
+  if(!email||!pass){toast('กรุณากรอกอีเมลและรหัสผ่าน','err');return false}
+  const btn=$('#auBtn');btn.disabled=true;btn.textContent='กำลังตรวจสอบ...';
+  try{
+    const u=await api('login',{email,pass});
+    state.user=u;state.db=await api('loadAll');
+    showApp();toast('ยินดีต้อนรับ คุณ'+u.name);
+  }catch(e){toast(e.message,'err')}
+  btn.disabled=false;btn.textContent='เข้าสู่ระบบ';
+  return false;
+}
+async function quickLogin(role){
+  if(!state.demo)return;
+  const db=ensureDemo();
+  const u=db.users.find(x=>x.role===role);if(!u)return;
+  $('#auEmail').value=u.email;$('#auPass').value=u.pass;
+  state.user=structuredClone(u);
+  state.db=await api('loadAll');
+  showApp();toast('ยินดีต้อนรับ คุณ'+u.name);
+}
+function showApp(){
+  $('#auth').style.display='none';$('#app').hidden=false;
+  $('#demoChip').hidden=!state.demo;
+  $('#uName').textContent=state.user.name;
+  $('#uRole').textContent=ROLE_L[state.user.role]||state.user.role;
+  $('#seal').innerHTML=I('cap',26);
+  renderTabs();go('home');
+}
+function logout(){
+  state.user=null;state.db=null;state.openAg=new Set();
+  $('#app').hidden=true;$('#auth').style.display='grid';
+  $('#auPass').value='';
+}
+
+/* ═════════ การนำทาง ═════════ */
+const TABS=[
+ {k:'home',l:'ภาพรวม',ic:'home'},{k:'calendar',l:'ปฏิทินนัดหมาย',ic:'cal'},
+ {k:'meetings',l:'แฟ้มการประชุม',ic:'folder'},{k:'report',l:'รายงานการประชุม',ic:'doc'},
+ {k:'users',l:'สมาชิกและสิทธิ์',ic:'users',admin:true},{k:'settings',l:'ตั้งค่าระบบ',ic:'gear'}];
+function renderTabs(){
+  $('#tabs').innerHTML=TABS.filter(t=>!t.admin||isAdmin()).map(t=>
+   `<button class="tab ${state.view===t.k?'on':''}" onclick="go('${t.k}')">${I(t.ic,17)} ${t.l}</button>`).join('');
+}
+function go(k){state.view=k;renderTabs();renderView();window.scrollTo({top:0,behavior:'smooth'})}
+function refresh(){renderView()}
+async function reloadDB(){state.db=await api('loadAll')}
+
+function renderView(){
+  if(!state.db)return;
+  ({home:renderHome,calendar:renderCalendar,meetings:renderMeetings,report:renderReport,users:renderUsers,settings:renderSettings}[state.view]||renderHome)();
+}
+const mSort=ms=>ms.slice().sort((a,b)=>b.date.localeCompare(a.date));
+const mStCls=s=>({กำหนดการ:'ch-gold',กำลังประชุม:'ch-green',รอบันทึกรายงาน:'ch-red',เสร็จสมบูรณ์:'ch-gray'}[s]||'ch-gray');
+const aStCls=s=>({'รอยืนยัน':'ch-gold','เข้าร่วม':'ch-green','ลา':'ch-red','ขาด':'ch-gray'}[s]||'ch-gray');
+const noMain=no=>String(no||'').split('/')[0];
+const uName=id=>{const u=state.db.users.find(u=>u.id===id);return u?u.name:'—'};
+const uPos=id=>{const u=state.db.users.find(u=>u.id===id);return u?u.position:'ประธานในการประชุม'};
+
+/* ═════════ ภาพรวม ═════════ */
+function renderHome(){
+  const db=state.db;
+  const ms=mSort(db.meetings);
+  const next=ms.filter(m=>m.date>=todayIso()&&m.status!=='เสร็จสมบูรณ์').sort((a,b)=>a.date.localeCompare(b.date))[0];
+  const follows=db.agendas.filter(a=>a.follow&&a.decision);
+  const cntAtt=m=>{const at=db.attendees.filter(a=>a.mid===m.id);return {yes:at.filter(a=>a.status==='เข้าร่วม').length,n:at.length}};
+  $('#view').innerHTML=`
+  <div class="home-grid">
+    <section>
+      ${next?noticeCard(next,cntAtt(next)):'<div class="empty">ยังไม่มีการประชุมที่กำหนดการไว้ — เลขานุการสามารถนัดหมายการประชุมใหม่ได้จากแท็บ "ปฏิทินนัดหมาย"</div>'}
+      <div class="sec-head"><h3>${I('folder',19)} แฟ้มการประชุมล่าสุด</h3>
+        <button class="btn btn-s" onclick="go('meetings')">ดูทั้งหมด ${I('ext',14)}</button></div>
+      <div class="recent">${ms.slice(0,4).map(m=>{const c=cntAtt(m);return `
+        <div class="rrow" onclick="goMeeting('${m.id}')">
+          <div class="rno">${esc(noMain(m.no))}</div>
+          <div class="rt"><b>${esc(m.title)}</b><span class="dt">${fmtDs(m.date)} · ${esc(m.type)} · ผู้เข้าร่วมยืนยัน ${c.yes}/${c.n} คน</span></div>
+          <span class="chip ${mStCls(m.status)}">${esc(m.status)}</span>
+        </div>`}).join('')||'<div class="empty">ยังไม่มีข้อมูล</div>'}</div>
+    </section>
+    <aside class="ledger">
+      <h3>${I('list',17)} สมุดบันทึกภาพรวม</h3>
+      <div class="stat"><b>${db.meetings.length}</b><span>การประชุมในระบบทั้งหมด</span></div>
+      <div class="stat"><b>${db.agendas.length}</b><span>หัวข้อวาระที่บันทึกไว้</span></div>
+      <div class="stat"><b>${db.files.length}</b><span>เอกสารแนบผ่าน Google Drive</span></div>
+      <div class="stat"><b>${follows.length}</b><span>มติที่อยู่ระหว่างติดตามผล</span></div>
+      ${follows.length?`<h3 style="margin-top:18px">${I('gavel',17)} มติที่รอติดตามผล</h3>
+      ${follows.slice(0,5).map(a=>{const m=db.meetings.find(x=>x.id===a.mid);return `
+        <div class="flw" onclick="goMeeting('${a.mid}')" style="cursor:pointer">
+          <div class="fw-t">${esc(a.title)}</div>
+          <div class="dt">จากการประชุมครั้งที่ ${esc(m?m.no:'')} · ${m?fmtDs(m.date):''}</div>
+          <div style="margin-top:3px">${esc(String(a.decision).slice(0,110))}${String(a.decision).length>110?'...':''}</div>
+        </div>`}).join('')}`:''}
+    </aside>
+  </div>`;
+}
+function noticeCard(m,cnt){
+  const db=state.db;
+  const mine=db.attendees.find(a=>a.mid===m.id&&a.uid===state.user.id);
+  const isToday=m.date===todayIso();
+  const days=Math.round((new Date(m.date+'T00:00:00')-new Date(todayIso()+'T00:00:00'))/864e5);
+  const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
+  return `<div class="notice">
+    <div class="n-kicker"><span>ประกาศเชิญประชุม</span></div>
+    <div class="n-seal">${I('cap',32)}</div>
+    <div class="n-title">${esc(m.title)}</div>
+    <div class="n-sub">ครั้งที่ ${esc(m.no)}${m.docNo?` · หนังสือที่ ${esc(m.docNo)}`:''} · ${esc(m.type)}</div>
+    <div class="n-info">
+      <div class="row">${I('cal',16)}<b>${fmtD(m.date)}</b>${isToday?`<span class="chip ch-red"><span class="livedot"></span>ประชุมวันนี้</span>`:`<span class="chip ch-gold">${I('clock',12)} อีก ${days} วัน</span>`}</div>
+      <div class="row">${I('clock',16)}เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น.</div>
+      <div class="row">${I('pin',16)}${esc(m.place)}</div>
+      ${m.link?`<div class="row">${I('video',16)}ห้องประชุมออนไลน์พร้อมใช้งาน</div>`:''}
+    </div>
+    ${objs.length?`<div class="n-obj"><b>วัตถุประสงค์ :</b> ${objs.map(esc).join(' / ')}</div>`:''}
+    <div class="n-act">
+      ${mine?`<span class="chip ${aStCls(mine.status)}">สถานะของคุณ: ${esc(mine.status)}</span>
+        ${mine.status!=='เข้าร่วม'?`<button class="btn btn-g" onclick="setSelf('${mine.id}','เข้าร่วม')">${I('check',15)} ยืนยันเข้าร่วมประชุม</button>`:''}
+        ${mine.status!=='ลา'?`<button class="btn" onclick="setSelf('${mine.id}','ลา')">แจ้งลาประชุม</button>`:''}`
+        :`<span class="dt">ท่านไม่ได้อยู่ในรายชื่อผู้เข้าร่วมของครั้งนี้</span>`}
+      ${m.link?`<a class="btn btn-p" href="${esc(m.link)}" target="_blank" rel="noopener">${I('video',16)} เข้าห้องประชุมออนไลน์</a>`:''}
+      <button class="btn" onclick="goMeeting('${m.id}')">${I('list',15)} ดูวาระการประชุม</button>
+      ${canWrite()?`<button class="btn" onclick="printInvite('${m.id}')">${I('print',15)} พิมพ์หนังสือเชิญ</button>`:''}
+    </div>
+    <p class="dt" style="text-align:center;margin-top:14px">ยืนยันเข้าร่วมแล้ว ${cnt.yes} จาก ${cnt.n} คน · จึงเรียนมาเพื่อโปรดทราบและพิจารณานัดหมาย</p>
+  </div>`;
+}
+function goMeeting(id){state.sel=id;state.openAg=new Set();go('meetings')}
+
+/* ═════════ ปฏิทินนัดหมาย ═════════ */
+function renderCalendar(){
+  const db=state.db;
+  const y=state.cal.getFullYear(),mo=state.cal.getMonth();
+  const first=new Date(y,mo,1);const start=new Date(first);start.setDate(1-first.getDay());
+  const label=first.toLocaleDateString('th-TH',{month:'long',year:'numeric'});
+  let cells='';
+  for(let i=0;i<42;i++){
+    const d=new Date(start);d.setDate(start.getDate()+i);const di=iso(d);
+    const evs=db.meetings.filter(m=>m.date===di);
+    cells+=`<div class="cd ${d.getMonth()!==mo?'off':''} ${di===todayIso()?'tdy':''} ${di===state.calPick?'pk':''}" onclick="calPick('${di}')">
+      <span class="dn">${d.getDate()}</span>
+      <div class="dots">${evs.map(e=>`<span class="dot" style="background:${e.status==='เสร็จสมบูรณ์'?'#9aa392':e.status==='รอบันทึกรายงาน'?'#c06a4e':'#c99a35'}" title="${esc(e.title)}"></span>`).join('')}</div>
+    </div>`;
+  }
+  const picks=db.meetings.filter(m=>m.date===state.calPick).sort((a,b)=>String(a.tStart).localeCompare(String(b.tStart)));
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('cal',19)} ปฏิทินนัดหมายการประชุม</h3>
+    ${canWrite()?`<button class="btn btn-g" onclick="openMeetingForm(null,'${todayIso()}')">${I('plus',16)} นัดหมายการประชุม</button>`:''}</div>
+  <div class="cal-split">
+    <div class="cal">
+      <div class="cal-h">
+        <button class="btn btn-s" onclick="calNav(-1)">‹ เดือนก่อนหน้า</button>
+        <b>${label}</b>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-s" onclick="calToday()">วันนี้</button>
+          <button class="btn btn-s" onclick="calNav(1)">เดือนถัดไป ›</button>
+        </div>
+      </div>
+      <div class="cal-g">${['อา','จ','อ','พ','พฤ','ศ','ส'].map(d=>`<div class="cw">${d}</div>`).join('')}${cells}</div>
+      <div style="padding:10px 16px;display:flex;gap:16px;font-size:12.5px;color:var(--mut);flex-wrap:wrap">
+        <span><span class="dot" style="background:#c99a35"></span> กำหนดการ</span>
+        <span><span class="dot" style="background:#c06a4e"></span> รอบันทึกรายงาน</span>
+        <span><span class="dot" style="background:#9aa392"></span> เสร็จสมบูรณ์</span>
+        <span>· คลิกที่วันใดก็ได้เพื่อดูหรือนัดหมายการประชุม</span>
+      </div>
+    </div>
+    <div class="daypane">
+      <h3>${I('cal',16)} ${fmtD(state.calPick)}</h3>
+      ${picks.length?picks.map(m=>`
+        <div class="evrow" onclick="goMeeting('${m.id}')">
+          <b>${esc(m.title)}</b>
+          <div class="dt" style="margin-top:3px">ครั้งที่ ${esc(m.no)} · เวลา ${esc(m.tStart)}${m.tEnd?'-'+esc(m.tEnd):''} น. · ${esc(m.place)}</div>
+          <div style="margin-top:6px"><span class="chip ${mStCls(m.status)}">${esc(m.status)}</span></div>
+        </div>`).join(''):'<div class="dt" style="padding:6px 0 12px">ไม่มีการประชุมในวันนี้</div>'}
+      ${canWrite()?`<button class="btn btn-g" style="width:100%;justify-content:center" onclick="openMeetingForm(null,'${state.calPick}')">${I('plus',15)} นัดหมายประชุมในวันนี้</button>`:''}
+    </div>
+  </div>`;
+}
+function calNav(d){state.cal=new Date(state.cal.getFullYear(),state.cal.getMonth()+d,1);renderCalendar()}
+function calToday(){state.cal=new Date();state.calPick=todayIso();renderCalendar()}
+function calPick(d){state.calPick=d;renderCalendar()}
+
+/* ═════════ แฟ้มการประชุม ═════════ */
+function renderMeetings(){
+  const db=state.db;
+  const ms=mSort(db.meetings).filter(m=>!state.q||(m.title+m.no+m.place).toLowerCase().includes(state.q.toLowerCase()));
+  if(!state.sel||!db.meetings.find(x=>x.id===state.sel))
+    state.sel=(ms.find(m=>m.date>=todayIso())||ms[0]||{}).id;
+  $('#view').innerHTML=`
+  <div class="msplit">
+    <div class="mlist">
+      <div class="mlist-top" style="display:flex;gap:8px">
+        <input class="in" placeholder="ค้นหาการประชุม..." value="${esc(state.q)}" oninput="state.q=this.value;renderMeetingList()">
+        ${canWrite()?`<button class="btn btn-g btn-s" onclick="openMeetingForm()">${I('plus',15)} สร้าง</button>`:''}
+      </div>
+      <div id="mlist">${meetingListHTML(ms)}</div>
+    </div>
+    <div id="mdetail">${state.sel?meetingDetailHTML(db.meetings.find(m=>m.id===state.sel)):'<div class="empty">เลือกการประชุมจากรายการด้านซ้าย</div>'}</div>
+  </div>`;
+}
+function meetingListHTML(ms){
+  if(!ms.length)return '<div class="empty" style="margin:16px">ไม่พบการประชุม</div>';
+  return ms.map(m=>{
+    const ags=state.db.agendas.filter(a=>a.mid===m.id).length;
+    const fls=state.db.files.filter(f=>f.mid===m.id).length;
+    return `<div class="mrow ${m.id===state.sel?'on':''}" onclick="selectMeeting('${m.id}')">
+      <div class="mno">${esc(noMain(m.no))}</div>
+      <div class="mt"><b>${esc(m.title)}</b><span class="dt">${fmtDs(m.date)} · ${ags} วาระ · ${fls} เอกสาร</span></div>
+      <span class="chip ${mStCls(m.status)}" style="font-size:10.5px">${esc(m.status)}</span>
+    </div>`}).join('');
+}
+function renderMeetingList(){$('#mlist').innerHTML=meetingListHTML(mSort(state.db.meetings).filter(m=>!state.q||(m.title+m.no+m.place).toLowerCase().includes(state.q.toLowerCase())))}
+function selectMeeting(id){state.sel=id;renderMeetings()}
+
+function meetingDetailHTML(m){
+  const db=state.db,canW=canWrite();
+  const mine=db.attendees.find(a=>a.mid===m.id&&a.uid===state.user.id);
+  return `<div class="sheet">
+    <div class="sheet-h">
+      <div class="sh-top">
+        ${canW?`<select class="in in-s" onchange="setMStatus('${m.id}',this.value)">${M_ST.map(s=>`<option ${s===m.status?'selected':''}>${s}</option>`).join('')}</select>`:`<span class="chip ${mStCls(m.status)}">${esc(m.status)}</span>`}
+        <span class="chip ch-gray">${esc(m.type)}</span>
+        ${+m.approved?`<span class="chip ch-green">${I('check',12)} ประธานรับทราบรายงาน</span>`:''}
+      </div>
+      <h2>${esc(m.title)}</h2>
+      <p class="sh-sub">ครั้งที่ ${esc(m.no)}${m.docNo?` · หนังสือที่ ${esc(m.docNo)}`:''} · ${fmtD(m.date)} · เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น. · ณ ${esc(m.place)}</p>
+      <p class="sh-sub">ประธาน : ${esc(uName(m.chairId))} · เลขานุการ : ${esc(uName(m.secId))}</p>
+      ${m.link?`<a class="live-link" href="${esc(m.link)}" target="_blank" rel="noopener">${I('video',16)} เข้าห้องประชุมออนไลน์</a>`:''}
+      <div class="sh-tools">
+        ${canW?`<button class="btn btn-s" onclick="openMeetingForm('${m.id}')">${I('edit',14)} แก้ไขข้อมูล</button>`:''}
+        <button class="btn btn-s" onclick="goMeetingReport('${m.id}')">${I('doc',14)} รายงานการประชุม</button>
+        <button class="btn btn-s" onclick="printInvite('${m.id}')">${I('print',14)} หนังสือเชิญประชุม</button>
+        ${((isChair()||isAdmin())&&!+m.approved)?`<button class="btn btn-s btn-g" onclick="approveMeeting('${m.id}')">${I('check',14)} ประธานรับทราบรายงาน</button>`:''}
+        ${canW?`<button class="btn btn-s btn-d" onclick="delMeeting('${m.id}')">${I('trash',14)} ลบการประชุม</button>`:''}
+      </div>
+    </div>
+    <div class="sheet-b">
+      <div class="agg">
+        <div class="agg-h"><span class="gno">ว</span> วาระการประชุม มติ และบันทึกการหารือ
+          ${canW?`<button class="btn btn-s gadd" onclick="openAgendaForm('${m.id}')">${I('plus',13)} เพิ่มหัวข้อวาระ</button>`:''}</div>
+        ${[1,2,3,4,5].map(g=>{
+          const items=db.agendas.filter(a=>a.mid===m.id&&+a.grp===g);
+          return `<div style="margin-top:14px">
+            <div style="font-weight:700;font-size:14.5px;color:var(--gold-d)">วาระที่ ${g} ${GROUPS[g]}</div>
+            ${items.length?items.map(a=>agendaItemHTML(a,m)).join(''):`<div class="dt" style="margin:5px 0 0 2px">ยังไม่มีหัวข้อในวาระนี้${canW?` — <a href="javascript:void(0)" onclick="openAgendaForm('${m.id}',null,${g})">เพิ่มหัวข้อ</a>`:''}</div>`}
+          </div>`}).join('')}
+      </div>
+      <div class="agg">
+        <div class="agg-h"><span class="gno">ส</span> รายชื่อผู้เข้าร่วมประชุม
+          ${mine&&!canW?`<span class="chip ${aStCls(mine.status)}" style="margin-left:auto">สถานะของคุณ: ${esc(mine.status)}</span>`:''}
+          ${canW?`<button class="btn btn-s gadd" onclick="openAttendeeForm('${m.id}')">${I('plus',13)} เพิ่มผู้เข้าร่วม</button>`:''}</div>
+        <div style="margin-top:10px">${attendeeSectionHTML(m)}</div>
+      </div>
+      <div class="agg">
+        <div class="agg-h"><span class="gno">ค</span> เอกสารแนบ (จัดเก็บบน Google Drive)</div>
+        <div class="fls" style="margin-top:6px">${fileSectionHTML(m)}</div>
+      </div>
+    </div>
+  </div>`;
+}
+function agendaItemHTML(a,m){
+  const open=state.openAg.has(a.id);
+  const canW=canWrite();
+  const disc=state.db.discussions.filter(d=>d.mid===m.id&&d.aid===a.id).sort((x,y)=>String(x.at).localeCompare(String(y.at)));
+  const links=a.links||[];
+  return `<div class="agi">
+    <div class="agi-h" onclick="toggleAg('${a.id}')">
+      <div class="agi-t">${esc(a.title)||'(ยังไม่ระบุหัวข้อ)'} ${a.follow?'<span class="chip ch-gold" style="font-size:10.5px">ติดตามผล</span>':''}</div>
+      <div class="agi-meta">${a.presenter?'โดย '+esc(a.presenter):''}
+        <span class="dt">${disc.length} บันทึกหารือ</span>${I('chevD',15)}
+        ${canW?`<button class="btn btn-s" onclick="event.stopPropagation();openAgendaForm('${m.id}','${a.id}')">${I('edit',13)} แก้ไข</button>`:''}
+      </div>
+    </div>
+    ${open?`<div class="agi-b">
+      ${a.detail?`<div class="agi-d nl2br">${nl2br(a.detail)}</div>`:''}
+      ${links.length?`<div class="lnks">${links.map(l=>`<a class="lnk" href="${esc(l.url)}" target="_blank" rel="noopener">${I('link',13)} ${esc(l.label||l.url)}</a>`).join('')}</div>`:''}
+      <div class="dec ${a.decision?'':'dec-w'}">
+        <div class="dec-h"><span style="display:flex;gap:6px;align-items:center">${I('gavel',15)} มติ / ข้อสรุปของที่ประชุม</span>
+          ${canW?`<button class="btn btn-s" onclick="event.stopPropagation();openAgendaForm('${m.id}','${a.id}',null,true)">${I('edit',13)} บันทึกมติ</button>`:''}</div>
+        <div class="dec-b nl2br">${a.decision?nl2br(a.decision):'<i>ยังไม่ได้บันทึกมติ</i>'}</div>
+      </div>
+      <div class="disc">
+        <div class="disc-h">${I('mic',14)} บันทึกการหารือ / ความเห็นประกอบวาระ</div>
+        ${disc.map(d=>`<div class="dmsg"><div class="dava">${esc(d.name).slice(0,1)}</div>
+          <div><b>${esc(d.name)}</b> <span class="dt">${fmtAt(d.at)}</span><div class="nl2br">${nl2br(d.text)}</div></div></div>`).join('')
+          ||'<div class="dt">ยังไม่มีบันทึกการหารือในวาระนี้</div>'}
+        <form class="drow" onsubmit="return sendDisc(event,'${m.id}','${a.id}')">
+          <input class="in" id="disc_${a.id}" placeholder="พิมพ์ความเห็น ข้อเสนอ หรือลิงก์ประกอบการหารือในวาระนี้..." autocomplete="off">
+          <button class="btn btn-p btn-s" type="submit">${I('send',14)} ส่ง</button>
+        </form>
+      </div>
+    </div>`:''}
+  </div>`;
+}
+function toggleAg(id){state.openAg.has(id)?state.openAg.delete(id):state.openAg.add(id);renderMeetings()}
+function attendeeSectionHTML(m){
+  const db=state.db,canW=canWrite();
+  const rows=db.attendees.filter(a=>a.mid===m.id);
+  if(!rows.length)return '<p class="dt">ยังไม่มีรายชื่อผู้เข้าร่วม</p>';
+  return `<table class="tb"><thead><tr><th>ชื่อ-สกุล</th><th>ตำแหน่ง</th><th>บทบาทในที่ประชุม</th><th>สถานะการเข้าร่วม</th>${canW?'<th></th>':''}</tr></thead><tbody>
+  ${rows.map(a=>{
+    const self=a.uid===state.user.id;let st;
+    if(self){
+      st=`<span class="chip ${aStCls(a.status)}">${esc(a.status)}</span> `;
+      if(a.status!=='เข้าร่วม')st+=`<button class="btn btn-s btn-g" onclick="setSelf('${a.id}','เข้าร่วม')">${I('check',13)} ยืนยันเข้าร่วม</button> `;
+      if(a.status!=='ลา')st+=`<button class="btn btn-s" onclick="setSelf('${a.id}','ลา')">แจ้งลา</button>`;
+    }else if(canW){
+      st=`<select class="in in-s" onchange="setAtt('${a.id}',this.value)">${ATT_ST.map(s=>`<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select>`;
+    }else st=`<span class="chip ${aStCls(a.status)}">${esc(a.status)}</span>`;
+    return `<tr class="${self?'selfrow':''}"><td><b>${esc(a.name)}</b></td><td>${esc(a.position||'')}</td><td>${esc(a.roleIn||'')}</td>
+      <td>${st}</td>${canW?`<td>${self?'':`<button class="btn btn-s btn-d" onclick="delAttendee('${a.id}')" title="นำออก">${I('trash',13)}</button>`}</td>`:''}</tr>`;
+  }).join('')}</tbody></table>`;
+}
+function fileSectionHTML(m){
+  const canW=canWrite();
+  const fls=state.db.files.filter(f=>f.mid===m.id).sort((x,y)=>String(y.at).localeCompare(String(x.at)));
+  return `${fls.map(f=>`<div class="frow">${I('file',18)}
+    <div class="fmeta"><b>${esc(f.name)}</b><span class="dt">${esc(f.cat||'เอกสาร')} · ${fmtSize(+f.size||0)} · โดย ${esc(f.by||'-')} · ${fmtAt(f.at)}</span></div>
+    ${f.url?`<a class="btn btn-s" href="${esc(f.url)}" target="_blank" rel="noopener">${I('download',14)} เปิดไฟล์</a>`:'<span class="dt">(โหมดสาธิต: เก็บเฉพาะรายการ)</span>'}
+    ${(canW||f.by===state.user.name)?`<button class="btn btn-s btn-d" onclick="delFile('${f.id}')">${I('trash',13)}</button>`:''}
+  </div>`).join('')||'<p class="dt" style="padding:8px 0">ยังไม่มีเอกสารแนบ</p>'}
+  ${canW?`<div style="margin-top:12px"><button class="btn" onclick="openUploadForm('${m.id}')">${I('upload',15)} อัปโหลดเอกสารขึ้น Google Drive</button></div>`:''}`;
+}
+
+/* ── ฟอร์มต่าง ๆ ของแฟ้มการประชุม ── */
+function openMeetingForm(id,presetDate){
+  const db=state.db;
+  const m=id?db.meetings.find(x=>x.id===id):null;
+  const uOpts=sel=>db.users.filter(u=>String(u.active)!=='0').map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)} — ${esc(u.position)}</option>`).join('');
+  modal(`<div class="mo-h"><b>${m?'แก้ไขข้อมูลการประชุม':'นัดหมายการประชุมใหม่'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return submitMeeting(event,${m?`'${m.id}'`:'null'})">
+    <div class="f2">
+      <div><label>ครั้งที่ (เช่น 4/2568) *</label><input class="in" name="no" required value="${esc(m?m.no:'')}"></div>
+      <div><label>ประเภทการประชุม</label><select class="in" name="type">${['ประชุมสามัญ','ประชุมวิสามัญ','ประชุมเชิงปฏิบัติการ','ประชุมคณะกรรมการ','อื่น ๆ'].map(t=>`<option ${m&&m.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
+    </div>
+    <div><label>ชื่อเรื่องการประชุม *</label><input class="in" name="title" required placeholder="ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือน..." value="${esc(m?m.title:'')}"></div>
+    <div class="f3">
+      <div><label>วันที่ประชุม *</label><input class="in" type="date" name="date" required value="${esc(m?m.date:(presetDate||todayIso()))}"></div>
+      <div><label>เวลาเริ่ม</label><input class="in" type="time" name="tStart" value="${esc(m?m.tStart:'09:30')}"></div>
+      <div><label>เวลาสิ้นสุด</label><input class="in" type="time" name="tEnd" value="${esc(m?m.tEnd:'12:00')}"></div>
+    </div>
+    <div class="f2">
+      <div><label>สถานที่ประชุม</label><input class="in" name="place" value="${esc(m?m.place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2)')}"></div>
+      <div><label>เลขที่หนังสือ</label><input class="in" name="docNo" placeholder="สกส. 0XX/2568" value="${esc(m?m.docNo:'')}"></div>
+    </div>
+    <div><label>ลิงก์ห้องประชุมออนไลน์ (Google Meet / Zoom / Webex)</label>
+      <input class="in" name="link" type="url" placeholder="https://meet.google.com/..." value="${esc(m?m.link:'')}">
+      <div class="hint">ลิงก์นี้จะแสดงเป็นปุ่ม "เข้าห้องประชุมออนไลน์" ให้สมาชิกกดใช้ระหว่างเวลาประชุม</div></div>
+    <div class="f2">
+      <div><label>ประธานในการประชุม</label><select class="in" name="chairId"><option value="">— เลือก —</option>${uOpts(m?m.chairId:'u1')}</select></div>
+      <div><label>เลขานุการในการประชุม</label><select class="in" name="secId"><option value="">— เลือก —</option>${uOpts(m?m.secId:'u3')}</select></div>
+    </div>
+    <div><label>วัตถุประสงค์ของการประชุม (หนึ่งข้อต่อหนึ่งบรรทัด)</label>
+      <textarea class="in" name="objectives" placeholder="เพื่อพิจารณา...&#10;เพื่อรับทราบ...">${esc(m?m.objectives:'')}</textarea></div>
+    ${m?`<div><label>สถานะการประชุม</label><select class="in" name="status">${M_ST.map(s=>`<option ${s===m.status?'selected':''}>${s}</option>`).join('')}</select></div>`
+      :`<label style="display:flex;gap:9px;align-items:center;font-weight:500;font-size:14px"><input type="checkbox" name="std" checked> สร้างวาระมาตรฐานการประชุมของไทย (5 วาระ) โดยอัตโนมัติ</label>`}
+    <div class="mo-f">
+      <button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-p">${I('check',16)} บันทึกข้อมูลการประชุม</button>
+    </div>
+  </form>`);
+}
+async function submitMeeting(ev,id){
+  ev.preventDefault();const f=ev.target;
+  const rec={id:id||'',no:f.no.value.trim(),title:f.title.value.trim(),type:f.type.value,date:f.date.value,
+    tStart:f.tStart.value||'09:30',tEnd:f.tEnd.value||'',place:f.place.value.trim(),link:f.link.value.trim(),
+    docNo:f.docNo.value.trim(),chairId:f.chairId.value,secId:f.secId.value,objectives:f.objectives.value.trim()};
+  if(f.status)rec.status=f.status.value;
+  if(f.std)rec.std=f.std.checked;
+  try{
+    const r=await api('saveMeeting',{rec});
+    state.sel=r.newId||state.sel;state.openAg=new Set();
+    await reloadDB();closeModal();toast('บันทึกข้อมูลการประชุมเรียบร้อยแล้ว');
+    go('meetings');
+  }catch(e){toast(e.message,'err')}
+  return false;
+}
+async function delMeeting(id){
+  const m=state.db.meetings.find(x=>x.id===id);
+  if(!await ask('ลบการประชุม','ต้องการลบ "'+(m?m.title:'')+'" พร้อมวาระ ผู้เข้าร่วม เอกสาร และบันทึกหารือทั้งหมดของครั้งนี้หรือไม่?'))return;
+  try{await api('deleteMeeting',{id});state.sel=null;await reloadDB();toast('ลบการประชุมเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+async function setMStatus(id,st){
+  try{await api('saveMeeting',{rec:{id,status:st}});await reloadDB();toast('ปรับสถานะเป็น "'+st+'" แล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+async function approveMeeting(id){
+  try{await api('saveMeeting',{rec:{id,approved:1}});await reloadDB();toast('บันทึกการรับทราบของประธานเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+function openAgendaForm(mid,aid,presetGrp,focusDec){
+  const db=state.db;const m=db.meetings.find(x=>x.mid===undefined?x.id===mid:x.id===mid);
+  const a=aid?db.agendas.find(x=>x.id===aid):null;
+  modal(`<div class="mo-h"><b>${a?'แก้ไขวาระ / บันทึกมติ':'เพิ่มหัวข้อวาระการประชุม'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return submitAgenda(event,'${mid}',${a?`'${a.id}'`:'null'})">
+    <div class="f2">
+      <div><label>สังกัดวาระ</label><select class="in" name="grp">${Object.keys(GROUPS).map(g=>`<option value="${g}" ${(a?+a.grp:(presetGrp||3))==g?'selected':''}>วาระที่ ${g} ${GROUPS[g]}</option>`).join('')}</select></div>
+      <div><label>ผู้นำเสนอ / ผู้รับผิดชอบ</label><input class="in" name="presenter" value="${esc(a?a.presenter:'')}"></div>
+    </div>
+    <div><label>หัวข้อวาระ *</label><input class="in" name="title" required placeholder="เช่น เรื่องเสนอเพื่อพิจารณา : แผนการสอนภาคเรียนที่ 2/2568" value="${esc(a?a.title:'')}"></div>
+    <div><label>สาระสำคัญ / รายละเอียดประกอบ</label><textarea class="in" name="detail">${esc(a?a.detail:'')}</textarea></div>
+    <div><label>ลิงก์เอกสารอ้างอิง (เผยแพร่ให้ที่ประชุมศึกษาก่อนวันประชุมได้)</label>
+      <div id="lnkRows">${(a?a.links:[]).map(l=>linkRow(l.label,l.url)).join('')||linkRow('','')}</div>
+      <button type="button" class="btn btn-s" style="margin-top:6px" onclick="addLinkRow()">${I('plus',13)} เพิ่มลิงก์</button></div>
+    <div><label>มติ / ข้อสรุปของที่ประชุม</label><textarea class="in" id="decBox" name="decision" placeholder="บันทึกมติ ข้อสรุป หรือข้อเสนอแนะที่ที่ประชุมตกลงร่วมกัน">${esc(a?a.decision:'')}</textarea></div>
+    <label style="display:flex;gap:9px;align-items:center;font-weight:500;font-size:14px"><input type="checkbox" name="follow" ${a&&a.follow?'checked':''}> กำหนดให้มติข้อนี้อยู่ระหว่างการติดตามผล</label>
+    <div class="mo-f">
+      ${a?`<button type="button" class="btn btn-d" onclick="delAgenda('${a.id}','${mid}')">${I('trash',14)} ลบวาระ</button>`:''}
+      <button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-p">${I('check',16)} บันทึกวาระ</button>
+    </div>
+  </form>`);
+  if(focusDec)setTimeout(()=>$('#decBox').focus(),80);
+}
+const linkRow=(l,u)=>`<div class="f2" style="margin-bottom:7px"><input class="in lnl" placeholder="ชื่อเอกสาร/ลิงก์" value="${esc(l||'')}"><input class="in lnu" placeholder="https://..." value="${esc(u||'')}"></div>`;
+function addLinkRow(){$('#lnkRows').insertAdjacentHTML('beforeend',linkRow('',''))}
+async function submitAgenda(ev,mid,aid){
+  ev.preventDefault();const f=ev.target;
+  const links=[...document.querySelectorAll('#lnkRows .f2')].map(r=>{
+    const l=r.querySelector('.lnl').value.trim(),u=r.querySelector('.lnu').value.trim();
+    return l||u?{label:l,url:u}:null}).filter(Boolean);
+  const rec={id:aid||'',mid,grp:f.grp.value,title:f.title.value.trim(),presenter:f.presenter.value.trim(),
+    detail:f.detail.value.trim(),decision:f.decision.value.trim(),follow:f.follow.checked?1:0,links};
+  try{await api('saveAgenda',{rec});state.openAg=new Set([aid||'__new__']);await reloadDB();
+    if(!aid){const na=state.db.agendas.find(x=>x.mid===mid&&x.title===rec.title);if(na)state.openAg=new Set([na.id])}
+    closeModal();toast(aid?'บันทึกวาระและมติเรียบร้อยแล้ว':'เพิ่มหัวข้อวาระเรียบร้อยแล้ว');refresh();
+  }catch(e){toast(e.message,'err')}
+  return false;
+}
+async function delAgenda(aid,mid){
+  if(!await ask('ลบวาระ','ต้องการลบหัวข้อวาระนี้ (รวมบันทึกการหารือที่เกี่ยวข้อง) หรือไม่?'))return;
+  try{await api('deleteAgenda',{id:aid});await reloadDB();closeModal();toast('ลบวาระเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+async function sendDisc(ev,mid,aid){
+  ev.preventDefault();
+  const inp=document.getElementById('disc_'+aid);const text=inp.value.trim();
+  if(!text)return false;
+  try{await api('addDiscussion',{mid,aid,text});state.openAg.add(aid);await reloadDB();toast('เพิ่มบันทึกการหารือแล้ว');refresh()}catch(e){toast(e.message,'err')}
+  return false;
+}
+function openAttendeeForm(mid){
+  const db=state.db;
+  const inMeet=db.attendees.filter(a=>a.mid===mid).map(a=>a.uid);
+  modal(`<div class="mo-h"><b>เพิ่ม / เชิญผู้เข้าร่วมประชุม</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return submitAttendee(event,'${mid}')">
+    <div><label>เลือกจากสมาชิกสาขาวิชาฯ</label>
+      <select class="in" name="uid"><option value="">— ระบุชื่อภายนอก —</option>
+      ${db.users.filter(u=>String(u.active)!=='0'&&!inMeet.includes(u.id)).map(u=>`<option value="${u.id}">${esc(u.name)} — ${esc(u.position)}</option>`).join('')}</select></div>
+    <div class="f2">
+      <div><label>ชื่อ-สกุล (กรณีแขกภายนอก)</label><input class="in" name="name" placeholder="ชื่อผู้เข้าร่วม"></div>
+      <div><label>ตำแหน่ง</label><input class="in" name="position" placeholder="เช่น ผู้แทนคณะกรรมการฯ"></div>
+    </div>
+    <div class="f2">
+      <div><label>บทบาทในที่ประชุม</label><select class="in" name="roleIn">${['กรรมการและสมาชิก','ประธาน','เลขานุการ','เชิญเพื่อปรึกษา','ผู้บรรยาย'].map(r=>`<option>${r}</option>`).join('')}</select></div>
+      <div><label>สถานะเริ่มต้น</label><select class="in" name="status">${ATT_ST.map(s=>`<option>${s}</option>`).join('')}</select></div>
+    </div>
+    <div class="mo-f"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-p">${I('plus',15)} เพิ่มเข้าที่ประชุม</button></div>
+  </form>`);
+}
+async function submitAttendee(ev,mid){
+  ev.preventDefault();const f=ev.target;
+  let name=f.name.value.trim(),position=f.position.value.trim();
+  if(f.uid.value){const u=state.db.users.find(x=>x.id===f.uid.value);if(u){name=u.name;position=u.position}}
+  if(!name){toast('กรุณาเลือกสมาชิกหรือระบุชื่อ','err');return false}
+  try{await api('saveAttendee',{rec:{mid,uid:f.uid.value,name,position,roleIn:f.roleIn.value,status:f.status.value}});
+    await reloadDB();closeModal();toast('เพิ่มผู้เข้าร่วมประชุมแล้ว');refresh()}catch(e){toast(e.message,'err')}
+  return false;
+}
+async function setSelf(aid,st){
+  try{await api('saveAttendee',{rec:{id:aid,status:st}});await reloadDB();toast(st==='เข้าร่วม'?'ยืนยันเข้าร่วมประชุมแล้ว ขอบคุณครับ/ค่ะ':'บันทึกการแจ้งลาแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+async function setAtt(aid,st){
+  try{await api('saveAttendee',{rec:{id:aid,status:st}});await reloadDB();toast('ปรับสถานะผู้เข้าร่วมแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+async function delAttendee(aid){
+  if(!await ask('นำผู้เข้าร่วมออก','ต้องการนำรายชื่อนี้ออกจากที่ประชุมหรือไม่?'))return;
+  try{await api('deleteAttendee',{id:aid});await reloadDB();toast('นำรายชื่อออกแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+function openUploadForm(mid){
+  modal(`<div class="mo-h"><b>อัปโหลดเอกสารประกอบการประชุม</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return submitUpload(event,'${mid}')">
+    <div><label>เลือกไฟล์ (แนะนำไม่เกิน 15 MB)</label>
+      <input class="in" type="file" name="f" required style="padding:9px;background:#fff">
+      <div class="hint">ไฟล์จะถูกส่งผ่าน Google Apps Script เข้าสู่โฟลเดอร์ Google Drive ของสาขาวิชาฯ โดยอัตโนมัติ</div></div>
+    <div><label>หมวดเอกสาร</label><select class="in" name="cat">
+      ${['เอกสารประกอบวาระ','บันทึกรายงานการประชุม','ภาพถ่ายกิจกรรม','รายงานผลการดำเนินงาน','อื่น ๆ'].map(c=>`<option>${c}</option>`).join('')}</select></div>
+    <div class="mo-f"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-g">${I('upload',15)} อัปโหลด</button></div>
+  </form>`);
+}
+async function submitUpload(ev,mid){
+  ev.preventDefault();
+  const f=ev.target.f.files[0];
+  if(!f)return false;
+  if(f.size>15*1024*1024){toast('ไฟล์ใหญ่เกิน 15 MB กรุณาบีบอัดหรือแชร์ลิงก์แทน','err');return false}
+  let b64='';
+  if(f.size<=2*1024*1024){
+    b64=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.readAsDataURL(f)});
+  }
+  try{
+    await api('uploadFile',{mid,name:f.name,mime:f.type||'application/octet-stream',size:f.size,cat:ev.target.cat.value,b64,by:state.user.name});
+    await reloadDB();closeModal();toast('อัปโหลดเอกสารเรียบร้อยแล้ว');refresh();
+  }catch(e){toast(e.message,'err')}
+  return false;
+}
+async function delFile(fid){
+  if(!await ask('ลบเอกสาร','ต้องการลบเอกสารแนบนี้ออกจากระบบ (ไฟล์ใน Drive จะถูกย้ายไปถังขยะ) หรือไม่?'))return;
+  try{await api('deleteFile',{id:fid});await reloadDB();toast('ลบเอกสารแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+
+/* ═════════ รายงานการประชุม ═════════ */
+function goMeetingReport(id){state.reportSel=id;go('report')}
+function renderReport(){
+  const ms=mSort(state.db.meetings);
+  if(!state.reportSel||!ms.find(x=>x.id===state.reportSel))
+    state.reportSel=(ms.find(x=>x.date>=todayIso())||ms[0]||{}).id;
+  const m=ms.find(x=>x.id===state.reportSel);
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('doc',19)} รายงานการประชุมฉบับสมบูรณ์</h3></div>
+  <div class="rp-bar">
+    <div style="flex:1;min-width:280px"><label class="rp-l">เลือกการประชุม</label>
+      <select class="in" onchange="pickReport(this.value)">${ms.map(x=>`<option value="${x.id}" ${x.id===state.reportSel?'selected':''}>ครั้งที่ ${esc(x.no)} — ${esc(x.title)} (${fmtDs(x.date)})</option>`).join('')}</select></div>
+    <div class="rp-btns">
+      ${m?`<button class="btn" onclick="goMeeting('${m.id}')">${I('edit',15)} ไปบันทึกมติ</button>
+      <button class="btn btn-p" onclick="printDoc('${m.id}')">${I('print',16)} พิมพ์ / บันทึกเป็น PDF</button>`:''}
+    </div>
+  </div>
+  ${m?`<div class="doc-wrap">${docHTML(m)}</div>`:'<div class="empty">ยังไม่มีการประชุมในระบบ</div>'}`;
+}
+function pickReport(v){state.reportSel=v;renderReport()}
+function docHTML(m){
+  const db=state.db;
+  const ags=db.agendas.filter(a=>a.mid===m.id).sort((x,y)=>(+x.grp)-(+y.grp));
+  const att=db.attendees.filter(a=>a.mid===m.id);
+  const cName=uName(m.chairId),cPos=uPos(m.chairId);
+  const sName=uName(m.secId),sPos=m.secId===m.chairId?'เลขานุการในการประชุม':uPos(m.secId);
+  const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
+  const attMain=att.filter(a=>!['ประธาน','เลขานุการ'].includes(a.roleIn));
+  return `<div class="a4">
+    <div class="dorg"><div class="dseal">${I('cap',30)}</div>
+      <div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    <div class="dline"></div>
+    <h2 class="dtitle">รายงานการประชุมเรื่อง ${esc(m.title)}</h2>
+    <p class="dsub">ครั้งที่ ${esc(m.no)}${m.docNo?` (หนังสือที่ ${esc(m.docNo)})`:''} วัน${fmtD(m.date)} เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น. ณ ${esc(m.place)}</p>
+    ${objs.length?`<h4 class="dsec">วัตถุประสงค์ของการประชุม</h4><ol class="dl">${objs.map(o=>`<li>${esc(o)}</li>`).join('')}</ol>`:''}
+    <h4 class="dsec">ผู้เข้าร่วมประชุม</h4>
+    <p><b>ประธาน</b> : ${esc(cName)} — ${esc(cPos)}</p>
+    <p><b>เลขานุการ</b> : ${esc(sName)} — ${esc(sPos)}</p>
+    <p><b>กรรมการและผู้เข้าร่วมประชุม</b> :</p>
+    <ol class="dl">${attMain.map(a=>`<li>${esc(a.name)} — ${esc(a.position||'')}${a.status==='ลา'?' <i>(แจ้งลาประชุม)</i>':''}${a.status==='ขาด'?' <i>(ขาดประชุม)</i>':''}</li>`).join('')||'<li>—</li>'}</ol>
+    <h4 class="dsec">วาระการประชุม มติ และข้อสรุป</h4>
+    ${[1,2,3,4,5].map(g=>{
+      const items=ags.filter(a=>+a.grp===g);if(!items.length)return '';
+      return `<p class="dwg">วาระที่ ${g} ${GROUPS[g]}</p>`+items.map(a=>`
+        <div class="ditem">
+          <p><b>${esc(a.title)}</b>${a.presenter?` (โดย ${esc(a.presenter)})`:''}</p>
+          ${a.detail?`<p class="dindent nl2br">${nl2br(a.detail)}</p>`:''}
+          ${a.links&&a.links.length?`<p class="dindent">เอกสารอ้างอิง : ${a.links.map(l=>esc(l.label||l.url)).join(' ; ')}</p>`:''}
+          <p class="dindent"><b>มติ/ข้อสรุป :</b> ${a.decision?nl2br(a.decision):'<i>(รอเลขานุการบันทึกมติ)</i>'}${a.follow?' <b>[อยู่ระหว่างติดตามผล]</b>':''}</p>
+        </div>`).join('');
+    }).join('')}
+    <div class="sig">
+      <p>ลงชื่อ ..................................................... ประธานในการประชุม</p>
+      <p class="sign">(${esc(cName)})<br>${esc(cPos)}</p>
+      ${+m.approved?'<p class="dokay">รายงานฉบับนี้ได้รับความเห็นชอบจากประธานในการประชุมแล้ว</p>':''}
+    </div>
+    <div class="sig">
+      <p>ลงชื่อ ..................................................... เลขานุการในการประชุม</p>
+      <p class="sign">(${esc(sName)})<br>${esc(sPos)}</p>
+    </div>
+  </div>`;
+}
+function printDoc(mid){
+  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
+  $('#printArea').innerHTML=docHTML(m);
+  setTimeout(()=>window.print(),60);
+}
+function printInvite(mid){
+  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
+  const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
+  const ags=state.db.agendas.filter(a=>a.mid===m.id).sort((x,y)=>(+x.grp)-(+y.grp));
+  $('#printArea').innerHTML=`<div class="a4">
+    <div class="dorg"><div class="dseal">${I('cap',30)}</div>
+      <div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    <div class="dline"></div>
+    <p style="margin-top:14px">หนังสือที่ ${esc(m.docNo||'........................')}</p>
+    <p style="margin-top:14px"><b>เรื่อง</b> ขอเชิญประชุม${esc(m.title)} ครั้งที่ ${esc(m.no)}</p>
+    <p><b>เรียน</b> คณาจารย์และบุคลากรประจำสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา</p>
+    <p style="margin-top:10px;text-indent:44px">ด้วยสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม มีกำหนดจัดการประชุมดังกล่าว
+    ในวัน${fmtD(m.date)} เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น. ณ ${esc(m.place)}${m.link?' และประชุมผ่านระบบออนไลน์ ('+esc(m.link)+')':''}
+    โดยมีวัตถุประสงค์${objs.length?objs.map(esc).join(' / '):'เพื่อพิจารณากิจการตามวาระที่แนบมา'}</p>
+    <p style="margin-top:10px"><b>วาระการประชุม</b> (แนบท้ายหนังสือ)</p>
+    <ol class="dl">${[1,2,3,4,5].map(g=>{const items=ags.filter(a=>+a.grp===g);return items.length?`<li>วาระที่ ${g} ${GROUPS[g]}${items.length>1||items[0].title!==GROUPS[g]?' : '+items.map(a=>esc(a.title)).join(' / '):''}</li>`:''}).filter(Boolean).join('')}</ol>
+    <p style="margin-top:10px">จึงเรียนมาเพื่อโปรดทราบและพิจารณานัดหมายให้สอดคล้องกัน และขอให้ผู้เข้าร่วมประชุมศึกษาเอกสารประกอบวาระล่วงหน้า จึงเป็นสาระสำคัญ</p>
+    <div class="sig">
+      <p>ลงชื่อ ..................................................... เลขานุการสาขาวิชาฯ</p>
+      <p class="sign">(${esc(uName(m.secId))})<br>${esc(uPos(m.secId))}</p>
+    </div>
+  </div>`;
+  setTimeout(()=>window.print(),60);
+}
+
+/* ═════════ สมาชิกและสิทธิ์ ═════════ */
+function renderUsers(){
+  const us=state.db.users.slice();
+  const order={admin:0,chair:1,secretary:2,member:3};
+  us.sort((a,b)=>(order[a.role]||9)-(order[b.role]||9)||String(a.name).localeCompare(b.name));
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('users',19)} สมาชิกและการกำหนดสิทธิ์ผู้ใช้</h3>
+    ${isAdmin()?`<button class="btn btn-g" onclick="openUserForm()">${I('plus',16)} เพิ่มสมาชิก</button>`:''}</div>
+  <div class="card" style="padding:0;overflow:auto">
+    <table class="tb"><thead><tr><th>ชื่อ-สกุล</th><th>อีเมล (บัญชีเข้าใช้งาน)</th><th>ตำแหน่ง</th><th>บทบาท / สิทธิ์</th><th>สถานะ</th>${isAdmin()?'<th>จัดการ</th>':''}</tr></thead><tbody>
+    ${us.map(u=>`<tr><td><b>${esc(u.name)}</b></td><td>${esc(u.email)}</td><td>${esc(u.position||'')}</td>
+      <td><span class="chip ${u.role==='admin'?'ch-gold':u.role==='secretary'?'ch-red':u.role==='chair'?'ch-green':'ch-gray'}">${ROLE_L[u.role]}</span></td>
+      <td>${String(u.active)==='0'?'<span class="chip ch-red">ระงับใช้งาน</span>':'<span class="chip ch-green">ปกติ</span>'}</td>
+      ${isAdmin()?`<td style="white-space:nowrap">
+        <button class="btn btn-s" onclick="openUserForm('${u.id}')">${I('edit',13)}</button>
+        ${u.id!==state.user.id?`<button class="btn btn-s btn-d" onclick="delUser('${u.id}')">${I('trash',13)}</button>`:''}
+      </td>`:''}</tr>`).join('')}
+    </tbody></table>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px">${I('shield',16)} นิยามบทบาทและสิทธิ์ในระบบ</h3>
+    <div class="role-def">
+      <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง รวมถึงเพิ่ม/ลบสมาชิก กำหนดบทบาท ลบการประชุม และตั้งค่าการเชื่อมต่อกับ Google Sheet / Drive</span></div>
+      <div class="rd"><b><span class="chip ch-green">ประธาน</span></b><span>เข้าดูข้อมูลได้ทั้งหมด และทำหน้าที่กด "ประธานรับทราบรายงาน" เพื่ออนุมัติรายงานการประชุมฉบับสมบูรณ์</span></div>
+      <div class="rd"><b><span class="chip ch-red">เลขานุการ</span></b><span>นัดหมายประชุม จัดวาระ บันทึกมติ อัปโหลดเอกสารขึ้น Google Drive จัดการรายชื่อผู้เข้าร่วม และพิมพ์หนังสือเชิญ/รายงาน</span></div>
+      <div class="rd"><b><span class="chip ch-gray">สมาชิก</span></b><span>เข้าดูประกาศเชิญ วาระ เอกสาร รายงาน ยืนยันเข้าร่วมหรือแจ้งลา และร่วมบันทึกความเห็นในแต่ละวาระ</span></div>
+    </div>
+  </div>`;
+}
+function openUserForm(id){
+  const u=id?state.db.users.find(x=>x.id===id):null;
+  modal(`<div class="mo-h"><b>${u?'แก้ไขข้อมูลสมาชิก':'เพิ่มสมาชิกใหม่'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return submitUser(event,${u?`'${u.id}'`:'null'})">
+    <div><label>ชื่อ-สกุล (พร้อมคำนำหน้า) *</label><input class="in" name="name" required value="${esc(u?u.name:'')}"></div>
+    <div class="f2">
+      <div><label>อีเมล / ชื่อบัญชี *</label><input class="in" name="email" required value="${esc(u?u.email:'')}"></div>
+      <div><label>ตำแหน่ง</label><input class="in" name="position" value="${esc(u?u.position:'')}" placeholder="เช่น อาจารย์ประจำ"></div>
+    </div>
+    <div class="f2">
+      <div><label>บทบาท / สิทธิ์</label><select class="in" name="role">${Object.keys(ROLE_L).map(r=>`<option value="${r}" ${u&&u.role===r?'selected':''}>${ROLE_L[r]}</option>`).join('')}</select></div>
+      <div><label>รหัสผ่าน ${u?'(เว้นว่าง = คงรหัสเดิม)':'*'}</label><input class="in" name="pass" type="text" ${u?'':'required'} placeholder="${u?'••••••':'ตั้งรหัสผ่านเริ่มต้น'}"></div>
+    </div>
+    <label style="display:flex;gap:9px;align-items:center;font-weight:500;font-size:14px"><input type="checkbox" name="active" ${!u||String(u.active)!=='0'?'checked':''}> เปิดใช้งานบัญชีนี้</label>
+    <div class="mo-f"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-p">${I('check',16)} บันทึกสมาชิก</button></div>
+  </form>`);
+}
+async function submitUser(ev,id){
+  ev.preventDefault();const f=ev.target;
+  const rec={id:id||'',name:f.name.value.trim(),email:f.email.value.trim(),position:f.position.value.trim(),
+    role:f.role.value,active:f.active.checked?'1':'0',pass:f.pass.value};
+  try{await api('saveUser',{rec});await reloadDB();closeModal();toast('บันทึกข้อมูลสมาชิกเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+  return false;
+}
+async function delUser(id){
+  const u=state.db.users.find(x=>x.id===id);
+  if(!await ask('ลบสมาชิก','ต้องการลบบัญชีของ "'+(u?u.name:'')+'" ออกจากระบบหรือไม่?'))return;
+  try{await api('deleteUser',{id});await reloadDB();toast('ลบสมาชิกเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
+}
+
+/* ═════════ ตั้งค่าระบบ ═════════ */
+function renderSettings(){
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบและการเชื่อมต่อข้อมูล</h3></div>
+  <div class="card">
+    <span class="mode-badge ${state.demo?'ch-gold':'ch-green'} chip" style="font-size:13px">${state.demo?I('alert',15)+' โหมดสาธิต (ข้อมูลเก็บในเครื่องนี้เท่านั้น)':I('check',15)+' เชื่อมต่อ Google Apps Script แล้ว'}</span>
+    <p class="hint" style="margin-top:8px">ในโหมดสาธิต ทุกอย่างทำงานได้ครบ แต่ข้อมูลถูกบันทึกลง localStorage ของเบราว์เซอร์ เมื่อเชื่อมต่อกับ Google แล้ว ข้อมูลจะถูกเก็บใน Google Sheet และไฟล์แนบจะถูกเก็บใน Google Drive จริง</p>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">เชื่อมต่อ Google Sheet + Google Drive</h3>
+    <form class="frm" onsubmit="return saveGas(event)">
+      <div><label>URL ของ Web App (Apps Script) ที่ลงท้ายด้วย /exec</label>
+        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/....../exec" value="${esc(state.gasUrl)}"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn" onclick="testGas()">${I('refresh',15)} ทดสอบการเชื่อมต่อ</button>
+        <button type="submit" class="btn btn-p">${I('check',15)} บันทึกและเชื่อมต่อ</button>
+        ${!state.demo?`<button type="button" class="btn btn-d" onclick="useDemo()">กลับสู่โหมดสาธิต</button>`:''}
+      </div>
+    </form>
+    <div id="gasMsg" style="margin-top:12px"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:8px">ขั้นตอนการติดตั้งระบบจริง (ครั้งเดียว)</h3>
+    <ol class="steps">
+      <li>สร้าง <b>Google Sheets</b> ใหม่บน Google Drive ของสาขาวิชาฯ (ชื่อแนะนำ: "ฐานข้อมูลการประชุม ETCM")</li>
+      <li>เปิดเมนู <b>ส่วนขยาย (Extensions) → Apps Script</b> แล้ววางโค้ดจากไฟล์ <code class="k">Code.gs</code> ที่ได้รับมา แล้วบันทึก</li>
+      <li>กด <b>Deploy → New deployment → Web app</b> ตั้ง "Who has access" เป็น <b>Anyone</b> แล้วกด Deploy (อนุญาตสิทธิ์ Sheets และ Drive เมื่อระบบถาม)</li>
+      <li>คัดลอก <b>Web app URL</b> (ลงท้าย <code class="k">/exec</code>) มาวางในช่องด้านบน กดทดสอบการเช่นมต่อ — ระบบจะสร้างตารางข้อมูลและบัญชีผู้ดูแลระบบเริ่มต้นให้อัตโนมัติ (admin@etcm.msu.ac.th / รหัส 1234 — เข้าสู่ระบบแล้วเปลี่ยนทันที)</li>
+    </ol>
+  </div>`;
+}
+async function testGas(){
+  const url=$('#gasUrl').value.trim();const box=$('#gasMsg');
+  if(!url){box.innerHTML='<span class="chip ch-red">กรุณากรอก URL ก่อน</span>';return}
+  box.innerHTML='<span class="dt">กำลังทดสอบการเชื่อมต่อ...</span>';
+  try{
+    const r=await fetch(url+'?action=ping');const j=await r.json();
+    box.innerHTML=j.ok?'<span class="chip ch-green">เชื่อมต่อสำเร็จ — เซิร์ฟเวอร์พร้อมใช้งาน</span>':'<span class="chip ch-red">เซิร์ฟเวอร์ตอบกลับแต่ไม่ถูกต้อง</span>';
+  }catch(e){box.innerHTML='<span class="chip ch-red">เชื่อมต่อไม่สำเร็จ: '+esc(e.message)+'</span>'}
+}
+async function saveGas(ev){
+  ev.preventDefault();
+  const url=$('#gasUrl').value.trim();
+  if(!url){toast('กรุณากรอก URL ของ Web App','err');return false}
+  try{
+    const r=await fetch(url+'?action=ping');const j=await r.json();
+    if(!j.ok)throw new Error('เซิร์ฟเวอร์ไม่พร้อมใช้งาน');
+    localStorage.setItem('etcm_url',url);
+    state.gasUrl=url;state.demo=false;
+    toast('เชื่อมต่อสำเร็จ! กรุณาเข้าสู่ระบบด้วยบัญชีบน Google Sheet');
+    logout();
+  }catch(e){toast('บันทึกไม่ได้: '+e.message,'err')}
+  return false;
+}
+function useDemo(){
+  localStorage.removeItem('etcm_url');
+  state.gasUrl='';state.demo=true;
+  toast('กลับสู่โหมดสาธิตแล้ว');logout();
+}
+
+/* ═════════ เริ่มต้นระบบ ═════════ */
+init();
+</script>
+</body>
+</html>
