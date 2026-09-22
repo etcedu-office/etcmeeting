@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -23,7 +22,6 @@ button{font-family:inherit}
 a{color:var(--green-l)}
 .ic{vertical-align:-3px;flex:none}
 .dt{color:var(--mut);font-size:12.5px}
-.nl2br br{content:""}
 /* ---------- ปุ่ม / ฟอร์ม / ชิป ---------- */
 .btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;color:var(--ink);
   padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;box-shadow:0 1px 0 rgba(0,0,0,.05);text-decoration:none}
@@ -35,7 +33,9 @@ a{color:var(--green-l)}
 .btn-d{color:var(--red);border-color:#d8b3a6;background:#fdf6f2}
 .btn-d:hover{background:var(--red);color:#fff;border-color:var(--red)}
 .btn-s{padding:4.5px 10px;font-size:12.5px;border-radius:7px}
-.in,select.in,textarea.in{width:100%;padding:8.5px 11px;border:1px solid var(--line2);border-radius:8px;background:#fff;font:inherit;font-size:14.5px;color:var(--ink)}
+.btn-ghost{background:transparent;border:1px solid rgba(233,216,172,.4);color:#e8e2c8}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-l);background:rgba(233,216,172,.08)}
+.in{width:100%;padding:8.5px 11px;border:1px solid var(--line2);border-radius:8px;background:#fff;font:inherit;font-size:14.5px;color:var(--ink)}
 .in:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(185,138,46,.16)}
 .in-s{width:auto;padding:4px 8px;font-size:12.5px}
 textarea.in{resize:vertical;min-height:74px}
@@ -74,25 +74,23 @@ table.tb{width:100%;border-collapse:collapse;font-size:14px}
 .demo-box b{font-size:13.5px;color:var(--gold-d)}
 .qbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 /* ---------- โครงแอป ---------- */
-.masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--green-d);color:#f3eddc;border-bottom:3px double var(--gold)}
+.masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--green-d);color:#f3eddc;border-bottom:3px double var(--gold);flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
 .seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;
   box-shadow:inset 0 0 0 3.5px var(--green-d),inset 0 0 0 5px rgba(233,216,172,.55);color:var(--gold-l)}
 .brand h1{font-size:18px;font-weight:700;letter-spacing:.02em;line-height:1.25}
 .brand p{font-size:12px;color:var(--gold-l);margin-top:2px}
-.userbox{display:flex;align-items:center;gap:12px;flex:none}
+.userbox{display:flex;align-items:center;gap:12px;flex:none;flex-wrap:wrap}
 .uwho{text-align:right}
 .uname{font-weight:600;font-size:14px}
 .uchip{font-size:11px}
-.btn-ghost{background:transparent;border:1px solid rgba(233,216,172,.4);color:#e8e2c8}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold-l);background:rgba(233,216,172,.08)}
 .tabs{display:flex;gap:6px;padding:14px 24px 0;background:var(--green-d);flex-wrap:wrap}
 .tab{position:relative;display:flex;align-items:center;gap:7px;padding:9px 16px;font-size:14.5px;font-weight:500;color:#c6d0c4;
   background:#1c4034;border:1px solid #2c5a49;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;transition:.15s;top:0}
 .tab:hover{color:#fff;background:#245043}
 .tab.on{color:var(--ink);background:var(--paper);border-color:var(--line2);font-weight:600;top:1px}
 main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
-.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 12px}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 12px;flex-wrap:wrap}
 .sec-head h3{font-size:17px;color:var(--green-d);display:flex;align-items:center;gap:9px}
 .sec-head h3 .ic{color:var(--gold-d)}
 .empty{border:1px dashed var(--line2);border-radius:12px;padding:34px;text-align:center;color:var(--mut);background:#faf7ec}
@@ -109,11 +107,11 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .n-title{text-align:center;font-size:23px;font-weight:700;color:var(--green-d);line-height:1.35}
 .n-sub{text-align:center;font-size:14px;color:var(--mut);margin:6px 0 16px}
 .n-info{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 4px;display:grid;gap:7px;margin-bottom:14px}
-.n-info .row{display:flex;gap:10px;align-items:baseline;font-size:14.5px}
+.n-info .row{display:flex;gap:10px;align-items:baseline;font-size:14.5px;flex-wrap:wrap}
 .n-info .row .ic{color:var(--gold-d);margin-top:2px;align-self:center}
 .n-obj{font-size:13.5px;color:#4c544a;margin-bottom:16px}
 .n-obj b{color:var(--green-d)}
-.n-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;border-top:1px dashed var(--line);padding-top:16px}
+.n-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;border-top:1px dashed var(--line);padding-top:16px;align-items:center}
 .livedot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1s infinite;margin-right:5px}
 @keyframes blink{50%{opacity:.25}}
 .ledger{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px 22px}
@@ -135,7 +133,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 /* ---------- ปฏิทิน ---------- */
 .cal-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
 .cal{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
-.cal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.cal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);gap:8px;flex-wrap:wrap}
 .cal-h b{font-size:17px;color:var(--green-d)}
 .cal-g{display:grid;grid-template-columns:repeat(7,1fr)}
 .cw{padding:8px 0;text-align:center;font-size:12.5px;font-weight:600;color:#7a7460;border-bottom:1px solid var(--line);background:#f7f2df}
@@ -143,11 +141,11 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .cd:nth-child(7n){border-right:none}
 .cd:hover{background:#f6f0dc}
 .cd.off{opacity:.32}
-.cd .dn{display:inline-grid;place-items:center;width:24px;height:24px;font-size:13px;border-radius:50%}
+.dn{display:inline-grid;place-items:center;width:24px;height:24px;font-size:13px;border-radius:50%}
 .cd.tdy .dn{background:var(--green);color:#fff;font-weight:700}
 .cd.pk{background:#f2e9cf;box-shadow:inset 0 0 0 2px var(--gold)}
 .dots{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
-.dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
 .daypane{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px}
 .daypane h3{font-size:15.5px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:12px}
 .evrow{border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:9px;cursor:pointer;transition:.15s;background:#fffdf7}
@@ -165,7 +163,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .mrow .mt b{display:block;font-size:13.8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sheet{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow)}
 .sheet-h{padding:22px 26px;border-bottom:2px solid var(--gold);background:#f8f4e6}
-.sh-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.sh-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
 .sheet-h h2{font-size:21px;color:var(--green-d);line-height:1.35}
 .sh-sub{font-size:14px;color:#4c544a;margin-top:5px}
 .live-link{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--green);color:#f5efdb;padding:7px 14px;border-radius:99px;text-decoration:none;font-size:13.5px;font-weight:600}
@@ -173,14 +171,14 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .sh-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2)}
 .sheet-b{padding:6px 0 26px}
 .agg{margin:20px 26px 0}
-.agg-h{display:flex;gap:11px;align-items:baseline;font-weight:700;color:var(--green-d);border-bottom:2px solid var(--line2);padding-bottom:6px}
+.agg-h{display:flex;gap:11px;align-items:center;font-weight:700;color:var(--green-d);border-bottom:2px solid var(--line2);padding-bottom:6px;flex-wrap:wrap}
 .agg-h .gno{font-size:20px;color:var(--gold-d);min-width:20px}
 .agg-h .gadd{margin-left:auto}
 .agi{border:1px solid var(--line);border-radius:9px;margin:10px 0;background:#fffdf7;overflow:hidden}
-.agi-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;cursor:pointer}
+.agi-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;cursor:pointer;flex-wrap:wrap}
 .agi-h:hover{background:#faf6e8}
 .agi-t{font-weight:600;font-size:14.5px}
-.agi-meta{display:flex;align-items:center;gap:8px;flex:none;font-size:12.5px;color:var(--mut)}
+.agi-meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--mut);flex-wrap:wrap}
 .agi-b{padding:12px 14px 15px;border-top:1px dashed var(--line)}
 .agi-d{font-size:14px;margin-bottom:9px;color:#3e463d}
 .lnks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
@@ -188,7 +186,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .lnk:hover{background:#e0ece2}
 .dec{background:#eef2e6;border:1px solid #cfd8bd;border-left:4px solid var(--green-l);padding:10px 13px;border-radius:0 9px 9px 0}
 .dec-w{background:#faf4e0;border-color:#e4d3a6;border-left-color:var(--gold)}
-.dec-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--green-d);margin-bottom:5px}
+.dec-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--green-d);margin-bottom:5px;flex-wrap:wrap}
 .dec-b{font-size:14px}
 .disc{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
 .disc-h{display:flex;align-items:center;gap:7px;font-size:12.8px;font-weight:700;color:#7a7460;margin-bottom:7px}
@@ -196,12 +194,11 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .dava{width:27px;height:27px;border-radius:50%;background:var(--green);color:#fff;font-size:11.5px;display:grid;place-items:center;flex:none;margin-top:2px}
 .drow{display:flex;gap:8px;margin-top:8px}
 .drow .in{flex:1}
-.frow{display:flex;align-items:center;gap:11px;padding:10px 6px;border-bottom:1px dashed var(--line)}
+.frow{display:flex;align-items:center;gap:11px;padding:10px 6px;border-bottom:1px dashed var(--line);flex-wrap:wrap}
 .frow .ic{color:var(--gold-d)}
 .fmeta{flex:1;min-width:0}
 .fmeta b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fls{margin:0 26px}
-.bpad{padding:0 26px}
 /* ---------- รายงาน / เอกสาร ---------- */
 .rp-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 20px}
 .rp-l{font-size:12.5px;font-weight:700;color:#55503c;display:block;margin-bottom:5px}
@@ -223,28 +220,49 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .sig{margin-top:30px;text-align:right}
 .sig .sign{margin-top:2px}
 .dokay{color:#1b4d3e;font-weight:700;font-size:10.5pt}
+.a4 .tb{margin-top:10px}
+.a4 .tb th,.a4 .tb td{border:1px solid #b8b09a;font-size:11pt}
 /* ---------- สมาชิก / ตั้งค่า ---------- */
 .card{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:22px 24px}
 .role-def{display:grid;gap:10px;margin-top:16px}
 .role-def .rd{display:flex;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:9px}
 .role-def b{min-width:120px}
-.set-row{display:grid;gap:6px;margin-bottom:16px}
 .mode-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:99px;font-weight:700;font-size:13.5px}
 .steps{counter-reset:st;list-style:none;margin-top:8px}
 .steps li{position:relative;padding:0 0 10px 38px;font-size:14px}
 .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
   background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
 code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-radius:6px;font-size:12.5px;word-break:break-all}
+/* ---------- สถิติ / อีเมล ---------- */
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.scard{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 18px;border-top:3px solid var(--gold)}
+.scard b{display:block;font-size:30px;color:var(--green-d);font-family:'Anuphan'}
+.scard span{font-size:13px;color:var(--mut)}
+.chart-card{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px}
+.chart-card h3{font-size:15px;color:var(--green-d);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:12px;display:flex;gap:8px;align-items:center}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-bottom:10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.scrollx{overflow-x:auto}
+.prow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.prow:last-child{border-bottom:none}
+.prow .pn{width:240px;min-width:0;flex:none}
+.prow .pn b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbar{height:11px;background:#e9e3ce;border-radius:99px;overflow:hidden;flex:1}
+.pbar i{display:block;height:100%;background:var(--green-l);border-radius:99px}
+.pct{font-weight:700;color:var(--green-d);width:48px;text-align:right;flex:none}
+.email-prev{border:1px solid var(--line2);background:#faf7ec;border-radius:9px;padding:12px 15px;font-size:13.5px}
+.rcpt{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:13.8px;cursor:pointer}
+.rcpt:last-child{border-bottom:none}
 /* ---------- โมดัล / ทอสต์ ---------- */
 .mo-bg{position:fixed;inset:0;background:rgba(28,36,30,.5);display:grid;place-items:center;z-index:60;padding:18px;overflow:auto}
 .mo{background:var(--card);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.3);width:100%;max-width:620px;max-height:calc(100vh - 36px);overflow:auto;animation:pop .18s}
 @keyframes pop{from{transform:translateY(16px) scale(.98);opacity:0}}
 .mo-h{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:2px solid var(--gold);background:#f8f4e6;position:sticky;top:0;z-index:2}
-.mo-h b{color:var(--green-d);font-size:16px}
+.mo-h b{color:var(--green-d);font-size:16px;display:flex;gap:8px;align-items:center}
 .xbtn{background:none;border:none;cursor:pointer;color:#7a7460;padding:4px;display:grid;place-items:center;border-radius:6px}
 .xbtn:hover{color:var(--red);background:#f3e3dc}
 .mo-b{padding:20px 22px}
-.mo-f{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+.mo-f{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;flex-wrap:wrap}
 #toastRoot{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:92vw}
 .toast{background:var(--green-d);color:#f2edda;padding:10px 22px;border-radius:99px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.28);display:flex;gap:9px;align-items:center;animation:tin .25s}
 .toast.err{background:var(--red)}
@@ -264,6 +282,13 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
   .f3,.f2{grid-template-columns:1fr}
   .brand p{display:none}
 }
+@media(max-width:760px){
+  .stat-cards{grid-template-columns:repeat(2,1fr)}
+  .prow .pn{width:140px}
+  main{padding:18px 14px 60px}
+  .agg,.fls{margin-left:14px;margin-right:14px}
+  .a4{padding:30px 24px}
+}
 </style>
 </head>
 <body>
@@ -278,6 +303,7 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
       <li><span class="ficon"></span>จัดนัดหมายและประกาศเชิญประชุม ตามรูปแบบหนังสือราชการไทย</li>
       <li><span class="ficon"></span>วาระการประชุมมาตรฐาน 5 วาระ พร้อมบันทึกมติและติดตามผลรายวาระ</li>
       <li><span class="ficon"></span>แนบเอกสารผ่าน Google Drive และเข้าห้องประชุมออนไลน์จากลิงก์ในระบบ</li>
+      <li><span class="ficon"></span>ส่งอีเมลเชิญประชุมอัตโนมัติ สถิติการเข้าร่วมแบบกราฟ และส่งออกเอกสารเป็น Word</li>
       <li><span class="ficon"></span>ออกรายงานการประชุมฉบับสมบูรณ์ พร้อมลงชื่อประธานและเลขานุการ (พิมพ์เป็น PDF ได้)</li>
     </ul>
     <div class="auth-org">คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</div>
@@ -294,9 +320,9 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
       <div class="demo-box" id="demoBox" hidden>
         <b>โหมดสาธิต (Mockup)</b> — ทดลองทุกบทบาทได้ทันที รหัสผ่านทุกบัญชีคือ <code class="k">1234</code>
         <div class="qbtns">
-          <button class="btn btn-s btn-g" onclick="quickLogin('admin')">เข้าเป็นผู้ดูแลระบบ</button>
-          <button class="btn btn-s" onclick="quickLogin('secretary')">เลขานุการสาขาฯ</button>
-          <button class="btn btn-s" onclick="quickLogin('member')">สมาชิก</button>
+          <button type="button" class="btn btn-s btn-g" onclick="quickLogin('admin')">เข้าเป็นผู้ดูแลระบบ</button>
+          <button type="button" class="btn btn-s" onclick="quickLogin('secretary')">เลขานุการสาขาฯ</button>
+          <button type="button" class="btn btn-s" onclick="quickLogin('member')">สมาชิก</button>
         </div>
       </div>
     </div>
@@ -314,7 +340,7 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
       </div>
     </div>
     <div class="userbox">
-      <span class="chip ch-gold uchip" id="demoChip" hidden>โหมดสาธิต</span>
+      <span class="chip ch-gold" id="demoChip" hidden>โหมดสาธิต</span>
       <div class="uwho"><div class="uname" id="uName"></div><span class="chip ch-gray uchip" id="uRole"></span></div>
       <button class="btn btn-s btn-ghost" onclick="logout()">ออกจากระบบ</button>
     </div>
@@ -374,7 +400,9 @@ const ICONS={
  cap:'<path d="M2.5 9.5L12 4.5l9.5 5L12 14.5l-9.5-5z"/><path d="M6.5 11.5V17c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.5M21.5 9.5V15"/>',
  refresh:'<path d="M20 12a8 8 0 10-2.3 5.6M20 12V6.5M20 12h-5.5"/>',
  doc:'<path d="M6 2.5h8l4.5 4.5v14.5a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6M9 8h2"/>',
- chevD:'<path d="M6 9l6 6 6-6"/>'
+ chevD:'<path d="M6 9l6 6 6-6"/>',
+ chart:'<path d="M3 21h18M6.5 17V10M11.5 17V4.5M16.5 17v-5"/>',
+ alert:'<path d="M12 3L2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5h.01"/>'
 };
 const I=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`;
 
@@ -387,7 +415,6 @@ const ATT_ST=['รอยืนยัน','เข้าร่วม','ลา','�
 const M_ST=['กำหนดการ','กำลังประชุม','รอบันทึกรายงาน','เสร็จสมบูรณ์'];
 const ROLE_L={admin:'ผู้ดูแลระบบ',chair:'ประธาน',secretary:'เลขานุการ',member:'สมาชิก'};
 const ROLE_IN={u1:'ประธาน',u3:'เลขานุการ',u2:'เชิญเพื่อปรึกษา'};
-const ORG='สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม';
 
 /* ═════════ สถานะของแอป ═════════ */
 const state={user:null,db:null,view:'home',sel:null,q:'',reportSel:null,cal:new Date(),calPick:todayIso(),openAg:new Set(),demo:true,gasUrl:''};
@@ -445,7 +472,7 @@ function ensureDemo(){
   if(!db||!db.users){db=seedDB();localStorage.setItem('etcm_db',JSON.stringify(db))}
   return db;
 }
-function saveDemo(db){localStorage.setItem('etcm_db',JSON.stringify(db))}
+function saveDemo(db){try{localStorage.setItem('etcm_db',JSON.stringify(db))}catch(e){toast('พื้นที่จัดเก็บโหมดสาธิตเต็ม — ข้อมูลบางส่วนอาจไม่ถูกบันทึกถาวร (ใช้งานจริงเก็บบน Google Sheet ไม่มีข้อจำกัดนี้)','err')}}
 function dUpsert(db,name,rec){
   let old=rec.id?db[name].find(x=>x.id===rec.id):null;
   if(old){Object.assign(old,rec);return old}
@@ -473,8 +500,8 @@ async function demoApi(action,p){
       if(!u)throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
       if(String(u.active)==='0')throw new Error('บัญชีนี้ถูกระงับการใช้งาน');return structuredClone(u);}
     case 'loadAll':return structuredClone(db);
-    case 'saveUser':{const r=p.rec;if(!r.pass){const o=r.id?db.users.find(u=>u.id===r.id):null;if(o)r.pass=o.pass}else{r.pass=r.pass}
-      const u=dUpsert(db,'users',r);delete u.passHint;return S(u)}
+    case 'saveUser':{const r=p.rec;if(!r.pass){const o=r.id?db.users.find(u=>u.id===r.id):null;if(o)r.pass=o.pass}
+      const u=dUpsert(db,'users',r);return S(u)}
     case 'deleteUser':{db.users=db.users.filter(u=>u.id!==p.id);return S(true)}
     case 'saveMeeting':{
       let m=p.rec,isNew=!m.id||!db.meetings.find(x=>x.id===m.id);
@@ -492,8 +519,9 @@ async function demoApi(action,p){
     case 'saveAttendee':{const a=dUpsert(db,'attendees',p.rec);return S(a)}
     case 'deleteAttendee':{db.attendees=db.attendees.filter(a=>a.id!==p.id);return S(true)}
     case 'uploadFile':{
+      const keep=p.b64&&(+p.size||0)<=1.5*1024*1024; // โหมดสาธิตเก็บเนื้อไฟล์ได้เฉพาะไฟล์เล็ก (localStorage จำกัด)
       const rec={id:'f'+uid(),mid:p.mid,name:p.name,mime:p.mime,size:p.size,cat:p.cat||'เอกสารประกอบวาระ',
-        url:p.b64?('data:'+p.mime+';base64,'+p.b64):'',by:p.by||'',at:new Date().toISOString()};
+        url:keep?('data:'+p.mime+';base64,'+p.b64):'',by:p.by||'',at:new Date().toISOString()};
       db.files.push(rec);return S(rec)}
     case 'deleteFile':{db.files=db.files.filter(f=>f.id!==p.id);return S(true)}
     case 'addDiscussion':{
@@ -507,7 +535,7 @@ async function demoApi(action,p){
 function toast(msg,type){
   const t=document.createElement('div');t.className='toast'+(type==='err'?' err':'');
   t.innerHTML=(type==='err'?I('x',15):I('check',15))+esc(msg);
-  $('#toastRoot').appendChild(t);setTimeout(()=>t.remove(),3200);
+  $('#toastRoot').appendChild(t);setTimeout(()=>t.remove(),3600);
 }
 function modal(html){$('#modalRoot').innerHTML=`<div class="mo-bg" onclick="if(event.target===this)closeModal()"><div class="mo">${html}</div></div>`}
 function closeModal(){$('#modalRoot').innerHTML=''}
@@ -574,6 +602,7 @@ function logout(){
 const TABS=[
  {k:'home',l:'ภาพรวม',ic:'home'},{k:'calendar',l:'ปฏิทินนัดหมาย',ic:'cal'},
  {k:'meetings',l:'แฟ้มการประชุม',ic:'folder'},{k:'report',l:'รายงานการประชุม',ic:'doc'},
+ {k:'stats',l:'สถิติการเข้าร่วม',ic:'chart'},
  {k:'users',l:'สมาชิกและสิทธิ์',ic:'users',admin:true},{k:'settings',l:'ตั้งค่าระบบ',ic:'gear'}];
 function renderTabs(){
   $('#tabs').innerHTML=TABS.filter(t=>!t.admin||isAdmin()).map(t=>
@@ -582,10 +611,10 @@ function renderTabs(){
 function go(k){state.view=k;renderTabs();renderView();window.scrollTo({top:0,behavior:'smooth'})}
 function refresh(){renderView()}
 async function reloadDB(){state.db=await api('loadAll')}
-
 function renderView(){
   if(!state.db)return;
-  ({home:renderHome,calendar:renderCalendar,meetings:renderMeetings,report:renderReport,users:renderUsers,settings:renderSettings}[state.view]||renderHome)();
+  ({home:renderHome,calendar:renderCalendar,meetings:renderMeetings,report:renderReport,
+    stats:renderStats,users:renderUsers,settings:renderSettings}[state.view]||renderHome)();
 }
 const mSort=ms=>ms.slice().sort((a,b)=>b.date.localeCompare(a.date));
 const mStCls=s=>({กำหนดการ:'ch-gold',กำลังประชุม:'ch-green',รอบันทึกรายงาน:'ch-red',เสร็จสมบูรณ์:'ch-gray'}[s]||'ch-gray');
@@ -765,6 +794,7 @@ function meetingDetailHTML(m){
         ${canW?`<button class="btn btn-s" onclick="openMeetingForm('${m.id}')">${I('edit',14)} แก้ไขข้อมูล</button>`:''}
         <button class="btn btn-s" onclick="goMeetingReport('${m.id}')">${I('doc',14)} รายงานการประชุม</button>
         <button class="btn btn-s" onclick="printInvite('${m.id}')">${I('print',14)} หนังสือเชิญประชุม</button>
+        ${canW?`<button class="btn btn-s btn-g" onclick="openEmailForm('${m.id}')">${I('send',14)} ส่งอีเมลเชิญ</button>`:''}
         ${((isChair()||isAdmin())&&!+m.approved)?`<button class="btn btn-s btn-g" onclick="approveMeeting('${m.id}')">${I('check',14)} ประธานรับทราบรายงาน</button>`:''}
         ${canW?`<button class="btn btn-s btn-d" onclick="delMeeting('${m.id}')">${I('trash',14)} ลบการประชุม</button>`:''}
       </div>
@@ -862,6 +892,8 @@ function openMeetingForm(id,presetDate){
   const db=state.db;
   const m=id?db.meetings.find(x=>x.id===id):null;
   const uOpts=sel=>db.users.filter(u=>String(u.active)!=='0').map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)} — ${esc(u.position)}</option>`).join('');
+  const defChair=m?m.chairId:(db.users.find(u=>u.role==='chair')||db.users.find(u=>u.role==='admin')||{}).id||'';
+  const defSec=m?m.secId:(db.users.find(u=>u.role==='secretary')||{}).id||'';
   modal(`<div class="mo-h"><b>${m?'แก้ไขข้อมูลการประชุม':'นัดหมายการประชุมใหม่'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
   <form class="frm mo-b" onsubmit="return submitMeeting(event,${m?`'${m.id}'`:'null'})">
     <div class="f2">
@@ -882,8 +914,8 @@ function openMeetingForm(id,presetDate){
       <input class="in" name="link" type="url" placeholder="https://meet.google.com/..." value="${esc(m?m.link:'')}">
       <div class="hint">ลิงก์นี้จะแสดงเป็นปุ่ม "เข้าห้องประชุมออนไลน์" ให้สมาชิกกดใช้ระหว่างเวลาประชุม</div></div>
     <div class="f2">
-      <div><label>ประธานในการประชุม</label><select class="in" name="chairId"><option value="">— เลือก —</option>${uOpts(m?m.chairId:'u1')}</select></div>
-      <div><label>เลขานุการในการประชุม</label><select class="in" name="secId"><option value="">— เลือก —</option>${uOpts(m?m.secId:'u3')}</select></div>
+      <div><label>ประธานในการประชุม</label><select class="in" name="chairId"><option value="">— เลือก —</option>${uOpts(defChair)}</select></div>
+      <div><label>เลขานุการในการประชุม</label><select class="in" name="secId"><option value="">— เลือก —</option>${uOpts(defSec)}</select></div>
     </div>
     <div><label>วัตถุประสงค์ของการประชุม (หนึ่งข้อต่อหนึ่งบรรทัด)</label>
       <textarea class="in" name="objectives" placeholder="เพื่อพิจารณา...&#10;เพื่อรับทราบ...">${esc(m?m.objectives:'')}</textarea></div>
@@ -922,7 +954,7 @@ async function approveMeeting(id){
   try{await api('saveMeeting',{rec:{id,approved:1}});await reloadDB();toast('บันทึกการรับทราบของประธานเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
 }
 function openAgendaForm(mid,aid,presetGrp,focusDec){
-  const db=state.db;const m=db.meetings.find(x=>x.mid===undefined?x.id===mid:x.id===mid);
+  const db=state.db;const m=db.meetings.find(x=>x.id===mid);
   const a=aid?db.agendas.find(x=>x.id===aid):null;
   modal(`<div class="mo-h"><b>${a?'แก้ไขวาระ / บันทึกมติ':'เพิ่มหัวข้อวาระการประชุม'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
   <form class="frm mo-b" onsubmit="return submitAgenda(event,'${mid}',${a?`'${a.id}'`:'null'})">
@@ -1013,7 +1045,7 @@ async function delAttendee(aid){
 function openUploadForm(mid){
   modal(`<div class="mo-h"><b>อัปโหลดเอกสารประกอบการประชุม</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
   <form class="frm mo-b" onsubmit="return submitUpload(event,'${mid}')">
-    <div><label>เลือกไฟล์ (แนะนำไม่เกิน 15 MB)</label>
+    <div><label>เลือกไฟล์ (แนะนำไม่เกิน 10 MB)</label>
       <input class="in" type="file" name="f" required style="padding:9px;background:#fff">
       <div class="hint">ไฟล์จะถูกส่งผ่าน Google Apps Script เข้าสู่โฟลเดอร์ Google Drive ของสาขาวิชาฯ โดยอัตโนมัติ</div></div>
     <div><label>หมวดเอกสาร</label><select class="in" name="cat">
@@ -1026,11 +1058,8 @@ async function submitUpload(ev,mid){
   ev.preventDefault();
   const f=ev.target.f.files[0];
   if(!f)return false;
-  if(f.size>15*1024*1024){toast('ไฟล์ใหญ่เกิน 15 MB กรุณาบีบอัดหรือแชร์ลิงก์แทน','err');return false}
-  let b64='';
-  if(f.size<=2*1024*1024){
-    b64=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.readAsDataURL(f)});
-  }
+  if(f.size>10*1024*1024){toast('ไฟล์ใหญ่เกิน 10 MB กรุณาบีบอัดไฟล์หรือวางลิงก์ Google Drive แทน','err');return false}
+  const b64=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.readAsDataURL(f)});
   try{
     await api('uploadFile',{mid,name:f.name,mime:f.type||'application/octet-stream',size:f.size,cat:ev.target.cat.value,b64,by:state.user.name});
     await reloadDB();closeModal();toast('อัปโหลดเอกสารเรียบร้อยแล้ว');refresh();
@@ -1056,7 +1085,9 @@ function renderReport(){
       <select class="in" onchange="pickReport(this.value)">${ms.map(x=>`<option value="${x.id}" ${x.id===state.reportSel?'selected':''}>ครั้งที่ ${esc(x.no)} — ${esc(x.title)} (${fmtDs(x.date)})</option>`).join('')}</select></div>
     <div class="rp-btns">
       ${m?`<button class="btn" onclick="goMeeting('${m.id}')">${I('edit',15)} ไปบันทึกมติ</button>
-      <button class="btn btn-p" onclick="printDoc('${m.id}')">${I('print',16)} พิมพ์ / บันทึกเป็น PDF</button>`:''}
+      <button class="btn btn-p" onclick="printDoc('${m.id}')">${I('print',16)} พิมพ์ / PDF</button>
+      <button class="btn btn-g" onclick="exportWord('${m.id}','report')">${I('download',15)} Word รายงาน</button>
+      <button class="btn" onclick="exportWord('${m.id}','invite')">${I('download',15)} Word หนังสือเชิญ</button>`:''}
     </div>
   </div>
   ${m?`<div class="doc-wrap">${docHTML(m)}</div>`:'<div class="empty">ยังไม่มีการประชุมในระบบ</div>'}`;
@@ -1104,16 +1135,11 @@ function docHTML(m){
     </div>
   </div>`;
 }
-function printDoc(mid){
-  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
-  $('#printArea').innerHTML=docHTML(m);
-  setTimeout(()=>window.print(),60);
-}
-function printInvite(mid){
-  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
+function inviteHTML(mid){
+  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return '';
   const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
   const ags=state.db.agendas.filter(a=>a.mid===m.id).sort((x,y)=>(+x.grp)-(+y.grp));
-  $('#printArea').innerHTML=`<div class="a4">
+  return `<div class="a4">
     <div class="dorg"><div class="dseal">${I('cap',30)}</div>
       <div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
     <div class="dline"></div>
@@ -1131,7 +1157,185 @@ function printInvite(mid){
       <p class="sign">(${esc(uName(m.secId))})<br>${esc(uPos(m.secId))}</p>
     </div>
   </div>`;
+}
+function printDoc(mid){
+  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
+  $('#printArea').innerHTML=docHTML(m);
   setTimeout(()=>window.print(),60);
+}
+function printInvite(mid){
+  if(!inviteHTML(mid))return;
+  $('#printArea').innerHTML=inviteHTML(mid);
+  setTimeout(()=>window.print(),60);
+}
+
+/* ═════════ สถิติการเข้าร่วมแบบกราฟ ═════════ */
+const ATT_COLORS={'เข้าร่วม':'#2a6b57','ลา':'#c99a35','ขาด':'#a5402d','รอยืนยัน':'#b9bfae'};
+function renderStats(){
+  const db=state.db;
+  const atAll=db.attendees;
+  const yesAll=atAll.filter(a=>a.status==='เข้าร่วม').length;
+  const avg=atAll.length?Math.round(yesAll/atAll.length*100):0;
+  const pend=db.agendas.filter(a=>a.follow&&a.decision).length;
+  $('#view').innerHTML=`
+  <div class="sec-head"><h3>${I('chart',19)} สถิติการประชุมและการเข้าร่วม</h3>
+    <button class="btn btn-p" onclick="printStats()">${I('print',15)} พิมพ์รายงานสถิติ</button></div>
+  <div class="stat-cards">
+    <div class="scard"><b>${db.meetings.length}</b><span>การประชุมทั้งหมด</span></div>
+    <div class="scard"><b>${avg}%</b><span>อัตราการเข้าร่วมเฉลี่ย</span></div>
+    <div class="scard"><b>${db.agendas.length}</b><span>หัวข้อวาระสะสม</span></div>
+    <div class="scard"><b>${pend}</b><span>มติรอติดตามผล</span></div>
+  </div>
+  <div class="chart-card"><h3>${I('chart',16)} อัตราการเข้าร่วมรายการประชุม (ครั้งที่ / จำนวนเข้าร่วมจริง)</h3>
+    <div class="legend">${Object.keys(ATT_COLORS).map(k=>`<span><i style="background:${ATT_COLORS[k]}"></i>${k}</span>`).join('')}</div>
+    <div class="scrollx">${chartAttendanceSVG()}</div></div>
+  <div class="chart-card"><h3>${I('users',16)} อัตราการเข้าร่วมรายบุคคล</h3>${renderPeopleChart()}</div>
+  <div class="card" style="padding:0;overflow:auto">
+    <div style="padding:16px 20px 0"><h3 style="color:var(--green-d);font-size:15.5px">${I('list',16)} ตารางสรุปการเข้าร่วมรายครั้ง</h3></div>
+    <table class="tb" style="margin-top:10px"><thead><tr><th>ครั้งที่</th><th>วันที่</th><th>เรื่อง</th><th>เข้าร่วม</th><th>ลา</th><th>ขาด</th><th>รอยืนยัน</th><th>อัตรา</th></tr></thead><tbody>
+    ${db.meetings.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(m=>{
+      const at=db.attendees.filter(a=>a.mid===m.id);
+      const c=s=>at.filter(a=>a.status===s).length;
+      const rate=at.length?Math.round(c('เข้าร่วม')/at.length*100):0;
+      return `<tr><td><b>${esc(noMain(m.no))}</b></td><td>${fmtDs(m.date)}</td><td>${esc(m.title)}</td>
+        <td>${c('เข้าร่วม')}</td><td>${c('ลา')}</td><td>${c('ขาด')}</td><td>${c('รอยืนยัน')}</td>
+        <td><b style="color:var(--green-d)">${rate}%</b></td></tr>`}).join('')}
+    </tbody></table>
+  </div>`;
+}
+function chartAttendanceSVG(){
+  const db=state.db;
+  const ms=db.meetings.slice().sort((a,b)=>a.date.localeCompare(b.date));
+  if(!ms.length)return '<div class="empty">ยังไม่มีข้อมูลการประชุม</div>';
+  const data=ms.map(m=>{const at=db.attendees.filter(a=>a.mid===m.id);
+    const c=s=>at.filter(a=>a.status===s).length;
+    return {m,y:c('เข้าร่วม'),l:c('ลา'),ab:c('ขาด'),p:c('รอยืนยัน'),t:at.length};});
+  const max=Math.max(1,...data.map(d=>d.t));
+  const bw=38,gap=26,top=24,bot=42,H=250,W=data.length*(bw+gap)+48;
+  const sc=(H-top-bot)/max;
+  let s='';
+  data.forEach((d,i)=>{
+    const x=24+i*(bw+gap);let cum=0;
+    [['เข้าร่วม',d.y],['ลา',d.l],['ขาด',d.ab],['รอยืนยัน',d.p]].forEach(([k,v])=>{
+      if(!v)return;const h=v*sc;
+      s+=`<rect x="${x}" y="${(H-bot-cum-h).toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" fill="${ATT_COLORS[k]}" rx="2"><title>${esc(d.m.no)}: ${k} ${v} คน</title></rect>`;cum+=h;});
+    s+=`<text x="${x+bw/2}" y="${(H-bot-cum-6).toFixed(1)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#55503c">${d.y}/${d.t}</text>`;
+    s+=`<text x="${x+bw/2}" y="${H-bot+17}" text-anchor="middle" font-size="11" fill="#6d7266">ครั้งที่ ${esc(noMain(d.m.no))}</text>`;
+    s+=`<text x="${x+bw/2}" y="${H-bot+32}" text-anchor="middle" font-size="10" fill="#9a998a">${fmtDs(d.m.date)}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:${W}px;display:block" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+function renderPeopleChart(){
+  const db=state.db;
+  return db.users.filter(u=>String(u.active)!=='0').map(u=>{
+    const inv=db.attendees.filter(a=>a.uid===u.id);
+    const yes=inv.filter(a=>a.status==='เข้าร่วม').length;
+    const pct=inv.length?Math.round(yes/inv.length*100):0;
+    return `<div class="prow">
+      <div class="pn"><b>${esc(u.name)}</b><span class="dt">เข้าร่วม ${yes} จาก ${inv.length} ครั้ง · ${esc(u.position||'')}</span></div>
+      <div class="pbar"><i style="width:${pct}%"></i></div><div class="pct">${pct}%</div></div>`;
+  }).join('')||'<div class="empty">ยังไม่มีข้อมูล</div>';
+}
+function printStats(){
+  const db=state.db;
+  const ms=db.meetings.slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const atAll=db.attendees;
+  const avg=atAll.length?Math.round(atAll.filter(a=>a.status==='เข้าร่วม').length/atAll.length*100):0;
+  $('#printArea').innerHTML=`<div class="a4">
+    <div class="dorg"><div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    <div class="dline"></div>
+    <h2 class="dtitle">รายงานสรุปสถิติการประชุม</h2>
+    <p class="dsub">ข้อมูล ณ วันที่ ${fmtDs(todayIso())} · รวม ${ms.length} ครั้ง · อัตราเข้าร่วมเฉลี่ยรวม ${avg}%</p>
+    <table class="tb"><thead><tr><th>ครั้งที่</th><th>วันที่</th><th>เรื่อง</th><th>เข้าร่วม</th><th>ลา</th><th>ขาด</th><th>อัตรา</th></tr></thead><tbody>
+    ${ms.map(m=>{const at=db.attendees.filter(a=>a.mid===m.id);
+      const c=s=>at.filter(a=>a.status===s).length;
+      const rate=at.length?Math.round(c('เข้าร่วม')/at.length*100):0;
+      return `<tr><td style="text-align:center">${esc(m.no)}</td><td>${fmtDs(m.date)}</td><td>${esc(m.title)}</td>
+        <td style="text-align:center">${c('เข้าร่วม')}</td><td style="text-align:center">${c('ลา')}</td>
+        <td style="text-align:center">${c('ขาด')}</td><td style="text-align:center">${rate}%</td></tr>`}).join('')}
+    </tbody></table>
+    <div class="sig"><p>ลงชื่อ ..................................................... ผู้ดูแลระบบ</p>
+    <p class="sign">(${esc(state.user.name)})<br>${esc(state.user.position||ROLE_L[state.user.role])}</p></div>
+  </div>`;
+  setTimeout(()=>window.print(),60);
+}
+
+/* ═════════ ส่งอีเมลเชิญประชุม (MailApp) ═════════ */
+function openEmailForm(mid){
+  const db=state.db,m=db.meetings.find(x=>x.id===mid);if(!m)return;
+  const recips=db.attendees.filter(a=>a.mid===mid&&a.uid).map(a=>{
+    const u=db.users.find(x=>x.id===a.uid);
+    return (u&&u.email)?{uid:a.uid,name:a.name,email:u.email}:null;}).filter(Boolean);
+  const sent=(db.notifications||[]).filter(n=>n.mid===mid).length;
+  modal(`<div class="mo-h"><b>${I('send',16)} ส่งอีเมลเกี่ยวกับการประชุม</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
+  <form class="frm mo-b" onsubmit="return sendEmails(event,'${mid}')">
+    <div class="f2">
+      <div><label>ประเภทจดหมาย</label><select class="in" name="mailType">
+        <option value="invite">หนังสือเชิญประชุม</option>
+        <option value="reminder">เตือนความจำการประชุม</option></select></div>
+      <div><label>ผู้ส่ง</label><input class="in" value="ETCM Meeting Hub — สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา" disabled style="background:#f3efe0"></div>
+    </div>
+    <div><label>เรื่อง (อัตโนมัติ)</label><input class="in" disabled value="${esc(m.title)} ครั้งที่ ${esc(m.no)}"></div>
+    <div><label>ผู้รับ — เลือกผู้ที่จะส่ง (${recips.length} คน)</label>
+      <div style="border:1px solid var(--line2);border-radius:9px;padding:4px 12px;max-height:190px;overflow:auto">
+      ${recips.map(r=>`<label class="rcpt"><input type="checkbox" name="em" value="${r.uid}" checked>
+        <div style="flex:1;min-width:0"><b>${esc(r.name)}</b><div class="dt">${esc(r.email)}</div></div></label>`).join('')
+        ||'<p class="dt" style="padding:8px 0">ไม่มีสมาชิกที่มีอีเมลในที่ประชุมนี้</p>'}
+      </div>
+      ${recips.length?`<div class="hint"><a href="javascript:void(0)" onclick="document.querySelectorAll('input[name=em]').forEach(x=>x.checked=true)">เลือกทั้งหมด</a> · <a href="javascript:void(0)" onclick="document.querySelectorAll('input[name=em]').forEach(x=>x.checked=false)">ไม่เลือกเลย</a></div>`:''}
+    </div>
+    <div><label>ข้อความเพิ่มเติมจากเลขานุการ (ถ้ามี)</label>
+      <textarea class="in" name="extra" placeholder="เช่น กรุณาศึกษาเอกสารประกอบวาระที่แนบมาล่วงหน้า..."></textarea></div>
+    <div class="email-prev"><b>อีเมลจะมีเนื้อหา:</b> หัวเรื่องแบบหนังสือราชการ · กล่าวเรียนชื่อผู้รับ · ตารางวัน/เวลา/สถานที่${m.link?' · ลิงก์ห้องประชุมออนไลน์':''} · รายการวาระ ${db.agendas.filter(a=>a.mid===mid).length} หัวข้อ · ลิงก์เข้าระบบเพื่อยืนยันการเข้าร่วม · ลงชื่อเลขานุการ</div>
+    <div id="quotaLine" class="dt"></div>
+    ${sent?`<div class="dt">ประวัติ: เคยส่งไปแล้ว ${sent} ฉบับในการประชุมนี้</div>`:''}
+    <div class="mo-f"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
+      <button type="submit" class="btn btn-g">${I('send',15)} ส่งอีเมลเลย</button></div>
+  </form>`);
+  if(!state.demo)api('mailQuota').then(r=>{const q=$('#quotaLine');
+    if(q)q.textContent='โควตาการส่งอีเมลวันนี้คงเหลือประมาณ '+r.remaining+' ฉบับ';}).catch(()=>{});
+}
+async function sendEmails(ev,mid){
+  ev.preventDefault();
+  const f=ev.target;
+  const uids=[...f.querySelectorAll('input[name=em]:checked')].map(x=>x.value);
+  if(!uids.length){toast('กรุณาเลือกผู้รับอีเมลอย่างน้อย 1 คน','err');return false}
+  const btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='กำลังส่ง...';
+  try{
+    let n,fail=[];
+    if(state.demo){n=await demoSendEmails(mid,uids,f.mailType.value);}
+    else{
+      const r=await api('sendInvite',{mid,uids,type:f.mailType.value,extra:f.extra.value.trim(),
+        webUrl:location.href.split(/[?#]/)[0]});
+      n=r.sent;fail=r.fail||[];
+    }
+    await reloadDB();closeModal();
+    toast('ส่งอีเมลสำเร็จ '+n+' ฉบับ'+(state.demo?' (โหมดสาธิต: บันทึกประวัติจำลอง)':''));
+    if(fail.length)toast('ส่งไม่สำเร็จ '+fail.length+' ที่อยู่: '+fail.join(', '),'err');
+    refresh();
+  }catch(e){toast(e.message,'err');btn.disabled=false;btn.innerHTML=I('send',15)+' ส่งอีเมลเลย';}
+  return false;
+}
+async function demoSendEmails(mid,uids,type){
+  const db=ensureDemo();db.notifications=db.notifications||[];
+  uids.forEach(u=>db.notifications.push({id:'n'+uid(),mid,uid:u,type:type||'invite',at:new Date().toISOString()}));
+  saveDemo(db);await sleep(900);return uids.length;
+}
+
+/* ═════════ ส่งออกเอกสารเป็น Word (.doc) ═════════ */
+function exportWord(mid,kind){
+  const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
+  let inner=(kind==='invite'?inviteHTML(mid):docHTML(m))
+    .replace(/<svg[\s\S]*?<\/svg>/g,'')
+    .replace('<div class="dseal"></div>','<p style="text-align:center;margin:0 0 4px;font-weight:bold">— สัญลักษณ์สาขาวิชาฯ —</p>');
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(m.title)}</title><style>@page{size:21cm 29.7cm;margin:2.2cm 2.4cm}body{font-family:'TH Sarabun New','TH SarabunPSK',Sarabun,Tahoma;font-size:15pt;line-height:1.6;color:#000}.dorg{text-align:center}.dorg-t{font-weight:bold;font-size:16pt}.dline{border-bottom:2px solid #000;margin:8px 0 14px}.dtitle{text-align:center;font-weight:bold;font-size:17pt;margin:4px 0}.dsub{text-align:center}.dsec{font-weight:bold;margin:14px 0 4px}.dl{margin-left:34px}.dwg{font-weight:bold;text-decoration:underline;margin-top:12px}.ditem{margin:8px 0 8px 18px}.dindent{margin-left:20px}.sig{margin-top:30px;text-align:right}.sign{margin-top:2px}.dokay{color:#1b4d3e;font-weight:bold}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:4px 8px;font-size:13.5pt}th{background:#f0ead6}</style></head><body>${inner}</body></html>`;
+  const blob=new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(kind==='invite'?'หนังสือเชิญประชุม_':'รายงานการประชุม_')+m.no.replace(/\//g,'-')+'.doc';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast('ดาวน์โหลดไฟล์ Word แล้ว — เปิดแก้ไขต่อด้วย Microsoft Word ได้เลย');
 }
 
 /* ═════════ สมาชิกและสิทธิ์ ═════════ */
@@ -1158,8 +1362,8 @@ function renderUsers(){
     <div class="role-def">
       <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง รวมถึงเพิ่ม/ลบสมาชิก กำหนดบทบาท ลบการประชุม และตั้งค่าการเชื่อมต่อกับ Google Sheet / Drive</span></div>
       <div class="rd"><b><span class="chip ch-green">ประธาน</span></b><span>เข้าดูข้อมูลได้ทั้งหมด และทำหน้าที่กด "ประธานรับทราบรายงาน" เพื่ออนุมัติรายงานการประชุมฉบับสมบูรณ์</span></div>
-      <div class="rd"><b><span class="chip ch-red">เลขานุการ</span></b><span>นัดหมายประชุม จัดวาระ บันทึกมติ อัปโหลดเอกสารขึ้น Google Drive จัดการรายชื่อผู้เข้าร่วม และพิมพ์หนังสือเชิญ/รายงาน</span></div>
-      <div class="rd"><b><span class="chip ch-gray">สมาชิก</span></b><span>เข้าดูประกาศเชิญ วาระ เอกสาร รายงาน ยืนยันเข้าร่วมหรือแจ้งลา และร่วมบันทึกความเห็นในแต่ละวาระ</span></div>
+      <div class="rd"><b><span class="chip ch-red">เลขานุการ</span></b><span>นัดหมายประชุม จัดวาระ บันทึกมติ อัปโหลดเอกสารขึ้น Google Drive จัดการรายชื่อผู้เข้าร่วม ส่งอีเมลเชิญ และพิมพ์หนังสือเชิญ/รายงาน</span></div>
+      <div class="rd"><b><span class="chip ch-gray">สมาชิก</span></b><span>เข้าดูประกาศเชิญ วาระ เอกสาร รายงาน สถิติ ยืนยันเข้าร่วมหรือแจ้งลา และร่วมบันทึกความเห็นในแต่ละวาระ</span></div>
     </div>
   </div>`;
 }
@@ -1199,14 +1403,14 @@ function renderSettings(){
   $('#view').innerHTML=`
   <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบและการเชื่อมต่อข้อมูล</h3></div>
   <div class="card">
-    <span class="mode-badge ${state.demo?'ch-gold':'ch-green'} chip" style="font-size:13px">${state.demo?I('alert',15)+' โหมดสาธิต (ข้อมูลเก็บในเครื่องนี้เท่านั้น)':I('check',15)+' เชื่อมต่อ Google Apps Script แล้ว'}</span>
-    <p class="hint" style="margin-top:8px">ในโหมดสาธิต ทุกอย่างทำงานได้ครบ แต่ข้อมูลถูกบันทึกลง localStorage ของเบราว์เซอร์ เมื่อเชื่อมต่อกับ Google แล้ว ข้อมูลจะถูกเก็บใน Google Sheet และไฟล์แนบจะถูกเก็บใน Google Drive จริง</p>
+    <span class="mode-badge chip ${state.demo?'ch-gold':'ch-green'}" style="font-size:13px">${state.demo?I('alert',15)+' โหมดสาธิต (ข้อมูลเก็บในเครื่องนี้เท่านั้น)':I('check',15)+' เชื่อมต่อ Google Apps Script แล้ว'}</span>
+    <p class="hint" style="margin-top:8px">ในโหมดสาธิต ทุกอย่างทำงานได้ครบ (อีเมลจะจำลองการส่ง) แต่ข้อมูลถูกบันทึกลง localStorage ของเบราว์เซอร์ เมื่อเชื่อมต่อกับ Google แล้ว ข้อมูลจะถูกเก็บใน Google Sheet ไฟล์แนบเก็บใน Google Drive และอีเมลส่งจริงผ่าน MailApp</p>
   </div>
   <div class="card" style="margin-top:16px">
-    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">เชื่อมต่อ Google Sheet + Google Drive</h3>
+    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">เชื่อมต่อ Google Sheet + Google Drive + อีเมล</h3>
     <form class="frm" onsubmit="return saveGas(event)">
       <div><label>URL ของ Web App (Apps Script) ที่ลงท้ายด้วย /exec</label>
-        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/AKfycbwL-7XNw4xSlhVCeKAIs4EW5msi1MtkSguo3fRWp8h6hA2lo-hZo3VFichckxP8KuYf/exec" value="${esc(state.gasUrl)}"></div>
+        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/....../exec" value="${esc(state.gasUrl)}"></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button type="button" class="btn" onclick="testGas()">${I('refresh',15)} ทดสอบการเชื่อมต่อ</button>
         <button type="submit" class="btn btn-p">${I('check',15)} บันทึกและเชื่อมต่อ</button>
@@ -1219,9 +1423,10 @@ function renderSettings(){
     <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:8px">ขั้นตอนการติดตั้งระบบจริง (ครั้งเดียว)</h3>
     <ol class="steps">
       <li>สร้าง <b>Google Sheets</b> ใหม่บน Google Drive ของสาขาวิชาฯ (ชื่อแนะนำ: "ฐานข้อมูลการประชุม ETCM")</li>
-      <li>เปิดเมนู <b>ส่วนขยาย (Extensions) → Apps Script</b> แล้ววางโค้ดจากไฟล์ <code class="k">Code.gs</code> ที่ได้รับมา แล้วบันทึก</li>
-      <li>กด <b>Deploy → New deployment → Web app</b> ตั้ง "Who has access" เป็น <b>Anyone</b> แล้วกด Deploy (อนุญาตสิทธิ์ Sheets และ Drive เมื่อระบบถาม)</li>
-      <li>คัดลอก <b>Web app URL</b> (ลงท้าย <code class="k">/exec</code>) มาวางในช่องด้านบน กดทดสอบการเช่นมต่อ — ระบบจะสร้างตารางข้อมูลและบัญชีผู้ดูแลระบบเริ่มต้นให้อัตโนมัติ (admin@etcm.msu.ac.th / รหัส 1234 — เข้าสู่ระบบแล้วเปลี่ยนทันที)</li>
+      <li>เปิดเมนู <b>ส่วนขยาย (Extensions) → Apps Script</b> แล้ววางโค้ดจากไฟล์ <code class="k">Code.gs</code> (ไฟล์หลัก + ส่วนเสริมอีเมล) แล้วบันทึก</li>
+      <li>กด <b>Deploy → New deployment → Web app</b> ตั้ง "Who has access" เป็น <b>Anyone</b> แล้วกด Deploy (อนุญาตสิทธิ์ Sheets, Drive และ Mail เมื่อระบบถาม)</li>
+      <li>คัดลอก <b>Web app URL</b> (ลงท้าย <code class="k">/exec</code>) มาวางในช่องด้านบน กดทดสอบการเชื่อมต่อ — ระบบจะสร้างตารางข้อมูลและบัญชีผู้ดูแลระบบเริ่มต้นให้อัตโนมัติ (admin@etcm.msu.ac.th / รหัส 1234 — เข้าสู่ระบบแล้วเปลี่ยนทันที)</li>
+      <li>(ไม่บังคับ) หากต้องการ<b>แจ้งเตือนอัตโนมัติล่วงหน้า 7 วัน / 1 วัน</b> ก่อนวันประชุม: ในตัวแก้ไข Apps Script เลือกฟังก์ชัน <code class="k">setupReminderTrigger</code> แล้วกด Run ครั้งเดียว</li>
     </ol>
   </div>`;
 }
