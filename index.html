@@ -1310,7 +1310,10 @@ async function delUser(id){
 }
 
 /* ═════════ ตั้งค่าระบบ (เฉพาะผู้ดูแล — เก็บลงชีต settings) ═════════ */
+/* ═════════ ตั้งค่าระบบ (เฉพาะผู้ดูแล — เก็บลงชีต settings) ═════════ */
+let LOGO_DRAFT='';
 function renderSettings(){
+  LOGO_DRAFT=ORG.logoUrl||'';
   $('#view').innerHTML=`
   <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบ</h3>
     ${state.ssUrl?`<a class="btn btn-s" href="${esc(state.ssUrl)}" target="_blank" rel="noopener">${I('ext',14)} เปิด Google Sheet</a>`:''}</div>
@@ -1324,32 +1327,53 @@ function renderSettings(){
       </div>
       <div class="f2">
         <div><label>ชื่อย่อสำหรับเลขหนังสือ</label><input class="in" name="orgShort" value="${esc(ORG.orgShort)}"></div>
-        <div><label>ลิงก์รูปโลโก้ (URL รูป .png/.jpg — เว้นว่างใช้ตรามาตรฐาน)</label>
-          <input class="in" name="logoUrl" type="url" value="${esc(ORG.logoUrl||'')}" placeholder="https://..." oninput="logoPrevUpdate(this.value)">
-          <div id="logoPrev" style="margin-top:6px">${ORG.logoUrl?`<img src="${esc(ORG.logoUrl)}" alt="logo" style="width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)">`:'<span class="hint">ยังไม่มีโลโก้</span>'}</div>
+        <div><label>โลโก้ / ตราหน่วยงาน (ไฟล์ .png หรือ .jpg ไม่เกิน 2 MB)</label>
+          <input class="in" type="file" accept="image/png,image/jpeg" onchange="compressLogo(this)" style="padding:9px;background:#fff">
+          <div id="logoPrev" style="margin-top:6px"></div>
+          <div class="hint">ระบบย่อรูปเป็น 256×256 px ให้อัตโนมัติ · หลังเลือกไฟล์ กด "บันทึกการตั้งค่า" เพื่อใช้โลโก้จริง (แทนตรามาตรฐานทุกจุด: หน้าเว็บ รายงาน หนังสือเชิญ)</div>
         </div>
       </div>
       <div><label>ชื่อหมวดวาระมาตรฐานทั้ง 5 (ปรับให้ตรงแบบของหน่วยงานได้)</label>
         <div class="f2">${[1,2,3,4,5].map(g=>`<input class="in" name="gn${g}" value="${esc(GROUPS[g])}">`).join('')}</div></div>
       <div class="mo-f"><button type="submit" class="btn btn-p">${I('check',15)} บันทึกการตั้งค่า</button></div>
     </form>
-  </div>
-  <div class="card" style="margin-top:16px">
-    <h3 style="color:var(--brown-d);font-size:15.5px;border-bottom:2px solid var(--orange);padding-bottom:8px;margin-bottom:10px">${I('link',16)} สถานะการเชื่อมต่อ</h3>
-    <p style="font-size:14px;margin-bottom:4px">Web App URL (จากบรรทัด <code class="k">const GAS_URL</code> หัวไฟล์ index.html):</p>
-    <code class="k" style="display:block;margin:6px 0">${esc(GAS_URL||'ยังไม่ได้วาง URL')}</code>
-    ${state.ssUrl?`<a class="btn btn-s" href="${esc(state.ssUrl)}" target="_blank" rel="noopener">${I('ext',13)} เปิด Google Sheet ฐานข้อมูล</a>`:''}
-    <p class="hint" style="margin-top:8px">หากต้องการเปลี่ยน URL ให้แก้บรรทัด GAS_URL ในไฟล์ index.html แล้วอัปโหลดขึ้นเว็บใหม่ · ส่วนการตั้งค่าด้านบนเก็บในชีต แก้จากหน้านี้ได้ตลอดโดยไม่ต้องแตะโค้ด</p>
   </div>`;
+  logoPrevRender();
 }
-function logoPrevUpdate(v){
+/* เลือกไฟล์โลโก้ → ย่อ/บีบอัดในเครื่อง → เก็บเป็น data URL รอบันทึก */
+function compressLogo(inp){
+  const f=inp.files[0];if(!f)return;
+  if(!/^image\/(png|jpe?g|webp)$/i.test(f.type)){toast('รองรับเฉพาะไฟล์ .png หรือ .jpg','err');inp.value='';return}
+  if(f.size>2*1024*1024){toast('ไฟล์ใหญ่เกิน 2 MB — กรุณาใช้รูปขนาดเล็กลง','err');inp.value='';return}
+  const img=new Image();
+  img.onload=()=>{
+    const max=256;
+    let w=img.width,h=img.height;
+    if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s)}
+    const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+    const cx=cv.getContext('2d');
+    cx.fillStyle='#ffffff';cx.fillRect(0,0,w,h); // พื้นขาว กันรูปโปร่งใสกลายเป็นดำ
+    cx.drawImage(img,0,0,w,h);
+    let q=0.85,data=cv.toDataURL('image/jpeg',q);
+    while(data.length>42000&&q>0.4){q-=0.15;data=cv.toDataURL('image/jpeg',q)}
+    if(data.length>42000){toast('รูปมีรายละเอียดมากเกินไปสำหรับจัดเก็บ — ลองใช้รูปที่เรียบกว่านี้','err');inp.value='';return}
+    LOGO_DRAFT=data;logoPrevRender();
+    toast('เตรียมโลโก้แล้ว — กด "บันทึกการตั้งค่า" เพื่อใช้งานจริง');
+  };
+  img.onerror=()=>{toast('อ่านไฟล์รูปไม่สำเร็จ ลองไฟล์อื่น','err');inp.value=''};
+  img.src=URL.createObjectURL(f);
+}
+function logoPrevRender(){
   const el=$('#logoPrev');if(!el)return;
-  el.innerHTML=v?`<img src="${esc(v)}" alt="logo" style="width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)">`:'<span class="hint">ยังไม่มีโลโก้</span>';
+  el.innerHTML=LOGO_DRAFT
+    ?`<div style="display:flex;gap:10px;align-items:center"><img src="${LOGO_DRAFT}" alt="logo" style="width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)"><button type="button" class="btn btn-s btn-d" onclick="clearLogoDraft()">${I('trash',13)} ลบโลโก้</button></div>`
+    :'<span class="hint">ยังไม่มีโลโก้ — ใช้ตรามาตรฐานของระบบ</span>';
 }
+function clearLogoDraft(){LOGO_DRAFT='';logoPrevRender();toast('ลบโลโก้ที่รอบันทึกแล้ว — กด "บันทึกการตั้งค่า" เพื่อยืนยัน')}
 async function saveSettingsForm(ev){
   ev.preventDefault();const f=ev.target;
   const groupNames={};[1,2,3,4,5].forEach(g=>groupNames[g]=f['gn'+g].value.trim()||GROUPS_DEF[g]);
-  const cfg={org1:f.org1.value.trim(),org2:f.org2.value.trim(),orgShort:f.orgShort.value.trim()||'สกส.',logoUrl:f.logoUrl.value.trim(),groupNames};
+  const cfg={org1:f.org1.value.trim(),org2:f.org2.value.trim(),orgShort:f.orgShort.value.trim()||'สกส.',logoUrl:LOGO_DRAFT,groupNames};
   try{
     const saved=await api('saveSettings',{cfg});
     applyCfg(saved);
