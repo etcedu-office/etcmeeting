@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ระบบบันทึกการประชุมออนไลน์ | สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ม.มหาสารคาม</title>
+<title>ระบบบันทึกการประชุมออนไลน์ | ETCM Meeting Hub</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23123328'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23c9a24b' stroke-width='1.6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e9d8ac' font-family='serif'%3Eก%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@ table.tb{width:100%;border-collapse:collapse;font-size:14px}
 .auth{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr}
 .auth-l{background:var(--green-d);color:#efe9d5;display:flex;flex-direction:column;justify-content:center;padding:64px;position:relative;overflow:hidden}
 .auth-l::after{content:'';position:absolute;inset:16px;border:1px solid rgba(201,162,75,.45);pointer-events:none}
-.auth-seal{width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;
+.auth-seal{width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;overflow:hidden;
   box-shadow:inset 0 0 0 5px var(--green-d),inset 0 0 0 6.5px rgba(233,216,172,.5);color:var(--gold-l);margin-bottom:26px}
 .auth-l h1{font-size:30px;font-weight:700;line-height:1.3;letter-spacing:.01em}
 .auth-l h1 span{color:var(--gold-l)}
@@ -76,7 +76,7 @@ table.tb{width:100%;border-collapse:collapse;font-size:14px}
 /* ---------- โครงแอป ---------- */
 .masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;background:var(--green-d);color:#f3eddc;border-bottom:3px double var(--gold);flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
-.seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;
+.seal{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;flex:none;overflow:hidden;
   box-shadow:inset 0 0 0 3.5px var(--green-d),inset 0 0 0 5px rgba(233,216,172,.55);color:var(--gold-l)}
 .brand h1{font-size:18px;font-weight:700;letter-spacing:.02em;line-height:1.25}
 .brand p{font-size:12px;color:var(--gold-l);margin-top:2px}
@@ -102,7 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .n-kicker{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:14px}
 .n-kicker::before,.n-kicker::after{content:'';height:1px;background:var(--line2);flex:1}
 .n-kicker span{font-size:13px;font-weight:700;letter-spacing:.34em;color:var(--gold-d);text-indent:.34em}
-.n-seal{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;
+.n-seal{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;overflow:hidden;
   box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5.5px var(--gold);color:var(--gold-d)}
 .n-title{text-align:center;font-size:23px;font-weight:700;color:var(--green-d);line-height:1.35}
 .n-sub{text-align:center;font-size:14px;color:var(--mut);margin:6px 0 16px}
@@ -207,7 +207,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .a4{width:794px;max-width:100%;background:#fff;padding:54px 62px;margin:0 auto;box-shadow:0 3px 20px rgba(0,0,0,.16);
   font-family:'Sarabun',sans-serif;color:#1d1d1b;font-size:11.5pt;line-height:1.75}
 .dorg{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.dseal{width:64px;height:64px;border-radius:50%;border:2px solid #8a641c;display:grid;place-items:center;color:#8a641c;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4.5px #8a641c}
+.dseal{width:64px;height:64px;border-radius:50%;border:2px solid #8a641c;display:grid;place-items:center;color:#8a641c;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4.5px #8a641c;overflow:hidden}
 .dorg-t{font-weight:700;font-size:12.5pt;line-height:1.4}
 .dline{border-bottom:1.5px solid #1d1d1b;margin:10px 0 16px}
 .dtitle{text-align:center;font-size:13.5pt;margin-bottom:2px}
@@ -233,7 +233,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 24px 70px;width:100%}
 .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
   background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
 code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-radius:6px;font-size:12.5px;word-break:break-all}
-/* ---------- สถิติ / อีเมล ---------- */
+/* ---------- สถิติ ---------- */
 .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
 .scard{background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);padding:16px 18px;border-top:3px solid var(--gold)}
 .scard b{display:block;font-size:30px;color:var(--green-d);font-family:'Anuphan'}
@@ -253,6 +253,10 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
 .email-prev{border:1px solid var(--line2);background:#faf7ec;border-radius:9px;padding:12px 15px;font-size:13.5px}
 .rcpt{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:13.8px;cursor:pointer}
 .rcpt:last-child{border-bottom:none}
+/* ---------- แผงควบคุมผู้ดูแล ---------- */
+.cnt-pill{display:inline-block;background:#f3eedb;border:1px solid var(--line2);border-radius:99px;padding:2px 10px;font-size:12px;margin:2px 4px 2px 0}
+.mini-prev{max-height:230px;overflow:auto;border:1px solid var(--line2);border-radius:9px;margin:10px 0}
+#logoPrev img{width:54px;height:54px;object-fit:cover;border-radius:50%;border:1px solid var(--line2)}
 /* ---------- โมดัล / ทอสต์ ---------- */
 .mo-bg{position:fixed;inset:0;background:rgba(28,36,30,.5);display:grid;place-items:center;z-index:60;padding:18px;overflow:auto}
 .mo{background:var(--card);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.3);width:100%;max-width:620px;max-height:calc(100vh - 36px);overflow:auto;animation:pop .18s}
@@ -298,20 +302,20 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
   <div class="auth-l">
     <div class="auth-seal" id="authSeal"></div>
     <h1>ระบบบันทึกการประชุมออนไลน์<br><span>ETCM Meeting Hub</span></h1>
-    <p class="sub">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</p>
+    <p class="sub" id="authSub">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</p>
     <ul class="auth-feat">
       <li><span class="ficon"></span>จัดนัดหมายและประกาศเชิญประชุม ตามรูปแบบหนังสือราชการไทย</li>
       <li><span class="ficon"></span>วาระการประชุมมาตรฐาน 5 วาระ พร้อมบันทึกมติและติดตามผลรายวาระ</li>
       <li><span class="ficon"></span>แนบเอกสารผ่าน Google Drive และเข้าห้องประชุมออนไลน์จากลิงก์ในระบบ</li>
-      <li><span class="ficon"></span>ส่งอีเมลเชิญประชุมอัตโนมัติ สถิติการเข้าร่วมแบบกราฟ และส่งออกเอกสารเป็น Word</li>
-      <li><span class="ficon"></span>ออกรายงานการประชุมฉบับสมบูรณ์ พร้อมลงชื่อประธานและเลขานุการ (พิมพ์เป็น PDF ได้)</li>
+      <li><span class="ficon"></span>ส่งอีเมลเชิญประชุม สถิติการเข้าร่วมแบบกราฟ และส่งออกเอกสารเป็น Word</li>
+      <li><span class="ficon"></span>ผู้ดูแลระบบปรับข้อมูลหน่วยงาน โลโก้ และดึงข้อมูลจาก Google Sheet ได้จากหน้าเว็บโดยตรง</li>
     </ul>
-    <div class="auth-org">คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</div>
+    <div class="auth-org" id="authOrg">คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</div>
   </div>
   <div class="auth-r">
     <div class="auth-card">
       <h2>เข้าสู่ระบบ</h2>
-      <p class="lead">ใช้บัญชีที่ผู้ดูแลระบบสาขาฯ จัดสรรให้</p>
+      <p class="lead">ใช้บัญชีที่ผู้ดูแลระบบจัดสรรให้</p>
       <form class="frm" onsubmit="return doLogin(event)">
         <div><label>อีเมล</label><input class="in" id="auEmail" autocomplete="username" placeholder="ชื่อผู้ใช้หรืออีเมล"></div>
         <div><label>รหัสผ่าน</label><input class="in" id="auPass" type="password" autocomplete="current-password" placeholder="รหัสผ่าน"></div>
@@ -321,7 +325,7 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
         <b>โหมดสาธิต (Mockup)</b> — ทดลองทุกบทบาทได้ทันที รหัสผ่านทุกบัญชีคือ <code class="k">1234</code>
         <div class="qbtns">
           <button type="button" class="btn btn-s btn-g" onclick="quickLogin('admin')">เข้าเป็นผู้ดูแลระบบ</button>
-          <button type="button" class="btn btn-s" onclick="quickLogin('secretary')">เลขานุการสาขาฯ</button>
+          <button type="button" class="btn btn-s" onclick="quickLogin('secretary')">เลขานุการ</button>
           <button type="button" class="btn btn-s" onclick="quickLogin('member')">สมาชิก</button>
         </div>
       </div>
@@ -336,7 +340,7 @@ code.k{background:#f1ecda;border:1px solid var(--line2);padding:1px 7px;border-r
       <div class="seal" id="seal"></div>
       <div>
         <h1>ระบบบันทึกการประชุมออนไลน์ ETCM</h1>
-        <p>สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา · คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</p>
+        <p id="brandSub">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา · คณะศึกษาศาสตร์ · มหาวิทยาลัยมหาสารคาม</p>
       </div>
     </div>
     <div class="userbox">
@@ -395,14 +399,14 @@ const ICONS={
  send:'<path d="M21 3L10 14M21 3l-7 19-4-8-8-4 19-7z"/>',
  ext:'<path d="M14 4h6v6M20 4L11 13M19 14v5a1 1 0 01-1 1H6a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
  home:'<path d="M4 11l8-7 8 7M6 9.5V20h12V9.5"/>',
- user:'<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-3.7 4-5.5 7.5-5.5s6.3 1.8 7.5 5.5"/>',
  folder:'<path d="M3 6.5A1.5 1.5 0 014.5 5h5l2 2.5h8A1.5 1.5 0 0121 9v9.5a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5v-12z"/>',
  cap:'<path d="M2.5 9.5L12 4.5l9.5 5L12 14.5l-9.5-5z"/><path d="M6.5 11.5V17c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.5M21.5 9.5V15"/>',
  refresh:'<path d="M20 12a8 8 0 10-2.3 5.6M20 12V6.5M20 12h-5.5"/>',
  doc:'<path d="M6 2.5h8l4.5 4.5v14.5a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6M9 8h2"/>',
  chevD:'<path d="M6 9l6 6 6-6"/>',
  chart:'<path d="M3 21h18M6.5 17V10M11.5 17V4.5M16.5 17v-5"/>',
- alert:'<path d="M12 3L2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5h.01"/>'
+ alert:'<path d="M12 3L2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5h.01"/>',
+ grid:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>'
 };
 const I=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`;
 
@@ -415,9 +419,30 @@ const ATT_ST=['รอยืนยัน','เข้าร่วม','ลา','�
 const M_ST=['กำหนดการ','กำลังประชุม','รอบันทึกรายงาน','เสร็จสมบูรณ์'];
 const ROLE_L={admin:'ผู้ดูแลระบบ',chair:'ประธาน',secretary:'เลขานุการ',member:'สมาชิก'};
 const ROLE_IN={u1:'ประธาน',u3:'เลขานุการ',u2:'เชิญเพื่อปรึกษา'};
+const ROLE_MAP={admin:'admin','ผู้ดูแลระบบ':'admin',chair:'chair','ประธาน':'chair',secretary:'secretary','เลขานุการ':'secretary',member:'member','สมาชิก':'member'};
+
+/* ═════════ การตั้งค่าหน่วยงาน (ปรับได้จากแผงควบคุมผู้ดูแล) ═════════ */
+const CFG_DEF={org1:'สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา',org2:'คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม',orgShort:'สกส.',logo:'',groupNames:null};
+let CFG=Object.assign({},CFG_DEF);
+function applyCfg(c){
+  if(c)CFG=Object.assign({},CFG_DEF,c);
+  if(CFG.groupNames)Object.keys(CFG.groupNames).forEach(g=>{if(GROUPS[g])GROUPS[g]=CFG.groupNames[g]||GROUPS[g]});
+  const logoHtml=CFG.logo?'<img src="'+esc(CFG.logo)+'" alt="logo" style="width:100%;height:100%;object-fit:cover">':'';
+  const s1=$('#seal');if(s1)s1.innerHTML=CFG.logo?logoHtml:I('cap',26);
+  const s2=$('#authSeal');if(s2)s2.innerHTML=CFG.logo?logoHtml:I('cap',40);
+  const bh=document.querySelector('.brand h1');if(bh)bh.textContent='ระบบบันทึกการประชุมออนไลน์ '+(CFG.orgShort||'');
+  const bp=document.getElementById('brandSub');if(bp)bp.textContent=CFG.org1+' · '+CFG.org2;
+  const as=document.getElementById('authSub');if(as)as.textContent=CFG.org1+' '+CFG.org2;
+  const ao=document.getElementById('authOrg');if(ao)ao.textContent=CFG.org2;
+}
+function orgDocHeader(){
+  return `<div class="dorg">${CFG.logo?`<img src="${esc(CFG.logo)}" alt="logo" style="width:72px;height:72px;object-fit:cover;border-radius:50%">`:`<div class="dseal">${I('cap',30)}</div>`}
+    <div class="dorg-t">${esc(CFG.org1)}<br>${esc(CFG.org2)}</div></div>`;
+}
+function loadCfgDemo(){try{return JSON.parse(localStorage.getItem('etcm_cfg'))||null}catch(e){return null}}
 
 /* ═════════ สถานะของแอป ═════════ */
-const state={user:null,db:null,view:'home',sel:null,q:'',reportSel:null,cal:new Date(),calPick:todayIso(),openAg:new Set(),demo:true,gasUrl:''};
+const state={user:null,db:null,view:'home',sel:null,q:'',reportSel:null,cal:new Date(),calPick:todayIso(),openAg:new Set(),demo:true,gasUrl:'',ssUrl:''};
 
 /* ═════════ ข้อมูลตัวอย่าง (Mockup) ═════════ */
 function seedDB(){
@@ -499,7 +524,8 @@ async function demoApi(action,p){
     case 'login':{const u=db.users.find(u=>u.email===p.email&&u.pass===p.pass);
       if(!u)throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
       if(String(u.active)==='0')throw new Error('บัญชีนี้ถูกระงับการใช้งาน');return structuredClone(u);}
-    case 'loadAll':return structuredClone(db);
+    case 'loadAll':return Object.assign(structuredClone(db),{settings:loadCfgDemo()});
+    case 'saveSettings':{localStorage.setItem('etcm_cfg',JSON.stringify(p.cfg||{}));return structuredClone(p.cfg||{})}
     case 'saveUser':{const r=p.rec;if(!r.pass){const o=r.id?db.users.find(u=>u.id===r.id):null;if(o)r.pass=o.pass}
       const u=dUpsert(db,'users',r);return S(u)}
     case 'deleteUser':{db.users=db.users.filter(u=>u.id!==p.id);return S(true)}
@@ -519,7 +545,7 @@ async function demoApi(action,p){
     case 'saveAttendee':{const a=dUpsert(db,'attendees',p.rec);return S(a)}
     case 'deleteAttendee':{db.attendees=db.attendees.filter(a=>a.id!==p.id);return S(true)}
     case 'uploadFile':{
-      const keep=p.b64&&(+p.size||0)<=1.5*1024*1024; // โหมดสาธิตเก็บเนื้อไฟล์ได้เฉพาะไฟล์เล็ก (localStorage จำกัด)
+      const keep=p.b64&&(+p.size||0)<=1.5*1024*1024;
       const rec={id:'f'+uid(),mid:p.mid,name:p.name,mime:p.mime,size:p.size,cat:p.cat||'เอกสารประกอบวาระ',
         url:keep?('data:'+p.mime+';base64,'+p.b64):'',by:p.by||'',at:new Date().toISOString()};
       db.files.push(rec);return S(rec)}
@@ -561,6 +587,7 @@ function init(){
   state.gasUrl=localStorage.getItem('etcm_url')||'';
   state.demo=!state.gasUrl;
   $('#demoBox').hidden=!state.demo;
+  applyCfg(loadCfgDemo());
 }
 async function doLogin(ev){
   ev.preventDefault();
@@ -570,6 +597,8 @@ async function doLogin(ev){
   try{
     const u=await api('login',{email,pass});
     state.user=u;state.db=await api('loadAll');
+    applyCfg(state.db.settings);
+    state.ssUrl=(state.db.meta&&state.db.meta.ssUrl)||'';
     showApp();toast('ยินดีต้อนรับ คุณ'+u.name);
   }catch(e){toast(e.message,'err')}
   btn.disabled=false;btn.textContent='เข้าสู่ระบบ';
@@ -582,6 +611,7 @@ async function quickLogin(role){
   $('#auEmail').value=u.email;$('#auPass').value=u.pass;
   state.user=structuredClone(u);
   state.db=await api('loadAll');
+  applyCfg(state.db.settings);
   showApp();toast('ยินดีต้อนรับ คุณ'+u.name);
 }
 function showApp(){
@@ -589,7 +619,7 @@ function showApp(){
   $('#demoChip').hidden=!state.demo;
   $('#uName').textContent=state.user.name;
   $('#uRole').textContent=ROLE_L[state.user.role]||state.user.role;
-  $('#seal').innerHTML=I('cap',26);
+  applyCfg(CFG);
   renderTabs();go('home');
 }
 function logout(){
@@ -610,7 +640,11 @@ function renderTabs(){
 }
 function go(k){state.view=k;renderTabs();renderView();window.scrollTo({top:0,behavior:'smooth'})}
 function refresh(){renderView()}
-async function reloadDB(){state.db=await api('loadAll')}
+async function reloadDB(){
+  state.db=await api('loadAll');
+  applyCfg(state.db.settings);
+  state.ssUrl=(state.db.meta&&state.db.meta.ssUrl)||'';
+}
 function renderView(){
   if(!state.db)return;
   ({home:renderHome,calendar:renderCalendar,meetings:renderMeetings,report:renderReport,
@@ -667,7 +701,7 @@ function noticeCard(m,cnt){
   const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
   return `<div class="notice">
     <div class="n-kicker"><span>ประกาศเชิญประชุม</span></div>
-    <div class="n-seal">${I('cap',32)}</div>
+    <div class="n-seal">${CFG.logo?`<img src="${esc(CFG.logo)}" alt="logo" style="width:100%;height:100%;object-fit:cover">`:I('cap',32)}</div>
     <div class="n-title">${esc(m.title)}</div>
     <div class="n-sub">ครั้งที่ ${esc(m.no)}${m.docNo?` · หนังสือที่ ${esc(m.docNo)}`:''} · ${esc(m.type)}</div>
     <div class="n-info">
@@ -837,17 +871,17 @@ function agendaItemHTML(a,m){
       </div>
     </div>
     ${open?`<div class="agi-b">
-      ${a.detail?`<div class="agi-d nl2br">${nl2br(a.detail)}</div>`:''}
+      ${a.detail?`<div class="agi-d">${nl2br(a.detail)}</div>`:''}
       ${links.length?`<div class="lnks">${links.map(l=>`<a class="lnk" href="${esc(l.url)}" target="_blank" rel="noopener">${I('link',13)} ${esc(l.label||l.url)}</a>`).join('')}</div>`:''}
       <div class="dec ${a.decision?'':'dec-w'}">
         <div class="dec-h"><span style="display:flex;gap:6px;align-items:center">${I('gavel',15)} มติ / ข้อสรุปของที่ประชุม</span>
           ${canW?`<button class="btn btn-s" onclick="event.stopPropagation();openAgendaForm('${m.id}','${a.id}',null,true)">${I('edit',13)} บันทึกมติ</button>`:''}</div>
-        <div class="dec-b nl2br">${a.decision?nl2br(a.decision):'<i>ยังไม่ได้บันทึกมติ</i>'}</div>
+        <div class="dec-b">${a.decision?nl2br(a.decision):'<i>ยังไม่ได้บันทึกมติ</i>'}</div>
       </div>
       <div class="disc">
         <div class="disc-h">${I('mic',14)} บันทึกการหารือ / ความเห็นประกอบวาระ</div>
         ${disc.map(d=>`<div class="dmsg"><div class="dava">${esc(d.name).slice(0,1)}</div>
-          <div><b>${esc(d.name)}</b> <span class="dt">${fmtAt(d.at)}</span><div class="nl2br">${nl2br(d.text)}</div></div></div>`).join('')
+          <div><b>${esc(d.name)}</b> <span class="dt">${fmtAt(d.at)}</span><div>${nl2br(d.text)}</div></div></div>`).join('')
           ||'<div class="dt">ยังไม่มีบันทึกการหารือในวาระนี้</div>'}
         <form class="drow" onsubmit="return sendDisc(event,'${m.id}','${a.id}')">
           <input class="in" id="disc_${a.id}" placeholder="พิมพ์ความเห็น ข้อเสนอ หรือลิงก์ประกอบการหารือในวาระนี้..." autocomplete="off">
@@ -900,15 +934,15 @@ function openMeetingForm(id,presetDate){
       <div><label>ครั้งที่ (เช่น 4/2568) *</label><input class="in" name="no" required value="${esc(m?m.no:'')}"></div>
       <div><label>ประเภทการประชุม</label><select class="in" name="type">${['ประชุมสามัญ','ประชุมวิสามัญ','ประชุมเชิงปฏิบัติการ','ประชุมคณะกรรมการ','อื่น ๆ'].map(t=>`<option ${m&&m.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
     </div>
-    <div><label>ชื่อเรื่องการประชุม *</label><input class="in" name="title" required placeholder="ประชุมสามัญสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา ประจำเดือน..." value="${esc(m?m.title:'')}"></div>
+    <div><label>ชื่อเรื่องการประชุม *</label><input class="in" name="title" required placeholder="ประชุมสามัญ..." value="${esc(m?m.title:'')}"></div>
     <div class="f3">
       <div><label>วันที่ประชุม *</label><input class="in" type="date" name="date" required value="${esc(m?m.date:(presetDate||todayIso()))}"></div>
       <div><label>เวลาเริ่ม</label><input class="in" type="time" name="tStart" value="${esc(m?m.tStart:'09:30')}"></div>
       <div><label>เวลาสิ้นสุด</label><input class="in" type="time" name="tEnd" value="${esc(m?m.tEnd:'12:00')}"></div>
     </div>
     <div class="f2">
-      <div><label>สถานที่ประชุม</label><input class="in" name="place" value="${esc(m?m.place:'ห้องประชุมคณะศึกษาศาสตร์ (ชั้น 2)')}"></div>
-      <div><label>เลขที่หนังสือ</label><input class="in" name="docNo" placeholder="สกส. 0XX/2568" value="${esc(m?m.docNo:'')}"></div>
+      <div><label>สถานที่ประชุม</label><input class="in" name="place" value="${esc(m?m.place:'ห้องประชุม')}"></div>
+      <div><label>เลขที่หนังสือ</label><input class="in" name="docNo" placeholder="${esc(CFG.orgShort)} 0XX/2568" value="${esc(m?m.docNo:'')}"></div>
     </div>
     <div><label>ลิงก์ห้องประชุมออนไลน์ (Google Meet / Zoom / Webex)</label>
       <input class="in" name="link" type="url" placeholder="https://meet.google.com/..." value="${esc(m?m.link:'')}">
@@ -954,7 +988,7 @@ async function approveMeeting(id){
   try{await api('saveMeeting',{rec:{id,approved:1}});await reloadDB();toast('บันทึกการรับทราบของประธานเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
 }
 function openAgendaForm(mid,aid,presetGrp,focusDec){
-  const db=state.db;const m=db.meetings.find(x=>x.id===mid);
+  const db=state.db;
   const a=aid?db.agendas.find(x=>x.id===aid):null;
   modal(`<div class="mo-h"><b>${a?'แก้ไขวาระ / บันทึกมติ':'เพิ่มหัวข้อวาระการประชุม'}</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
   <form class="frm mo-b" onsubmit="return submitAgenda(event,'${mid}',${a?`'${a.id}'`:'null'})">
@@ -962,7 +996,7 @@ function openAgendaForm(mid,aid,presetGrp,focusDec){
       <div><label>สังกัดวาระ</label><select class="in" name="grp">${Object.keys(GROUPS).map(g=>`<option value="${g}" ${(a?+a.grp:(presetGrp||3))==g?'selected':''}>วาระที่ ${g} ${GROUPS[g]}</option>`).join('')}</select></div>
       <div><label>ผู้นำเสนอ / ผู้รับผิดชอบ</label><input class="in" name="presenter" value="${esc(a?a.presenter:'')}"></div>
     </div>
-    <div><label>หัวข้อวาระ *</label><input class="in" name="title" required placeholder="เช่น เรื่องเสนอเพื่อพิจารณา : แผนการสอนภาคเรียนที่ 2/2568" value="${esc(a?a.title:'')}"></div>
+    <div><label>หัวข้อวาระ *</label><input class="in" name="title" required placeholder="เช่น เรื่องเสนอเพื่อพิจารณา : ..." value="${esc(a?a.title:'')}"></div>
     <div><label>สาระสำคัญ / รายละเอียดประกอบ</label><textarea class="in" name="detail">${esc(a?a.detail:'')}</textarea></div>
     <div><label>ลิงก์เอกสารอ้างอิง (เผยแพร่ให้ที่ประชุมศึกษาก่อนวันประชุมได้)</label>
       <div id="lnkRows">${(a?a.links:[]).map(l=>linkRow(l.label,l.url)).join('')||linkRow('','')}</div>
@@ -986,8 +1020,9 @@ async function submitAgenda(ev,mid,aid){
     return l||u?{label:l,url:u}:null}).filter(Boolean);
   const rec={id:aid||'',mid,grp:f.grp.value,title:f.title.value.trim(),presenter:f.presenter.value.trim(),
     detail:f.detail.value.trim(),decision:f.decision.value.trim(),follow:f.follow.checked?1:0,links};
-  try{await api('saveAgenda',{rec});state.openAg=new Set([aid||'__new__']);await reloadDB();
-    if(!aid){const na=state.db.agendas.find(x=>x.mid===mid&&x.title===rec.title);if(na)state.openAg=new Set([na.id])}
+  try{await api('saveAgenda',{rec});await reloadDB();
+    if(!aid){const na=state.db.agendas.find(x=>x.mid===mid&&x.title===rec.title);state.openAg=new Set(na?[na.id]:[])}
+    else state.openAg=new Set([aid]);
     closeModal();toast(aid?'บันทึกวาระและมติเรียบร้อยแล้ว':'เพิ่มหัวข้อวาระเรียบร้อยแล้ว');refresh();
   }catch(e){toast(e.message,'err')}
   return false;
@@ -1008,7 +1043,7 @@ function openAttendeeForm(mid){
   const inMeet=db.attendees.filter(a=>a.mid===mid).map(a=>a.uid);
   modal(`<div class="mo-h"><b>เพิ่ม / เชิญผู้เข้าร่วมประชุม</b><button class="xbtn" onclick="closeModal()">${I('x',16)}</button></div>
   <form class="frm mo-b" onsubmit="return submitAttendee(event,'${mid}')">
-    <div><label>เลือกจากสมาชิกสาขาวิชาฯ</label>
+    <div><label>เลือกจากสมาชิกในระบบ</label>
       <select class="in" name="uid"><option value="">— ระบุชื่อภายนอก —</option>
       ${db.users.filter(u=>String(u.active)!=='0'&&!inMeet.includes(u.id)).map(u=>`<option value="${u.id}">${esc(u.name)} — ${esc(u.position)}</option>`).join('')}</select></div>
     <div class="f2">
@@ -1047,7 +1082,7 @@ function openUploadForm(mid){
   <form class="frm mo-b" onsubmit="return submitUpload(event,'${mid}')">
     <div><label>เลือกไฟล์ (แนะนำไม่เกิน 10 MB)</label>
       <input class="in" type="file" name="f" required style="padding:9px;background:#fff">
-      <div class="hint">ไฟล์จะถูกส่งผ่าน Google Apps Script เข้าสู่โฟลเดอร์ Google Drive ของสาขาวิชาฯ โดยอัตโนมัติ</div></div>
+      <div class="hint">ไฟล์จะถูกส่งผ่าน Google Apps Script เข้าสู่โฟลเดอร์ Google Drive โดยอัตโนมัติ</div></div>
     <div><label>หมวดเอกสาร</label><select class="in" name="cat">
       ${['เอกสารประกอบวาระ','บันทึกรายงานการประชุม','ภาพถ่ายกิจกรรม','รายงานผลการดำเนินงาน','อื่น ๆ'].map(c=>`<option>${c}</option>`).join('')}</select></div>
     <div class="mo-f"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button>
@@ -1102,8 +1137,7 @@ function docHTML(m){
   const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
   const attMain=att.filter(a=>!['ประธาน','เลขานุการ'].includes(a.roleIn));
   return `<div class="a4">
-    <div class="dorg"><div class="dseal">${I('cap',30)}</div>
-      <div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    ${orgDocHeader()}
     <div class="dline"></div>
     <h2 class="dtitle">รายงานการประชุมเรื่อง ${esc(m.title)}</h2>
     <p class="dsub">ครั้งที่ ${esc(m.no)}${m.docNo?` (หนังสือที่ ${esc(m.docNo)})`:''} วัน${fmtD(m.date)} เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น. ณ ${esc(m.place)}</p>
@@ -1119,7 +1153,7 @@ function docHTML(m){
       return `<p class="dwg">วาระที่ ${g} ${GROUPS[g]}</p>`+items.map(a=>`
         <div class="ditem">
           <p><b>${esc(a.title)}</b>${a.presenter?` (โดย ${esc(a.presenter)})`:''}</p>
-          ${a.detail?`<p class="dindent nl2br">${nl2br(a.detail)}</p>`:''}
+          ${a.detail?`<p class="dindent">${nl2br(a.detail)}</p>`:''}
           ${a.links&&a.links.length?`<p class="dindent">เอกสารอ้างอิง : ${a.links.map(l=>esc(l.label||l.url)).join(' ; ')}</p>`:''}
           <p class="dindent"><b>มติ/ข้อสรุป :</b> ${a.decision?nl2br(a.decision):'<i>(รอเลขานุการบันทึกมติ)</i>'}${a.follow?' <b>[อยู่ระหว่างติดตามผล]</b>':''}</p>
         </div>`).join('');
@@ -1140,20 +1174,19 @@ function inviteHTML(mid){
   const objs=(m.objectives||'').split('\n').filter(x=>x.trim());
   const ags=state.db.agendas.filter(a=>a.mid===m.id).sort((x,y)=>(+x.grp)-(+y.grp));
   return `<div class="a4">
-    <div class="dorg"><div class="dseal">${I('cap',30)}</div>
-      <div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    ${orgDocHeader()}
     <div class="dline"></div>
     <p style="margin-top:14px">หนังสือที่ ${esc(m.docNo||'........................')}</p>
     <p style="margin-top:14px"><b>เรื่อง</b> ขอเชิญประชุม${esc(m.title)} ครั้งที่ ${esc(m.no)}</p>
-    <p><b>เรียน</b> คณาจารย์และบุคลากรประจำสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา</p>
-    <p style="margin-top:10px;text-indent:44px">ด้วยสาขาวิชาเทคโนโลยีและสื่อสารการศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม มีกำหนดจัดการประชุมดังกล่าว
+    <p><b>เรียน</b> คณาจารย์และบุคลากรประจำ${esc(CFG.org1)}</p>
+    <p style="margin-top:10px;text-indent:44px">ด้วย${esc(CFG.org1)} ${esc(CFG.org2)} มีกำหนดจัดการประชุมดังกล่าว
     ในวัน${fmtD(m.date)} เวลา ${esc(m.tStart)}${m.tEnd?' - '+esc(m.tEnd):''} น. ณ ${esc(m.place)}${m.link?' และประชุมผ่านระบบออนไลน์ ('+esc(m.link)+')':''}
     โดยมีวัตถุประสงค์${objs.length?objs.map(esc).join(' / '):'เพื่อพิจารณากิจการตามวาระที่แนบมา'}</p>
     <p style="margin-top:10px"><b>วาระการประชุม</b> (แนบท้ายหนังสือ)</p>
     <ol class="dl">${[1,2,3,4,5].map(g=>{const items=ags.filter(a=>+a.grp===g);return items.length?`<li>วาระที่ ${g} ${GROUPS[g]}${items.length>1||items[0].title!==GROUPS[g]?' : '+items.map(a=>esc(a.title)).join(' / '):''}</li>`:''}).filter(Boolean).join('')}</ol>
     <p style="margin-top:10px">จึงเรียนมาเพื่อโปรดทราบและพิจารณานัดหมายให้สอดคล้องกัน และขอให้ผู้เข้าร่วมประชุมศึกษาเอกสารประกอบวาระล่วงหน้า จึงเป็นสาระสำคัญ</p>
     <div class="sig">
-      <p>ลงชื่อ ..................................................... เลขานุการสาขาวิชาฯ</p>
+      <p>ลงชื่อ ..................................................... เลขานุการ</p>
       <p class="sign">(${esc(uName(m.secId))})<br>${esc(uPos(m.secId))}</p>
     </div>
   </div>`;
@@ -1186,7 +1219,7 @@ function renderStats(){
     <div class="scard"><b>${db.agendas.length}</b><span>หัวข้อวาระสะสม</span></div>
     <div class="scard"><b>${pend}</b><span>มติรอติดตามผล</span></div>
   </div>
-  <div class="chart-card"><h3>${I('chart',16)} อัตราการเข้าร่วมรายการประชุม (ครั้งที่ / จำนวนเข้าร่วมจริง)</h3>
+  <div class="chart-card"><h3>${I('chart',16)} อัตราการเข้าร่วมรายการประชุม</h3>
     <div class="legend">${Object.keys(ATT_COLORS).map(k=>`<span><i style="background:${ATT_COLORS[k]}"></i>${k}</span>`).join('')}</div>
     <div class="scrollx">${chartAttendanceSVG()}</div></div>
   <div class="chart-card"><h3>${I('users',16)} อัตราการเข้าร่วมรายบุคคล</h3>${renderPeopleChart()}</div>
@@ -1242,7 +1275,7 @@ function printStats(){
   const atAll=db.attendees;
   const avg=atAll.length?Math.round(atAll.filter(a=>a.status==='เข้าร่วม').length/atAll.length*100):0;
   $('#printArea').innerHTML=`<div class="a4">
-    <div class="dorg"><div class="dorg-t">สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา<br>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</div></div>
+    ${orgDocHeader()}
     <div class="dline"></div>
     <h2 class="dtitle">รายงานสรุปสถิติการประชุม</h2>
     <p class="dsub">ข้อมูล ณ วันที่ ${fmtDs(todayIso())} · รวม ${ms.length} ครั้ง · อัตราเข้าร่วมเฉลี่ยรวม ${avg}%</p>
@@ -1273,7 +1306,7 @@ function openEmailForm(mid){
       <div><label>ประเภทจดหมาย</label><select class="in" name="mailType">
         <option value="invite">หนังสือเชิญประชุม</option>
         <option value="reminder">เตือนความจำการประชุม</option></select></div>
-      <div><label>ผู้ส่ง</label><input class="in" value="ETCM Meeting Hub — สาขาวิชาเทคโนโลยีและสื่อสารการศึกษา" disabled style="background:#f3efe0"></div>
+      <div><label>ผู้ส่ง</label><input class="in" value="ETCM Meeting Hub — ${esc(CFG.org1)}" disabled style="background:#f3efe0"></div>
     </div>
     <div><label>เรื่อง (อัตโนมัติ)</label><input class="in" disabled value="${esc(m.title)} ครั้งที่ ${esc(m.no)}"></div>
     <div><label>ผู้รับ — เลือกผู้ที่จะส่ง (${recips.length} คน)</label>
@@ -1327,7 +1360,8 @@ function exportWord(mid,kind){
   const m=state.db.meetings.find(x=>x.id===mid);if(!m)return;
   let inner=(kind==='invite'?inviteHTML(mid):docHTML(m))
     .replace(/<svg[\s\S]*?<\/svg>/g,'')
-    .replace('<div class="dseal"></div>','<p style="text-align:center;margin:0 0 4px;font-weight:bold">— สัญลักษณ์สาขาวิชาฯ —</p>');
+    .replace(/<img[^>]*>/g,'<p style="text-align:center;margin:0">[ตราหน่วยงาน]</p>')
+    .replace('<div class="dseal"></div>','');
   const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(m.title)}</title><style>@page{size:21cm 29.7cm;margin:2.2cm 2.4cm}body{font-family:'TH Sarabun New','TH SarabunPSK',Sarabun,Tahoma;font-size:15pt;line-height:1.6;color:#000}.dorg{text-align:center}.dorg-t{font-weight:bold;font-size:16pt}.dline{border-bottom:2px solid #000;margin:8px 0 14px}.dtitle{text-align:center;font-weight:bold;font-size:17pt;margin:4px 0}.dsub{text-align:center}.dsec{font-weight:bold;margin:14px 0 4px}.dl{margin-left:34px}.dwg{font-weight:bold;text-decoration:underline;margin-top:12px}.ditem{margin:8px 0 8px 18px}.dindent{margin-left:20px}.sig{margin-top:30px;text-align:right}.sign{margin-top:2px}.dokay{color:#1b4d3e;font-weight:bold}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:4px 8px;font-size:13.5pt}th{background:#f0ead6}</style></head><body>${inner}</body></html>`;
   const blob=new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'});
   const a=document.createElement('a');
@@ -1360,7 +1394,7 @@ function renderUsers(){
   <div class="card" style="margin-top:18px">
     <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px">${I('shield',16)} นิยามบทบาทและสิทธิ์ในระบบ</h3>
     <div class="role-def">
-      <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง รวมถึงเพิ่ม/ลบสมาชิก กำหนดบทบาท ลบการประชุม และตั้งค่าการเชื่อมต่อกับ Google Sheet / Drive</span></div>
+      <div class="rd"><b><span class="chip ch-gold">ผู้ดูแลระบบ</span></b><span>จัดการได้ทุกอย่าง รวมถึงเพิ่ม/ลบสมาชิก กำหนดบทบาท ลบการประชุม ปรับข้อมูลหน่วยงาน/โลโก้ ดึงข้อมูลจาก Google Sheet และสำรอง/กู้คืนข้อมูล</span></div>
       <div class="rd"><b><span class="chip ch-green">ประธาน</span></b><span>เข้าดูข้อมูลได้ทั้งหมด และทำหน้าที่กด "ประธานรับทราบรายงาน" เพื่ออนุมัติรายงานการประชุมฉบับสมบูรณ์</span></div>
       <div class="rd"><b><span class="chip ch-red">เลขานุการ</span></b><span>นัดหมายประชุม จัดวาระ บันทึกมติ อัปโหลดเอกสารขึ้น Google Drive จัดการรายชื่อผู้เข้าร่วม ส่งอีเมลเชิญ และพิมพ์หนังสือเชิญ/รายงาน</span></div>
       <div class="rd"><b><span class="chip ch-gray">สมาชิก</span></b><span>เข้าดูประกาศเชิญ วาระ เอกสาร รายงาน สถิติ ยืนยันเข้าร่วมหรือแจ้งลา และร่วมบันทึกความเห็นในแต่ละวาระ</span></div>
@@ -1398,19 +1432,25 @@ async function delUser(id){
   try{await api('deleteUser',{id});await reloadDB();toast('ลบสมาชิกเรียบร้อยแล้ว');refresh()}catch(e){toast(e.message,'err')}
 }
 
-/* ═════════ ตั้งค่าระบบ ═════════ */
+/* ═════════ ตั้งค่าระบบ + แผงควบคุมผู้ดูแล ═════════ */
 function renderSettings(){
+  const adm=isAdmin();
+  const tables=[['users','สมาชิก'],['meetings','การประชุม'],['agendas','วาระ'],['attendees','ผู้เข้าร่วม'],['files','เอกสารแนบ'],['discussions','บันทึกหารือ']];
   $('#view').innerHTML=`
-  <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบและการเชื่อมต่อข้อมูล</h3></div>
+  <div class="sec-head"><h3>${I('gear',19)} ตั้งค่าระบบและฐานข้อมูล</h3></div>
   <div class="card">
-    <span class="mode-badge chip ${state.demo?'ch-gold':'ch-green'}" style="font-size:13px">${state.demo?I('alert',15)+' โหมดสาธิต (ข้อมูลเก็บในเครื่องนี้เท่านั้น)':I('check',15)+' เชื่อมต่อ Google Apps Script แล้ว'}</span>
-    <p class="hint" style="margin-top:8px">ในโหมดสาธิต ทุกอย่างทำงานได้ครบ (อีเมลจะจำลองการส่ง) แต่ข้อมูลถูกบันทึกลง localStorage ของเบราว์เซอร์ เมื่อเชื่อมต่อกับ Google แล้ว ข้อมูลจะถูกเก็บใน Google Sheet ไฟล์แนบเก็บใน Google Drive และอีเมลส่งจริงผ่าน MailApp</p>
+    <span class="mode-badge chip ${state.demo?'ch-gold':'ch-green'}" style="font-size:13px">${state.demo?I('alert',15)+' โหมดสาธิต (ข้อมูลในเครื่องนี้)':I('check',15)+' เชื่อมต่อ Google Sheets แล้ว'}</span>
+    ${!state.demo&&state.ssUrl?`<a class="btn btn-s" style="margin-left:10px" href="${esc(state.ssUrl)}" target="_blank" rel="noopener">${I('ext',13)} เปิด Google Sheet ฐานข้อมูล</a>`:''}
+    <div style="margin-top:10px">${tables.map(t=>`<span class="cnt-pill">${t[1]}: <b>${(state.db[t[0]]||[]).length}</b> รายการ</span>`).join('')}</div>
   </div>
+  ${adm?orgCard():''}
+  ${adm?sheetCard():''}
+  ${adm?backupCard():''}
   <div class="card" style="margin-top:16px">
-    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">เชื่อมต่อ Google Sheet + Google Drive + อีเมล</h3>
+    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:14px">${I('link',16)} การเชื่อมต่อ Google Sheet + Drive + อีเมล</h3>
     <form class="frm" onsubmit="return saveGas(event)">
       <div><label>URL ของ Web App (Apps Script) ที่ลงท้ายด้วย /exec</label>
-        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/AKfycbwL-7XNw4xSlhVCeKAIs4EW5msi1MtkSguo3fRWp8h6hA2lo-hZo3VFichckxP8KuYf/exec" value="${esc(state.gasUrl)}"></div>
+        <input class="in" id="gasUrl" placeholder="https://script.google.com/macros/s/AKfycbx6EwTP5kvTVudAbpJCxBqrtYjB27eXAcQKGPCyUeCG7wfifWlTIjt6DdJHZRpVQLhm/exec" value="${esc(state.gasUrl)}"></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button type="button" class="btn" onclick="testGas()">${I('refresh',15)} ทดสอบการเชื่อมต่อ</button>
         <button type="submit" class="btn btn-p">${I('check',15)} บันทึกและเชื่อมต่อ</button>
@@ -1418,18 +1458,177 @@ function renderSettings(){
       </div>
     </form>
     <div id="gasMsg" style="margin-top:12px"></div>
+    <div class="hint" style="margin-top:8px">เมื่อเชื่อมต่อแล้ว ข้อมูลเก็บใน Google Sheet ทันที และแผงควบคุมด้านบน (เฉพาะผู้ดูแลระบบ) สั่งงานได้จากหน้าเว็บโดยตรง — ไม่ต้องแก้โค้ดอีก</div>
   </div>
-  <div class="card" style="margin-top:16px">
-    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:8px">ขั้นตอนการติดตั้งระบบจริง (ครั้งเดียว)</h3>
+  ${adm?`<div class="card" style="margin-top:16px">
+    <h3 style="color:var(--green-d);font-size:15.5px;margin-bottom:8px">ติดตั้งระบบจริงครั้งแรก (สรุป)</h3>
     <ol class="steps">
-      <li>สร้าง <b>Google Sheets</b> ใหม่บน Google Drive ของสาขาวิชาฯ (ชื่อแนะนำ: "ฐานข้อมูลการประชุม ETCM")</li>
-      <li>เปิดเมนู <b>ส่วนขยาย (Extensions) → Apps Script</b> แล้ววางโค้ดจากไฟล์ <code class="k">Code.gs</code> (ไฟล์หลัก + ส่วนเสริมอีเมล) แล้วบันทึก</li>
-      <li>กด <b>Deploy → New deployment → Web app</b> ตั้ง "Who has access" เป็น <b>Anyone</b> แล้วกด Deploy (อนุญาตสิทธิ์ Sheets, Drive และ Mail เมื่อระบบถาม)</li>
-      <li>คัดลอก <b>Web app URL</b> (ลงท้าย <code class="k">/exec</code>) มาวางในช่องด้านบน กดทดสอบการเชื่อมต่อ — ระบบจะสร้างตารางข้อมูลและบัญชีผู้ดูแลระบบเริ่มต้นให้อัตโนมัติ (admin@etcm.msu.ac.th / รหัส 1234 — เข้าสู่ระบบแล้วเปลี่ยนทันที)</li>
-      <li>(ไม่บังคับ) หากต้องการ<b>แจ้งเตือนอัตโนมัติล่วงหน้า 7 วัน / 1 วัน</b> ก่อนวันประชุม: ในตัวแก้ไข Apps Script เลือกฟังก์ชัน <code class="k">setupReminderTrigger</code> แล้วกด Run ครั้งเดียว</li>
-    </ol>
+      <li>สร้าง Google Sheets → ส่วนขยาย → Apps Script → วางโค้ด <code class="k">Code.gs</code> (เวอร์ชัน 2.0) → บันทึก</li>
+      <li>Deploy → New deployment → Web app → Anyone → คัดลอก URL /exec มาวางด้านบน</li>
+      <li>(ไม่บังคับ) รัน <code class="k">setupReminderTrigger</code> ใน Apps Script เพื่อเปิดแจ้งเตือนอีเมลอัตโนมัติล่วงหน้า 7 วัน / 1 วัน</li>
+    </ol></div>`:''}`;
+}
+/* ── การ์ด 1: ข้อมูลหน่วยงาน โลโก้ ชื่อวาระ ── */
+function orgCard(){
+  return `<div class="card" style="margin-top:16px">
+  <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:14px">${I('edit',16)} ข้อมูลหน่วยงาน โลโก้ และชื่อวาระมาตรฐาน</h3>
+  <form class="frm" onsubmit="return saveOrgSettings(event)">
+    <div class="f2">
+      <div><label>ชื่อหน่วยงาน (บรรทัดที่ 1 เช่น สาขาวิชา...)</label><input class="in" name="org1" value="${esc(CFG.org1)}" required></div>
+      <div><label>คณะ / มหาวิทยาลัย (บรรทัดที่ 2)</label><input class="in" name="org2" value="${esc(CFG.org2)}" required></div>
+    </div>
+    <div class="f2">
+      <div><label>ชื่อย่อสำหรับเลขหนังสือ</label><input class="in" name="orgShort" value="${esc(CFG.orgShort)}"></div>
+      <div><label>โลโก้ / ตราหน่วยงาน (รูป ไม่เกิน 300 KB)</label>
+        <input class="in" type="file" accept="image/*" onchange="previewLogo(this)">
+        <div id="logoPrev" style="margin-top:6px">${CFG.logo?`<div style="display:flex;gap:10px;align-items:center"><img src="${esc(CFG.logo)}" alt="logo"><button type="button" class="btn btn-s btn-d" onclick="clearLogo()">ลบโลโก้</button></div>`:'<span class="hint">ยังไม่มีโลโก้ — ใช้ตราวงกลมมาตรฐานของระบบ</span>'}</div>
+        <div class="hint">อัปโหลดแล้วจะแทนที่ตราเดิมทุกจุด: หน้าเว็บ รายงาน หนังสือเชิญ โดยอัตโนมัติ</div>
+      </div>
+    </div>
+    <div><label>ชื่อหมวดวาระมาตรฐานทั้ง 5 (ปรับให้ตรงแบบของหน่วยงานได้)</label>
+      <div class="f2">${[1,2,3,4,5].map(g=>`<input class="in" name="gn${g}" value="${esc(GROUPS[g])}">`).join('')}</div></div>
+    <div class="mo-f"><button type="submit" class="btn btn-p">${I('check',15)} บันทึกการตั้งค่า</button></div>
+  </form></div>`;
+}
+async function saveOrgSettings(ev){
+  ev.preventDefault();const f=ev.target;
+  const groupNames={};[1,2,3,4,5].forEach(g=>groupNames[g]=f['gn'+g].value.trim()||GROUPS[g]);
+  const cfg={org1:f.org1.value.trim(),org2:f.org2.value.trim(),orgShort:f.orgShort.value.trim()||'สกส.',logo:CFG.logo,groupNames};
+  try{const saved=await api('saveSettings',{cfg});applyCfg(saved);toast('บันทึกการตั้งค่าแล้ว — ใช้กับทุกหน้าและทุกเอกสารทันที');renderSettings();}
+  catch(e){toast(e.message,'err')}
+  return false;
+}
+function previewLogo(inp){
+  const f=inp.files[0];if(!f)return;
+  if(f.size>300*1024){toast('รูปใหญ่เกิน 300 KB — กรุณาย่อรูปก่อน (แนะนำ 200×200 px)','err');inp.value='';return}
+  const r=new FileReader();
+  r.onload=()=>{CFG.logo=String(r.result);
+    $('#logoPrev').innerHTML='<div style="display:flex;gap:10px;align-items:center"><img src="'+CFG.logo+'" alt="logo"><button type="button" class="btn btn-s btn-d" onclick="clearLogo()">ลบโลโก้</button></div>';
+    toast('ตั้งโลโก้แล้ว — กด "บันทึกการตั้งค่า" เพื่อใช้งานจริง');};
+  r.readAsDataURL(f);
+}
+function clearLogo(){CFG.logo='';$('#logoPrev').innerHTML='<span class="hint">ยังไม่มีโลโก้ — ใช้ตราวงกลมมาตรฐานของระบบ</span>'}
+/* ── การ์ด 2: ดึงข้อมูลจาก Google Sheet โดยตรง ── */
+let SHEET=null;
+function sheetCard(){
+  return `<div class="card" style="margin-top:16px">
+  <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:10px">${I('grid',16)} ดึงข้อมูลจาก Google Sheet โดยตรง</h3>
+  <p class="hint">วางลิงก์ Google Sheet (เช่น รายชื่ออาจารย์ของคณะ) ระบบจะดึงข้อมูลมาแสดงเป็นตารางจริงในหน้าเว็บ แล้วเลือกนำเข้าเป็นสมาชิกได้ทันที ${state.demo?'— โหมดสาธิตดึงได้จากชีตที่แชร์เป็น "ผู้ที่มีลิงก์ (ผู้ชม)"':'— เชื่อมต่อแล้ว: ดึงได้ทุกชีตที่เจ้าของสคริปต์มีสิทธิ์เข้าถึง (ไม่ต้องแชร์สาธารณะ)'}</p>
+  <div class="f2" style="margin-top:10px">
+    <div><label>ลิงก์ Google Sheet</label><input class="in" id="shUrl" placeholder="https://docs.google.com/spreadsheets/d/..."></div>
+    <div><label>ชื่อแท็บ (เว้นว่าง = แท็บแรก)</label><input class="in" id="shTab" placeholder="เช่น Sheet1"></div>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center">
+    <button class="btn btn-p" onclick="pullSheet()">${I('download',15)} ดึงข้อมูลจากชีตตอนนี้</button>
+    <span id="shMsg" class="dt"></span>
+  </div>
+  <div id="shPreview"></div></div>`;
+}
+async function pullSheet(){
+  const url=$('#shUrl').value.trim();
+  if(!url){toast('กรุณาวางลิงก์ Google Sheet','err');return}
+  $('#shMsg').textContent='กำลังดึงข้อมูลจาก Google Sheet...';
+  let d=null;
+  try{
+    if(!state.demo){try{d=await api('inspectSheet',{url,sheet:$('#shTab').value.trim()});}catch(e){d=await gvizInspect(url,$('#shTab').value.trim());}}
+    else d=await gvizInspect(url,$('#shTab').value.trim());
+  }catch(e){$('#shMsg').textContent='';toast('ดึงข้อมูลไม่สำเร็จ: '+e.message,'err');return}
+  SHEET=d;
+  $('#shMsg').textContent='สำเร็จ — แท็บ "'+d.sheet+'" ('+Math.max(0,d.rows.length-1)+' แถวข้อมูล)';
+  renderSheetPreview();
+}
+async function gvizInspect(url,tab){
+  const m=String(url).match(/\/d\/([a-zA-Z0-9-_]+)/);const id=m?m[1]:(String(url).match(/[-\w]{25,}/)||[])[0];
+  if(!id)throw new Error('ไม่พบรหัสชีตในลิงก์');
+  let u='https://docs.google.com/spreadsheets/d/'+id+'/gviz/tq?tqx=out:json';
+  if(tab)u+='&sheet='+encodeURIComponent(tab);
+  const r=await fetch(u);const t=await r.text();
+  const j=JSON.parse(t.substring(t.indexOf('{'),t.lastIndexOf('}')+1));
+  if(!j.table)throw new Error('อ่านชีตไม่ได้ — ต้องแชร์เป็น "ผู้ที่มีลิงก์ (ผู้ชม)"');
+  const cols=j.table.cols.map((c,i)=>c.label||('คอลัมน์ '+(i<26?String.fromCharCode(65+i):i+1)));
+  const rows=[cols,...j.table.rows.map(rw=>cols.map((_,i)=>{const c=rw.c&&rw.c[i];return c?(c.f!=null?c.f:(c.v!=null?c.v:'')):''}))];
+  return {names:[tab||'ชีตสาธารณะ'],sheet:tab||'ชีตสาธารณะ',rows,ssUrl:url};
+}
+function renderSheetPreview(){
+  if(!SHEET)return;
+  const rows=SHEET.rows||[],head=rows[0]||[];
+  const colSel=(id,label,def)=>`<div><label>${label}</label><select class="in in-s" id="${id}"><option value="-1">— ไม่ใช้ —</option>${head.map((h,i)=>`<option value="${i}" ${i===def?'selected':''}>${esc(String(h))||'คอลัมน์ '+(i<26?String.fromCharCode(65+i):i+1)}</option>`).join('')}</select></div>`;
+  $('#shPreview').innerHTML=`
+  <div style="margin-top:12px;border:1px solid var(--line2);border-radius:9px;padding:12px 14px">
+    ${SHEET.names.length>1?`<div style="margin-bottom:8px"><label>เลือกแท็บ</label><select class="in in-s" onchange="switchTab(this.value)">${SHEET.names.map(n=>`<option ${n===SHEET.sheet?'selected':''}>${esc(n)}</option>`).join('')}</select></div>`:''}
+    <div class="mini-prev scrollx"><table class="tb">${rows.slice(0,10).map((r,i)=>`<tr>${r.map(c=>`<td ${i===0?'style="background:#f3eedb;font-weight:600;white-space:nowrap"':''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div>
+    <b style="font-size:13.5px;color:var(--green-d)">นำเข้าเป็นสมาชิก — เลือกคอลัมน์ที่ตรงกับข้อมูลของชีต</b>
+    <div class="f2" style="margin-top:8px">
+      ${colSel('mapName','คอลัมน์ "ชื่อ-สกุล" (บังคับ)',0)}
+      ${colSel('mapEmail','คอลัมน์ "อีเมล"',1)}
+      ${colSel('mapPos','คอลัมน์ "ตำแหน่ง"',2)}
+      ${colSel('mapRole','คอลัมน์ "บทบาท" (เว้นว่าง = สมาชิก)',-1)}
+    </div>
+    <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+      <button class="btn btn-g" onclick="importMembers()">${I('users',15)} นำเข้าสมาชิกจากชีตนี้</button>
+      <a class="btn btn-s" href="${esc(SHEET.ssUrl||$('#shUrl').value.trim())}" target="_blank" rel="noopener">${I('ext',13)} เปิดชีตต้นทาง</a>
+    </div>
+    <div id="impMsg" class="hint" style="margin-top:6px"></div>
   </div>`;
 }
+async function switchTab(nm){
+  if(state.demo){toast('โหมดสาธิต: พิมพ์ชื่อแท็บในช่องด้านบนแล้วกด "ดึงข้อมูล" อีกครั้ง','err');return}
+  try{SHEET=await api('inspectSheet',{url:$('#shUrl').value.trim(),sheet:nm});renderSheetPreview();}catch(e){toast(e.message,'err')}
+}
+async function importMembers(){
+  if(!SHEET)return;
+  const map={name:+$('#mapName').value,email:+$('#mapEmail').value,position:+$('#mapPos').value,role:+$('#mapRole').value};
+  if(map.name<0){toast('กรุณาเลือกคอลัมน์ชื่อ-สกุล','err');return}
+  $('#impMsg').textContent='กำลังนำเข้า... กรุณารอสักครู่';
+  const rows=SHEET.rows;let added=0,skip=0;const errs=[];
+  for(let i=1;i<rows.length;i++){
+    const r=rows[i];const name=String(r[map.name]||'').trim();
+    if(!name)continue;
+    const email=map.email>=0?String(r[map.email]||'').trim().toLowerCase():'';
+    if(email&&state.db.users.find(u=>(u.email||'').toLowerCase()===email)){skip++;continue}
+    const role=map.role>=0?(ROLE_MAP[String(r[map.role]||'').trim()]||'member'):'member';
+    try{await api('saveUser',{rec:{name,position:map.position>=0?String(r[map.position]||'').trim():'',role,active:'1',pass:'1234',email:email||('member'+Date.now().toString(36)+i+'@local')}});added++;}
+    catch(e){errs.push(name)}
+  }
+  await reloadDB();
+  $('#impMsg').innerHTML='นำเข้าสำเร็จ <b>'+added+'</b> คน · ข้าม (อีเมลซ้ำ/ว่าง) '+skip+' รายการ'+(errs.length?' · ไม่สำเร็จ: '+esc(errs.join(', ')):'');
+  toast('นำเข้าสมาชิก '+added+' คน (รหัสผ่านเริ่มต้น 1234 — แจ้งสมาชิกเปลี่ยนหลังเข้าใช้งาน)');
+}
+/* ── การ์ด 3: สำรอง / กู้คืนข้อมูล ── */
+function backupCard(){
+  return `<div class="card" style="margin-top:16px">
+  <h3 style="color:var(--green-d);font-size:15.5px;border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:10px">${I('download',16)} สำรอง / กู้คืนข้อมูลทั้งระบบ</h3>
+  <p class="hint">สำรองข้อมูลทั้งหมด (สมาชิก การประชุม วาระ มติ เอกสาร การหารือ และการตั้งค่า) เป็นไฟล์ JSON หรือใช้ย้ายระบบ/กู้คืน</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn btn-p" onclick="backupJSON()">${I('download',15)} ดาวน์โหลดไฟล์สำรอง (.json)</button>
+    <label class="btn" style="cursor:pointer">${I('upload',15)} เลือกไฟล์สำรองเพื่อกู้คืน<input type="file" accept=".json" style="display:none" onchange="restoreJSON(this)"></label>
+  </div></div>`;
+}
+function backupJSON(){
+  const blob=new Blob([JSON.stringify({db:state.db,cfg:CFG,at:new Date().toISOString()},null,1)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='etcm-backup-'+todayIso()+'.json';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast('ดาวน์โหลดไฟล์สำรองแล้ว — กรุณาเก็บรักษาไว้ให้ปลอดภัย');
+}
+async function restoreJSON(inp){
+  const f=inp.files[0];if(!f)return;
+  let j;try{j=JSON.parse(await f.text())}catch(e){toast('ไฟล์ไม่ถูกต้อง','err');return}
+  if(!j.db||!j.db.users){toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของระบบ','err');return}
+  if(!await ask('กู้คืนข้อมูล','การกู้คืนจะเขียนทับข้อมูลปัจจุบันทั้งหมด ('+(j.db.users.length)+' สมาชิก, '+((j.db.meetings||[]).length)+' การประชุม) ยืนยันหรือไม่?'))return;
+  try{
+    if(state.demo){
+      localStorage.setItem('etcm_db',JSON.stringify(j.db));
+      if(j.cfg)localStorage.setItem('etcm_cfg',JSON.stringify(j.cfg));
+      state.db=j.db;if(j.cfg)applyCfg(j.cfg);
+    }else{
+      await api('restoreAll',{db:j.db,cfg:j.cfg});
+      state.db=await api('loadAll');applyCfg(state.db.settings);
+      state.ssUrl=(state.db.meta&&state.db.meta.ssUrl)||'';
+    }
+    toast('กู้คืนข้อมูลสำเร็จเรียบร้อย');renderSettings();
+  }catch(e){toast(e.message,'err')}
+}
+/* ── การเชื่อมต่อ Apps Script ── */
 async function testGas(){
   const url=$('#gasUrl').value.trim();const box=$('#gasMsg');
   if(!url){box.innerHTML='<span class="chip ch-red">กรุณากรอก URL ก่อน</span>';return}
